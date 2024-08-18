@@ -1,7 +1,7 @@
 <template>
 
 
-<nav ref="staticDiv"  :class="{ 'fixed': isFixed }" style="direction: ltr;" class="static-div bg-white border-gray-200 dark:bg-gray-900">
+<nav ref="staticDiv"  :class="{ 'fixed': isFixed }" style="direction: ltr;" class="static-div bg-white border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
     <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
       <Button style=" background-color: #AA1E22 !important;"  label="تسجيل الدخول" class="mt-3 bg focus:ring-0 text-[#AA1E22]"/>
