@@ -46,7 +46,7 @@
       <div class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md">
         <!-- <div class="absolute w-full h-full bg-white opacity-20"></div> -->
         <div class="h-full ">
-           <img src="../images/cc8fe6a7-c9ad-43cf-9880-941b62bc60e5.png">
+           <img src="../images/auctions.png">
             <div class="flex justify-between p-2">
               <div>
                 <p class="text-xl font-bold text-right">كمباوند الغدير</p>
@@ -176,7 +176,7 @@
 </template>
 <script setup>
 import Nave from '../components/Nave.vue';
-import img1 from "../images/riyadh-saudi-arabia-gretopia_5 1.png";
+// import img1 from "../images/riyadh-saudi-arabia-gretopia_5 1.png";
 import { ref, reactive, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';

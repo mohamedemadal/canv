@@ -8,7 +8,7 @@ import Auctions from '../components/Auctions.vue'
 import Customer from '../components/Customer.vue'
 import Rentals from '../components/Rentals.vue'
 import Property from '../components/Property.vue'
-import img1 from "../images/riyadh-saudi-arabia-gretopia_5 1.png";
+import img1 from "../images/header.png";
 import { ref, reactive, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';

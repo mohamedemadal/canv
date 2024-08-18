@@ -63,7 +63,7 @@
        </div>
        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 p-4">
         <div>
-          <img src="../images/WhatsApp Image 2024-05-28 at 6.33.png" class="w-full h-full">
+          <img src="../images/about.png" class="w-full h-full">
         </div>
         <div class="p-4">
          <h4 class="text-4xl font-bold">لماذا تختار كانف ؟</h4>
@@ -105,7 +105,7 @@ import Auctions from '../components/Auctions.vue'
 import Customer from '../components/Customer.vue'
 import Rentals from '../components/Rentals.vue'
 import Property from '../components/Property.vue'
-import img1 from "../images/riyadh-saudi-arabia-gretopia_5 1.png";
+import img1 from "../images/header.png";
 import { ref, reactive, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
