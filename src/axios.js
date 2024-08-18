@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = "http://139.59.132.90:8069"
+axios.defaults.baseURL = "https://139.59.132.90:8069"
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['local'] = localStorage.getItem('appLang')
