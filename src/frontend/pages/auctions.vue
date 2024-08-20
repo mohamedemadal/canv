@@ -1,64 +1,43 @@
 <template>
-    <div class="bg-slate-50 auctions">
-    <div class=  "  px-[1%] py-[3%] m-auto  max-w-screen-xl">
-      <div class=" ">
-         <h3 class="text-center text-5xl py-4 ">تعرف أكثر على خدمات كانف ... </h3>
-         <p class="text-center text-2xl pb-[5%] text-[#AEAEAE]"> لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p>
-       </div>
+  <Nave></Nave>
+  <div class="bg-white auction">
+  <!-- banner -->
+  <div  class="banner flex items-center h-[35vh] lg:h-[55vh] relative ">
+    <div class="absolute bg-black opacity-40 w-full h-full z-50"></div>
+    <img class="w-full absolute h-full" src="../images/breadcrumb.png">
 
+    <div class="z-50 text-white w-full m-auto w-[80%] ">
+      <H1 class="font-bold text-5xl text-white z-50"> المزادات</H1>
+     <div class="flex py-8 ">
+      <p class="text-2xl font-semibold ">الرئيسية</p>
+      <svg class="my-auto mx-[1%]" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
 
-        <div class="flex justify-between">
-          <h2 class="text-4xl  font-bold">المزادات</h2>
-          <a href="/auctions" class="text-2xl font-bold text-[#ef5258]">مشاهدة المزيد</a>
-        </div>
-        <div>{{ formattedTime }}</div>
-       <div class=" grid lg:grid-cols-4 w-full lg:w-fit grid-cols-2 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
-        <Button @click="getauction('all')"  :style=" active == 'all' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" الكل " class="mt-3 bg-[#AA1E22]  my-auto "/>
-        <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" الحالية" class="mt-3 bg-[#AA1E22]   "/>
-        <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" القادمة" class="mt-3 bg-[#AA1E22]   "/>
-        <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="المنتهية " class="mt-3 bg-[#AA1E22]   "/>
-       </div>
-        <div v-if="allauctions.length >= 1" class="grid grid-cols-1 gap-2 lg:grid-cols-3 mt-3">
-          <div style="background: linear-gradient(to right, #AA1E22, #ef5258);  " class="shadow-md lg:flex items-center justify-center rounded-md  hidden">
-            <!-- card -->
+      <p class="text-2xl font-semibold ">المزادات </p>
+     </div>
+    </div>
+   </div>
 
-              <h3 class="lg:text-7xl  text-5xl font-bold text-white ">المزادات</h3>
+   <!-- auctions -->
+  <div class=  "  px-[1%] py-[3%] m-auto  max-w-screen-xl">
+      <div class="flex justify-between">
+        <h2 class="text-4xl  font-bold">المزادات</h2>
 
+      </div>
 
-          </div>
-          <div class="lg:col-span-2">
-            <swiper
-      ref="swiperRef"
-      :modules="[Pagination, Navigation, Autoplay]"
-      @slideChange="onSlideChange"
-      @swiper="onSwiper"
+      <div class=" grid lg:grid-cols-4 w-full lg:w-fit grid-cols-2 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
+      <Button @click="getauction('all')"  :style=" active == 'all' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" الكل " class="mt-3 bg-[#AA1E22]  my-auto "/>
+      <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" الحالية" class="mt-3 bg-[#AA1E22]   "/>
+      <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" القادمة" class="mt-3 bg-[#AA1E22]   "/>
+      <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="المنتهية " class="mt-3 bg-[#AA1E22]   "/>
+     </div>
 
-      :navigation="navigation"
-      :pagination="{ clickable: true }"
-      :scrollbar="{ draggable: true }"
-      :autoplay="{
-        delay: 3000,
-        disableOnInteraction: false,
-      }"
-      :breakpoints="{
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 10,
-        },
-      }"
-    >
-      <swiper-slide v-for="(auction, index) in allauctions" :key="index">
-        <div class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md ">
+     <div class="grid  grid-cols-1 lg:grid-cols-3 gap-3">
+      <div  v-for="(auction, index) in allauctions" :key="index" class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md ">
           <!-- <div class="absolute w-full h-full bg-white opacity-20"></div> -->
-          <div class="h-full">
+          <div class="">
              <div class="relative" >
               <img  class="h-[95%]" :src="auction.profile_img_link">
               <p class="absolute z-50 top-3 left-3 bg-black opacity-50 text-white text-base p-2 rounded-lg">{{ auction.status }}</p>
@@ -166,54 +145,61 @@
            </div>
           </div>
           <div>
-             <!-- @click="details(auction.auction_id)" -->
+            <!-- @click="details(auction.auction_id)" -->
              <Button  style=" background-color: #AA1E22 !important;padding: 0px !important;margin-bottom: 2% !important;"  label="إقرأ المزيد" class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
           </div>
         </div>
-        <!-- Doctor -->
-      </swiper-slide>
+     </div>
+     <div>
+      <Paginator v-if="allauctions.length >= 1"  v-model:first="current_page" :rows="1" :totalRecords="total_pages"
+        :template="{
 
-
-
-
-          </swiper>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-    </div>
+        default: 'FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink  JumpToPageDropdown'
+    }"
+        ></Paginator>
+     </div>
   </div>
+
+</div>
+<Footer></Footer>
 </template>
 <script setup>
 import Nave from '../components/Nave.vue';
+import Footer from '../components/Footer.vue'
 import {useRouter} from "vue-router";
 
 const router = useRouter()
 // import img1 from "../images/riyadh-saudi-arabia-gretopia_5 1.png";
-import { ref, reactive, onMounted,computed } from 'vue';
+import { ref, reactive, onMounted,computed,watch} from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import axios from "axios";
+const currentDate = ref(new Date());
 const allauctions=ref({})
+const total_pages=ref(2)
+const current_page=ref(0)
 const active=ref('all')
 const swiperRef = ref(null);
-const currentDate = ref(new Date());
+
 const state = reactive({
-  currentSlide: 0,
-  totalSlides: 0,
+currentSlide: 0,
+totalSlides: 0,
 });
 
 const pagination = {
-  el: '.swiper-pagination',
-  clickable: true,
+el: '.swiper-pagination',
+clickable: true,
 };
 
 const navigation = {
-  nextEl: '.swiper-button-next',
-  prevEl: '.swiper-button-prev',
+nextEl: '.swiper-button-next',
+prevEl: '.swiper-button-prev',
 };
+
+
 const currentMinutes = computed(() => {
   return currentDate.value.toLocaleTimeString([], { minute: '2-digit', hour12: false }).split(':')[0];
 });
@@ -238,7 +224,8 @@ const details=(id)=>{
   router.push({name:'auction-details',params:{'id':id} })
 }
 const getauction=(e)=>{
-
+  total_pages.value =2
+  current_page.value=0
   active.value=String(e)
     console.log( e)
 
@@ -246,7 +233,7 @@ axios
   .post('api/get_auctions',{
     auctions_filter:e,
     page_number:"1",
-    page_scope:"7",
+    page_scope:"9",
   })
   .then((res) => {
     console.log(res.data.result.data)
@@ -274,13 +261,50 @@ axios
   })
 
 }
+watch(current_page, (newPage, oldPage) => {
+  axios
+  .post('api/get_auctions',{
+    auctions_filter:active.value,
+    page_number:newPage+1,
+    page_scope:"9",
+  })
+  .then((res) => {
+    console.log(res.data.result.data)
+    if(res.data.result.data.length = 9 ){
+      total_pages.value ++
+    }
 
+
+    allauctions.value = res.data.result.data.map(event => ({
+                "name": event.name,
+                "auction_id": event.auction_id,
+                "status": event.status,
+                "duration_by_hours": event.duration_by_hours,
+                "assets_number": event.assets_number,
+                "profile_img_link": event.profile_img_link,
+                "auction_type": event.auction_type,
+                "city": event.city,
+                "start_date": event.start_date,
+                "start_date": event.start_date,
+                "start_time": (event.start_time).split(":")[0],
+                "second":(event.start_time).split(":")[1],
+                "day":Math.ceil(( new Date(event.start_date)) - new Date(formattedDate.value) / (1000 * 60 * 60 * 24)),
+                "duration":Math.ceil((   new Date(event.end_date) - new Date(event.start_date)) / (1000 * 60 * 60 * 24)),
+          }));
+          console.log( allauctions.value)
+
+
+
+  })
+
+      // Add any additional logic you need here, like fetching new data
+    });
 const fetchdata=()=>{
 axios
   .post('api/get_auctions',{
     auctions_filter:"all",
     page_number:"1",
-    page_scope:"7",
+    page_scope:"9",
   })
   .then((res) => {
     console.log(res.data.result.data)
@@ -317,42 +341,63 @@ onMounted(() => {
     }, 100);
 
 });
-
 </script>
 <style>
-.auctions .swiper-pagination-bullet {
-  background-color: rgb(170, 0, 0) !important;
-  z-index: 60;
+.auction .swiper-pagination-bullet {
+background-color: white;
+color: red !important;
+z-index: 60;
+}
+.auction .swiper-pagination-bullet span {
+
+color: red !important;
+
 }
 
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #007bff;
+color: #007bff;
 }
 .swiper-button-prev{
-  background-color: red !important;
-  border-radius: 9% !important ;
-  transform: scale(.7) !important;
-  color:  white !important;
- width: 50px !important ;
- height: 50px !important ;
+background-color: red !important;
+border-radius: 9% !important ;
+transform: scale(.7) !important;
+color:  white !important;
+width: 50px !important ;
+height: 50px !important ;
 }
 .swiper-button-next{
+background-color: red !important;
+border-radius: 9% !important ;
+transform: scale(.7) !important;
+color:  white !important;
+width: 50px !important ;
+height: 50px !important ;
+}
+.auction .swiper-pagination{
+position: relative ;
+margin-top: 1%
+}
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight{
   background-color: red !important;
-  border-radius: 9% !important ;
-  transform: scale(.7) !important;
-  color:  white !important;
- width: 50px !important ;
- height: 50px !important ;
+  color: white;
 }
-.auctions .swiper-pagination{
-  text-align: center;
- position: relative !important;
- margin-top: 2% !important;
- margin: auto !important;
-
+.p-paginator .p-paginator-pages .p-paginator-page{
+  background-color: #CCCCCC !important;
+  border: 1px solid black;
+  color: black !important
 }
-
+.p-paginator .p-dropdown{
+  visibility: hidden !important;
+}
+.p-paginator .p-paginator-last ,.p-paginator .p-paginator-first{
+  visibility: hidden !important;
+}
+.p-icon {
+  transform: rotate(180deg) !important;
+    width: 2rem;
+    height: 3rem;
+}
 </style>
 

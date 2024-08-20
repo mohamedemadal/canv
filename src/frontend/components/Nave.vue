@@ -3,7 +3,7 @@
 
 <nav ref="staticDiv"  :class="{ 'fixed': isFixed }" style="direction: ltr;" class="static-div bg-white border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
-    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
       <Button style=" background-color: #AA1E22 !important;"  label="تسجيل الدخول" class="mt-3 mb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
     </a>
     <button @click="opennave" data-collapse-toggle="navbar-default" type="button" class="mx-1 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-default" aria-expanded="false">
@@ -17,7 +17,9 @@
 
 
 
-
+        <li class="my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
+        </li>
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> من نحن</router-link>
         </li>
@@ -95,9 +97,12 @@ onBeforeUnmount(() => {
 <style>
 .router-link-active {
 
-
+transition: 1s;
 color: black;
-background-color: white !important
+background-color: white !important;
+border-bottom: 2px solid red !important;
+border-radius: 5px !important;
+
 }
 
 

@@ -19,7 +19,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/about',
     component: () => import('../frontend/pages/about-us.vue'),
   },
-
+  {
+    name: 'auctions',
+    path: '/auctions',
+    component: () => import('../frontend/pages/auctions.vue'),
+  },
+  {
+    name: 'auction-details',
+    path: '/auction-details/:id',
+    component: () => import('../frontend/pages/auction-details.vue'),
+  },
   {
     name: 'admin',
     path: '/admin',

@@ -93,10 +93,11 @@
     </div>
   </div> -->
     <!-- counter -->
- <!-- <Auctions></Auctions>
+ <Auctions></Auctions>
  <Rentals></Rentals>
  <Property></Property>
- <Customer></Customer> -->
+ <Customer></Customer>
+ <Footer></Footer>
 </template>
 
 <script setup>
@@ -105,6 +106,7 @@ import Auctions from '../components/Auctions.vue'
 import Customer from '../components/Customer.vue'
 import Rentals from '../components/Rentals.vue'
 import Property from '../components/Property.vue'
+import Footer from '../components/Footer.vue'
 import img1 from "../images/header.png";
 import { ref, reactive, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -188,7 +190,7 @@ onMounted(() => {
 <style >
 
  .swiper-pagination-bullet{
-  background-color: rgb(255, 255, 255) !important;
+  background-color: rgb(157, 13, 13) !important;
   z-index: 60;
 }
 
@@ -197,23 +199,24 @@ onMounted(() => {
   color: #007bff;
 }
 .swiper-button-prev{
-  background-color: red !important;
-  border-radius: 9% !important ;
-  transform: scale(.7) !important;
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 50% !important ;
+
   color:  white !important;
  width: 50px !important ;
  height: 50px !important ;
+ padding: 20px !important
 }
 .swiper-button-next{
   background-color: red !important;
-  border-radius: 9% !important ;
-  transform: scale(.7) !important;
+  border-radius: 50% !important ;
+
   color:  white !important;
  width: 50px !important ;
  height: 50px !important ;
+ padding: 20px !important
 }
-.swiper-pagination{
-
-
+.swiper-button-next::after ,.swiper-button-prev::after{
+  transform: scale(.6) !important
 }
 </style>
