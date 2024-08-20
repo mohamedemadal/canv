@@ -40,7 +40,7 @@
       <div class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md">
         <!-- <div class="absolute w-full h-full bg-white opacity-20"></div> -->
         <div class="h-full">
-           <img src="../images/auctions.png">
+          <img alt="not found" class="h-[230px] w-full" src="../images/auctions.png">
             <div class="flex justify-between p-2">
               <div>
                 <p class="text-lg font-bold text-right"> شقة تطل على الحرم مباشرة</p>

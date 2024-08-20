@@ -263,7 +263,7 @@ onMounted(() => {
   color: #007bff;
 }
 .swiper-button-prev{
-  background-color: red !important;
+  background-color: #AB1919 !important;
   border-radius: 50% !important ;
   transform: scale(.7) !important;
   color:  white !important;
@@ -271,7 +271,7 @@ onMounted(() => {
  height: 50px !important ;
 }
 .swiper-button-next{
-  background-color: red !important;
+  background-color: #AB1919 !important;
   border-radius: 50% !important ;
   transform: scale(.7) !important;
   color:  white !important;
