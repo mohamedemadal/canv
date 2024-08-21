@@ -359,7 +359,7 @@ onMounted(() => {
 }
 .swiper-button-next{
   background-color: red !important;
-  border-radius: 9% !important ;
+  border-radius: 50% !important ;
   transform: scale(.7) !important;
   color:  white !important;
  width: 50px !important ;

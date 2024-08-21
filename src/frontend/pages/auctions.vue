@@ -275,7 +275,9 @@ axios
 
 }
 watch(current_page, (newPage, oldPage) => {
-  axios
+
+  if (allauctions.value.length >= 9){
+    axios
   .post('api/get_auctions',{
     auctions_filter:active.value,
     page_number:newPage+1,
@@ -310,6 +312,7 @@ watch(current_page, (newPage, oldPage) => {
 
 
   })
+  }
 
       // Add any additional logic you need here, like fetching new data
     });
