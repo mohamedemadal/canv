@@ -129,7 +129,9 @@
           <div class="grid grid-cols-5 p-[1%] gap-1">
             <div class=" p-1 flex items-center  rounded-sm">
 
-              <p class="text-sm font-bold text-center ">ينتهي بعد :</p>
+              <p class="text-sm font-bold text-center " v-if="auction.status == 'running'">ينتهي بعد :</p>
+              <p class="text-sm font-bold text-center " v-if="auction.status == 'comming'">قادم بعد :</p>
+              <p class="text-sm font-bold text-center " v-if="auction.status == 'finished'"> منتهي :</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status != 'finished'">{{ auction.day }}</h4>
@@ -138,8 +140,10 @@
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.start_time < currentHour && auction.status != 'finished'">{{   currentHour  - auction.start_time}}</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.start_time > currentHour && auction.status != 'finished'">{{   auction.start_time - currentHour}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status == 'comming' && auction.start_time < currentHour ">{{   currentHour  - auction.start_time}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'comming' && auction.start_time > currentHour">{{   auction.start_time - currentHour}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status == 'running' && auction.end_time < currentHour ">{{   currentHour  - auction.end_time}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'running' && auction.end_time > currentHour">{{   auction.end_time - currentHour}}</h4>
               <p class="text-xl font-medium text-[#AA1E22] ">ساعة</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
@@ -280,7 +284,14 @@ axios
                 "start_time": (event.start_time).split(":")[0],
                 "end_time": event.end_time ? event.end_time.split(":")[0] : null,
                 "second":(event.start_time).split(":")[1],
-                "day":Math.ceil((( new Date(event.start_date)) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24)),
+                "day": event.status == 'running'
+                  ? Math.ceil((new Date(event.end_date) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24))
+                  : Math.ceil((new Date(event.start_date) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24)),
+
+                  "duration": event.status == 'running' && event.end_date && event.start_date
+                  ? Math.ceil((new Date(event.end_date) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24))
+                  : Math.ceil((new Date(event.start_date) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24)),
+
                 "duration": event.end_date && event.start_date ? Math.ceil((new Date(event.end_date) - new Date(event.start_date)) / (1000 * 60 * 60 * 24)): null
           }));
           console.log( allauctions.value)
@@ -316,7 +327,9 @@ axios
                 "start_time": (event.start_time).split(":")[0],
                 "end_time": event.end_time ? event.end_time.split(":")[0] : null,
                 "second":(event.start_time).split(":")[1],
-                "day":Math.ceil((( new Date(event.start_date)) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24)),
+                 "day": event.status == 'running'
+                  ? Math.ceil((new Date(event.end_date) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24))
+                  : Math.ceil((new Date(event.start_date) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24)),
                 "duration": event.end_date && event.start_date ? Math.ceil((new Date(event.end_date) - new Date(event.start_date)) / (1000 * 60 * 60 * 24)): null
           }));
           console.log( allauctions.value)

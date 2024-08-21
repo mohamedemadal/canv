@@ -104,11 +104,59 @@
 
     </div>
    </div>
+
+   <!-- الصورة -->
+   <div class=" detail  m-auto] max-w-screen-2xl px-[1%] ">
+      <div class="max-w-[1390px] m-auto">
+        <img class="w-full  lg:h-[600px] " src="../images/auctions.png">
+
+      </div>
+   </div>
+
+
+   <!-- عملية الفلتر -->
+
+   <div class=" detail lg:px-[5%] px-[1%] m-auto  max-w-screen-2xl py-4">
+    <div class="bg-white grid grid-cols-1 lg:grid-cols-4 gap-2 p-[2%] max-w-[1390px] m-auto">
+      <div class="lg:col-span-3 shadow-lg px-[1%]">
+        <h2 class="text-2xl">التفاصيل</h2>
+        <p style="line-height: 34px;" class="text-lg text-[#7C7B7B]" >لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال … او نماذج مواقع انترنت …
+          وعند موافقه العميل المبدئيه على التصميم يتم ازالة هذا النص من التصميم ويتم وضع النصوص النهائية المطلوبة للتصميم ويقول البعض ان وضع النصوص التجريبية بالتصميم قد تشغل المشاهد عن وضع الكثير من الملاحظات او الانتقادات للتصميم الاساسي.
+          وخلافاَ للاعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي منذ العام 45 قبل الميلاد. من كتاب “حول أقاصي الخير والشر”
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-2">
+         <div class="shadow-lg">
+          <h2 class="text-2xl py-2 bg-[#AA1E22] text-white text-center rounded-md">السعر الإفتتاحى للمزاد</h2>
+          <p class="text-2xl py-2 text-center text-[#AA1E22] font-bold">1,500,000 ر.س</p>
+         </div>
+         <div class="shadow-lg">
+          <h2 class="text-2xl py-2 bg-[#168F13] text-white text-center rounded-md">  مبلغ الدخول</h2>
+          <p class="text-2xl py-2 text-center text-[#AA1E22] font-bold">1,500,000 ر.س</p>
+         </div>
+      </div>
+
+    </div>
+
+
+   </div>
+
+
+
+
+
    <!--  معلومات إضافية -->
    <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
-      <div class="bg-white w-fit shadow-lg my-[2%] p-[1%] rounded-md   " >
-          <h3 class="text-4xl font-bold py-2 " style="border-bottom: 1px solid #E8E8E8;"> معلومات إضافية</h3>
-          <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 ">
+      <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md  max-w-[1390px] m-auto " >
+        <div    @click="toggle(1)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
+          <h3 class="text-3xl font-bold  " > معلومات إضافية</h3>
+          <div class="my-auto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
+            </svg>
+          </div>
+        </div>
+          <div v-if="activeIndex === 1" class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 duration-2000">
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">المدينة</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ auction_details.city }}</p>
@@ -150,11 +198,53 @@
       </div>
 
     </div>
-   <!-- الخدمات العامة -->
-    <div class=" lg:px-[5%] px-[2%]">
-      <div class="bg-white w-fit shadow-lg my-[2%] p-[1%] rounded-md " >
-          <h3 class="text-4xl font-bold py-2 " style="border-bottom: 1px solid #E8E8E8;">الخدمات العامة</h3>
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 py-4 ">
+
+   <!--  معلومات إضافية -->
+   <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
+      <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
+        <div    @click="toggle(3)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
+          <h3 class="text-3xl font-bold  " >الحدود و الأطوال</h3>
+          <div class="my-auto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
+            </svg>
+          </div>
+        </div>
+          <div v-if="activeIndex === 3" class=" gap-3 py-4 duration-2000">
+          <div   class="p-2 m-a flex">
+            <h4 class="font-bold text-xl ">شمالاً :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> شارع عرض 7م بطول 40م</p>
+          </div>
+          <div   class="p-2 m-a flex">
+            <h4 class="font-bold text-xl ">شـرقـاً :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> طريق عرض 5م بطول منكسر يبدأ من الشمال إلى الجنوب الشرقي 5م ثم ينكسر جهة الجنوب بطول 43م ثم ينكسر جهة الجنوب 26م</p>
+          </div>
+          <div   class="p-2 m-a flex">
+            <h4 class="font-bold text-xl ">جنوباً :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> راس مثلث بطول صفر</p>
+          </div>
+          <div   class="p-2 m-a flex">
+            <h4 class="font-bold text-xl ">غـربـاً :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto">شارع عرض 10م بطول بطول 97م</p>
+          </div>
+
+
+      </div>
+      </div>
+
+    </div>
+    <!-- الخدمات العامة -->
+    <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
+      <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
+        <div    @click="toggle(2)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
+          <h3 class="text-3xl font-bold  " > الخدمات العامة</h3>
+          <div class="my-auto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
+            </svg>
+          </div>
+        </div>
+        <div v-if="activeIndex === 2" class="grid grid-cols-2 lg:grid-cols-6 gap-3 py-4 ">
           <div style="border-left: 1px solid #E8E8E8;" class="px-4">
             <h4 class="font-bold text-lg ">كهرباء</h4>
             <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
@@ -171,14 +261,77 @@
             <h4 class="font-bold text-lg ">الهاتف / إنترنت</h4>
             <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
           </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
+            <h4 class="font-bold text-lg ">الهاتف / إنترنت</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
+            <h4 class="font-bold text-lg ">الهاتف / إنترنت</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
       </div>
       </div>
 
     </div>
+       <!--  نوع الملكية -->
+   <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
+      <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
+        <div    @click="toggle(4)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
+          <h3 class="text-3xl font-bold  " > نوع الملكية</h3>
+          <div class="my-auto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
+            </svg>
+          </div>
+        </div>
+          <div v-if="activeIndex === 4" class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 duration-2000">
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">المدينة</h4>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ auction_details.city }}</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">الحي</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg "> رقم الصك</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">تاريخ الصك</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">نوع المنتج</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">المساحة</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">الواجهة</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">نوع الملكية</h4>
+            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-extrabold text-xs py-1">الحقوق على الملكية</h4>
+            <p class="text-[#7C7B7B] font-medium py-3">شبكة عامة</p>
+          </div>
+
+      </div>
+      </div>
+
+    </div>
+
     <Footer></Footer>
 </template>
 <script setup>
 import Nave from '../components/Nave.vue';
+import Footer from '../components/Footer.vue';
 import {useRouter} from "vue-router";
 
 const router = useRouter()
@@ -198,7 +351,17 @@ const state = reactive({
   currentSlide: 0,
   totalSlides: 0,
 });
+const items = ref([
+  { title: 'Item 1', content: 'Content for item 1' },
+  { title: 'Item 2', content: 'Content for item 2' },
+  { title: 'Item 3', content: 'Content for item 3' },
+]);
 
+const activeIndex = ref(null);
+
+const toggle = (index) => {
+  activeIndex.value = activeIndex.value === index ? null : index;
+};
 const pagination = {
   el: '.swiper-pagination',
   clickable: true,
