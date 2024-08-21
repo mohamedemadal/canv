@@ -10,13 +10,24 @@
 
         <div class="">
           <swiper
+
+      effect="coverflow"
+      :coverflowEffect="{
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }"
     ref="swiperRef"
     :modules="[Pagination, Navigation, Autoplay]"
-    @slideChange="onSlideChange"
+     @slideChange="onSlideChange"
     @swiper="onSwiper"
     :navigation="navigation"
     :pagination="{ clickable: true }"
     :scrollbar="{ draggable: true }"
+
+
     :autoplay="{
         delay: 2000,
         disableOnInteraction: false,
@@ -36,8 +47,8 @@
       },
     }"
   >
-    <swiper-slide style="text-align: center;" v-for="(image, index) in customer" :key="index">
-             <div class="mx-4 my-auto text-center"><img :src="image" ></div>
+    <swiper-slide   v-for="(image, index) in customer" :key="index" :class="{ 'hidden': index !== activeIndex }">
+             <div  class="mx-4 my-auto text-center"><img :src="image" ></div>
 
       <!-- Doctor -->
     </swiper-slide>
@@ -53,7 +64,7 @@
 </div>
 </template>
 <script setup>
-
+import { EffectCoverflow } from 'swiper/modules';
 import { ref, reactive, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
@@ -67,9 +78,12 @@ const customer=ref([img1,img2,img3,img1,img2,img3,img1,img2,img3])
 
 
 const swiperRef = ref(null);
+const activeIndex = ref(0);
 
-
-
+const onSlideChange=(swiper)=>{
+ console.log("swiper")
+ activeIndex.value = swiper.realIndex;
+}
 const pagination = {
 el: '.swiper-pagination',
 clickable: true,

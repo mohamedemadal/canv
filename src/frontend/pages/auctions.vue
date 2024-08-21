@@ -21,7 +21,7 @@
    </div>
 
    <!-- auctions -->
-  <div class=  "  px-[1%] py-[3%] m-auto  max-w-screen-xl">
+  <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1290px]">
       <div class="flex justify-between">
         <h2 class="text-4xl  font-bold">المزادات</h2>
 
