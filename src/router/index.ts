@@ -8,6 +8,11 @@ import RouteViewComponent from '../layouts/RouterBypass.vue'
 import UIRoute from '../pages/admin/ui/route'
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    name: 'login',
+    path: '/login',
+    component: () => import('../frontend/pages/login.vue'),
+  },
 
   {
     name: 'home',
@@ -106,11 +111,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/auth',
     component: AuthLayout,
     children: [
-      {
-        name: 'login',
-        path: 'login',
-        component: () => import('../pages/auth/login/Login.vue'),
-      },
+
       {
         name: 'signup',
         path: 'signup',

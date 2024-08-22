@@ -46,7 +46,7 @@
          </div>
          <div class="grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-4 p-4 ">
             <div style="transition: 1s;" v-for="x in 4" class="shadow-xl hover:scale-[1.03]">
-              <div><img src="../images/team/man.png"></div>
+              <div class="w-full"><img class="w-full " src="../images/team/man.png"></div>
               <div class="flex p-[3%] rounded-md">
                 <div class="w-[80%]">
                   <h4 class="text-2xl font-bold">محمد بدر</h4>
@@ -80,8 +80,8 @@
             <p class="text-[#AEAEAE] text-2xl" >نستمد طاقتنا المهنية الإبداعية وخبرتنا العميقة الطويلة في القطاع العقاري من إرثنا الإسلامي الأصيل وقيمنا العربية العريقة ، ونصبوا إلى تحقيق الريادة وأن نكون من أهم الشركات العقارية في المملكة العربية السعودية .</p>
           </div>
           <div>
-            <h3 class="font-bold text-4xl ">الرؤية</h3>
-            <p class="text-[#AEAEAE] text-2xl" >نستمد طاقتنا المهنية الإبداعية وخبرتنا العميقة الطويلة في القطاع العقاري من إرثنا الإسلامي الأصيل وقيمنا العربية العريقة ، ونصبوا إلى تحقيق الريادة وأن نكون من أهم الشركات العقارية في المملكة العربية السعودية .</p>
+            <h3 class="font-bold text-4xl ">الرسالة</h3>
+            <p class="text-[#AEAEAE] text-2xl" >نحرص على وضع عملائنا في محور عملياتنا اليومية ونهتم بأدق التفاصيل المتعلقة بهم لنحقق لهم أفضل العوائد على استثماراتهم ، ونسعى بكل عزم إلى تطوير وتحسين أساليب التسويق العقاري والاستغلال الأمثل للتقنيات التسويقية محليا وعالميا ، وتوظيف أفضل وسائل العمل الإدارية والبشرية لتتواكب مع متطلبات العملاء واحتياجات قطاع العقار بالمملكة</p>
           </div>
         </div>
        <div><img class="lg:h-[85%] w-full" src="../images/business-meeting.png"></div>

@@ -2,7 +2,7 @@
   <div class="bg-white Customer">
   <div class=  "  px-[1%] py-[3%] m-auto  ">
     <div class=" ">
-       <h3 class="text-center text-5xl py-4 "> عملائنا </h3>
+       <h3 class="text-center text-3xl lg:text-5xl py-4 "> عملائنا </h3>
        <p class="text-center text-2xl pb-[5%] text-[#AEAEAE]">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p>
      </div>
 
@@ -48,7 +48,7 @@
     }"
   >
     <swiper-slide   v-for="(image, index) in customer" :key="index" :class="{ 'hidden': index !== activeIndex }">
-             <div  class="mx-4 my-auto text-center"><img :src="image" ></div>
+             <div  class=" h-full mx-4 my-auto text-center"><img class="my-auto " :src="image" ></div>
 
       <!-- Doctor -->
     </swiper-slide>

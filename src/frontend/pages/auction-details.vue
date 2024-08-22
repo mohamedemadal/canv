@@ -25,7 +25,7 @@
    </div>
 
 
-   <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl py-4">
+   <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] py-4">
     <div>
                   <p class="text-xl font-bold text-right">{{ auction_details.name }}</p>
                   <div class="flex py-2 ">
@@ -105,25 +105,13 @@
     </div>
    </div>
 
-   <!-- الصورة -->
-   <div class=" detail  m-auto] max-w-screen-2xl px-[1%] ">
-      <div class="max-w-[1390px] m-auto">
-        <img class="w-full  lg:h-[600px] " src="../images/auctions.png">
+      <!-- عملية الفلتر -->
 
-      </div>
-   </div>
-
-
-   <!-- عملية الفلتر -->
-
-   <div class=" detail lg:px-[5%] px-[1%] m-auto  max-w-screen-2xl py-4">
+      <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] py-4">
     <div class="bg-white grid grid-cols-1 lg:grid-cols-4 gap-2 p-[2%] max-w-[1390px] m-auto">
       <div class="lg:col-span-3 shadow-lg px-[1%]">
-        <h2 class="text-2xl">التفاصيل</h2>
-        <p style="line-height: 34px;" class="text-lg text-[#7C7B7B]" >لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال … او نماذج مواقع انترنت …
-          وعند موافقه العميل المبدئيه على التصميم يتم ازالة هذا النص من التصميم ويتم وضع النصوص النهائية المطلوبة للتصميم ويقول البعض ان وضع النصوص التجريبية بالتصميم قد تشغل المشاهد عن وضع الكثير من الملاحظات او الانتقادات للتصميم الاساسي.
-          وخلافاَ للاعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي منذ العام 45 قبل الميلاد. من كتاب “حول أقاصي الخير والشر”
-        </p>
+        <h2 class="text-2xl">تفاصيل المزاد</h2>
+        <p style="line-height: 34px;" class="text-lg text-[#7C7B7B]" >{{ auction_details.description }}</p>
       </div>
       <div class="grid grid-cols-1 gap-2">
          <div class="shadow-lg">
@@ -142,11 +130,51 @@
    </div>
 
 
+   <!-- الصورة -->
+   <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] py-4">
+    <div class=" gap-2">
+        <p for="username" class="text-2xl font-bold">منتجات المزاد</p>
+         <Dropdown  @update:model-value="change_asset" v-model="get_asset"  option-value="asset_id" :options="auction_details.assets" optionLabel="name" placeholder='اختر نوع المنتج' class="w-fit bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+     </div>
+      <div class="max-w-[1390px] m-auto">
+        <img class="w-full  lg:h-[600px] " src="../images/auctions.png">
+
+      </div>
+   </div>
+
+
+   <!-- عملية الفلتر -->
+
+   <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] py-4">
+
+    <div class="bg-white grid grid-cols-1 lg:grid-cols-4 gap-2 p-[2%] max-w-[1390px] m-auto">
+      <div class="lg:col-span-3 shadow-lg px-[1%]">
+        <h2 class="text-2xl">التفاصيل</h2>
+        <p  style="line-height: 34px;" class="text-lg text-[#7C7B7B]" >{{ assets?.description }}</p>
+
+      </div>
+      <div class="grid grid-cols-1 gap-2">
+         <div class="shadow-lg">
+          <h2 class="text-2xl py-2 bg-[#AA1E22] text-white text-center rounded-md">السعر الإفتتاحى للمزاد</h2>
+          <p class="text-2xl py-2 text-center text-[#AA1E22] font-bold">{{ assets?.opening_amount }} ر.س</p>
+         </div>
+         <div class="shadow-lg">
+          <h2 class="text-2xl py-2 bg-[#168F13] text-white text-center rounded-md">  مبلغ الدخول</h2>
+          <p class="text-2xl py-2 text-center text-[#168F13] font-bold">{{ assets?.entry_amount }} ر.س</p>
+         </div>
+      </div>
+
+    </div>
+
+
+   </div>
+
+
 
 
 
    <!--  معلومات إضافية -->
-   <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
+   <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px]">
       <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md  max-w-[1390px] m-auto " >
         <div    @click="toggle(1)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
           <h3 class="text-3xl font-bold  " > معلومات إضافية</h3>
@@ -200,7 +228,7 @@
     </div>
 
    <!--  معلومات إضافية -->
-   <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
+   <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] ">
       <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
         <div    @click="toggle(3)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
           <h3 class="text-3xl font-bold  " >الحدود و الأطوال</h3>
@@ -234,7 +262,7 @@
 
     </div>
     <!-- الخدمات العامة -->
-    <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
+    <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] ">
       <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
         <div    @click="toggle(2)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
           <h3 class="text-3xl font-bold  " > الخدمات العامة</h3>
@@ -274,7 +302,7 @@
 
     </div>
        <!--  نوع الملكية -->
-   <div class=" lg:px-[5%] px-[2%] m-auto  max-w-screen-2xl">
+       <div class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px]">
       <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
         <div    @click="toggle(4)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
           <h3 class="text-3xl font-bold  " > نوع الملكية</h3>
@@ -344,6 +372,8 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import axios from "axios";
 const auction_details=ref({})
+const get_asset=ref('')
+const assets=ref({})
 const active=ref('all')
 const swiperRef = ref(null);
 const currentDate = ref(new Date());
@@ -392,7 +422,15 @@ const updateTime = () => {
   currentDate.value = new Date();
 };
 
+const change_asset=(e)=>{
+  axios.post('api/get_asset_details',{
+    asset_id:e
+  })
+  .then((res) => {
 
+    assets.value=res.data.result.data
+  })
+}
 const fetchdata=()=>{
 axios
   .post('api/get_auction_details',{
@@ -446,6 +484,13 @@ onMounted(() => {
  position: absolute !important;
 
 
+}
+.p-dropdown{
+  background-color: #AA1E22 !important;
+
+}
+.p-dropdown-label ,.p-icon{
+  color:  white !important
 }
 .swiper-button-next::after ,.swiper-button-prev::after{
   transform: scale(.6) !important

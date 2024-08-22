@@ -157,7 +157,7 @@
           </div>
           <div>
             <!-- @click="details(auction.auction_id)" -->
-             <Button  style=" background-color: #AA1E22 !important;padding: 0px !important;margin-bottom: 2% !important;"  label="إقرأ المزيد" class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
+             <Button @click="details(auction.auction_id)" style=" background-color: #AA1E22 !important;padding: 0px !important;margin-bottom: 2% !important;"  label="إقرأ المزيد" class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
           </div>
         </div>
       <!-- test -->

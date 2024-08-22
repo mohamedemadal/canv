@@ -35,8 +35,8 @@
         <div class="text-center relative text-4xl bg-teal-100 rounded-3xl w-full h-[60vh] md:h-[40vh] lg:h-full">
           <!-- Doctor -->
           <div class="absolute inset-0 flex flex-col items-start lg:px-[5%] justify-center p-[1%] z-50">
-    <h1 class="font-bold text-4xl lg:text-8xl w-full lg:w-[60%] text-white text-right">كن شريك</h1>
-    <h2 class="font-medium text-xl lg:text-3xl w-full lg:w-[60%] text-right text-white" style="line-height: initial;">
+    <h1 class="font-bold text-3xl lg:text-7xl w-full lg:w-[60%] lg:pb-6 text-white text-right">كن شريك</h1>
+    <h2 class="font-medium text-xl lg:text-2xl w-full lg:w-[60%] text-right text-[#CECECE]" style="line-height: initial;">
       لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال .
     </h2>
   </div>
@@ -59,15 +59,15 @@
  <div class="bg-white">
   <div class=  " py-[3%] m-auto  max-w-[1290px] ">
         <div class="">
-         <h3 class="text-center text-5xl pb-[5%]">عن كانف</h3>
+         <h3 class="text-center text-3xl lg:text-5xl pb-[5%]">عن كانف</h3>
        </div>
        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 p-4">
         <div>
           <img src="../images/about.png" class="w-full h-full">
         </div>
         <div class="p-4">
-         <h4 class="text-4xl font-bold">لماذا تختار كانف ؟</h4>
-         <p style="line-height: initial" class="text-2xl font-medium text-[#AEAEAE]">تأسست الفوزان العقارية، في سنة 1991 ميلادي، والتي تعتبر الأن من الشركات العقارية، الرائده في منطقة القصيم وذلك في محاولة منا لتطوير وتحسين تجربة العملاء الباحثين عن خدمات عقارية و بقيم سامية</p>
+         <h4 class="text-3xl lg:text-4xl font-bold">لماذا تختار كانف ؟</h4>
+         <p style="line-height: initial" class="text-xl lg:text-2xl font-medium text-[#AEAEAE]">تأسست الفوزان العقارية، في سنة 1991 ميلادي، والتي تعتبر الأن من الشركات العقارية، الرائده في منطقة القصيم وذلك في محاولة منا لتطوير وتحسين تجربة العملاء الباحثين عن خدمات عقارية و بقيم سامية</p>
          <Button style=" background-color: #AA1E22 !important;"  label="إقرأ المزيد" class="mt-3 w-36 bg focus:ring-0 text-[#AA1E22]"/>
 
         </div>
@@ -79,8 +79,8 @@
 
   <div class="py-[5%] m-auto z-50 max-w-[1290px]">
     <div class="">
-      <h3 class="text-center text-5xl text-white  py-4">سنوات خبرتنا العديدة بالأرقام</h3>
-      <p class="text-center text-2xl  pb-[5%] text-[#AEAEAE]">
+      <h3 class="text-center text-3xl lg:text-5xl text-white  py-4">سنوات خبرتنا العديدة بالأرقام</h3>
+      <p class="text-center text-xl lg:text-2xl  pb-[5%] text-[#AEAEAE]">
         نعرض لكم إنجازاتنا المهنية بالأرقام ، والتي تظهر المهارات المكتسبة وثقة العديد من العملاء.
       </p>
     </div>
@@ -138,12 +138,12 @@
 <!-- how to confirme -->
  <div>
   <div class="bg-slate-50 auctions ">
-    <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1295px]">
+    <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1280px]">
       <div class=" ">
          <h3 class="text-center text-5xl py-4 ">كيف تسجل فى كانف ؟</h3>
          <p class="text-center text-2xl pb-[5%] text-[#AEAEAE]"> لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p>
        </div>
-       <div class="py-[2%] grid grid-cols-1 lg:grid-cols-9  gap-2 lg:gap-0 px-2">
+       <div class="py-[2%] grid grid-cols-1 lg:grid-cols-8  gap-2 lg:gap-0 px-2">
        <div style="border: 2px dashed  red;" class="bg-white shadow-lg px-[5%] rounded-md col-span-2 relative py-[12%]">
           <div class=" pt-4 ">
             <svg class="m-auto" width="95" height="95" viewBox="0 0 95 95" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,6 +196,7 @@
           <div><p class="text-2xl font-bold py-6 text-center text-[#303843] px-[5%]">قدم على العقارات</p></div>
 
         </div>
+        <div class="hidden"></div>
        </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
 <template>
   <div class="bg-white Property pro">
-  <div class=  "  px-[1%] py-[1%] m-auto  max-w-[1290px]">
+  <div class=  "  px-[2%] py-[1%] m-auto  max-w-[1290px] ">
 
      <div class="flex justify-between py-[2%]">
-      <h2 class="text-4xl  font-bold">المجمعات</h2>
-      <a class="text-2xl font-bold text-[#32A7AE]">مشاهدة المزيد</a>
+      <h2 class="text-3xl lg:text-4xl  font-bold ">المجمعات</h2>
+      <a class="text-xl lg:text-2xl font-bold text-[#32A7AE]">مشاهدة المزيد</a>
      </div>
       <div class="relative">
         <div class="swiper-button-next " style="left: 0 !important;"></div>
