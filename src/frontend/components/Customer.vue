@@ -51,7 +51,7 @@
               :class="{ 'hidden': index !== activeIndex }"
             >
               <div class="h-full mx-4 my-auto text-center">
-                <img class="my-auto" :class="{ ' opacity-5': index !== slid }" :src="image" />
+                <img class="my-auto" :class="{ ' opacity-10': index !== slid }" :src="image" />
               </div>
             </swiper-slide>
 
