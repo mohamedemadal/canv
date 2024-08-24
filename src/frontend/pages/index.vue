@@ -68,7 +68,7 @@
         <div class="p-4">
          <h4 class="text-3xl lg:text-4xl font-bold">لماذا تختار كانف ؟</h4>
          <p style="line-height: initial" class="text-xl lg:text-2xl font-medium text-[#AEAEAE]">تأسست الفوزان العقارية، في سنة 1991 ميلادي، والتي تعتبر الأن من الشركات العقارية، الرائده في منطقة القصيم وذلك في محاولة منا لتطوير وتحسين تجربة العملاء الباحثين عن خدمات عقارية و بقيم سامية</p>
-         <Button style=" background-color: #AA1E22 !important;"  label="إقرأ المزيد" class="mt-3 w-36 bg focus:ring-0 text-[#AA1E22]"/>
+         <Button style=" background-color: #AA1E22 !important;"  label="إقرأ المزيد" class="mt-3 w-[200px] bg focus:ring-0 text-[#AA1E22]"/>
 
         </div>
        </div>

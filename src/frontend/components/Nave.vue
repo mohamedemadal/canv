@@ -3,9 +3,16 @@
 
 <nav ref="staticDiv"  :class="{ 'fixed': isFixed }" style="direction: ltr;" class="static-div bg-white border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
-    <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <Button style=" background-color: #AA1E22 !important;"  label="تسجيل الدخول" class="mt-3 mb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
+    <a href="/home" class="flex  items-center space-x-3 rtl:space-x-reverse">
+
+      <Button
+  style="background-color: #AA1E22 !important;"
+  label="تسجيل الدخول"
+  class="mt-3 h-full relative mb- pl-4 lg:w-[200px]  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
+</Button>
+
     </a>
+
     <button @click="opennave" data-collapse-toggle="navbar-default" type="button" class="mx-1 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -100,10 +107,25 @@ onBeforeUnmount(() => {
 transition: 1s;
 color: black;
 background-color: white !important;
-border-bottom: 2px solid red !important;
+
 border-radius: 5px !important;
 
 }
 
+.button-with-triangle {
+  position: relative; /* Ensure the button is positioned relative for the pseudo-element */
+  overflow: hidden; /* Prevents any overflow issues from the triangle */
+}
+.button-with-triangle::before {
+  content: '';
+  position: absolute;
+  left: 0px; /* Adjust this value to position the triangle horizontally */
+  top: 0%; /* Centers the triangle vertically */
+  transform: translateY(-50%); /* Adjusts for the vertical center */
+  height: 100px;
 
+  border-left: 8px solid transparent;
+  border-right: 0px solid transparent;
+  border-bottom: 10px solid #fdfdfd; /* Triangle color matching the button */
+}
 </style>

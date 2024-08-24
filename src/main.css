@@ -71,8 +71,10 @@ td{
     color: white !important ;
   }
 .p-button{
+  border-radius: 0px 5px 5px 0px !important;
+  clip-path: polygon(4% 0%, 100% 0%, 100% 100%, 0% 100%);
 
-transform: skewx(-365deg) !important;
+
 }
 /*  */
 .p-multiselect .p-multiselect-label.p-placeholder{
