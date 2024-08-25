@@ -122,9 +122,40 @@
         },
       }"
     >
-      <swiper-slide v-for="(auction, index) in 9" :key="index">
+      <swiper-slide v-for="(auction, index) in 3" :key="index">
+                <div class="relative">
 
-             <img class="w-full" src="../images/auctions.png">
+                  <div class="absolute w-full h-full bg-black opacity-20"></div>
+                  <div class="flex  absolute top-[5%] right-[2%]">
+                    {{  }}
+                    <a :href="auction_details?.auction_video_url" target="_blank" class="flex items-center w-14 h-10 rounded-lg text-center bg-[#D479FF]">
+                      <svg class="m-auto" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20.5 15.75C20.09 15.75 19.75 15.41 19.75 15C19.75 14.59 20.09 14.25 20.5 14.25C21.09 14.25 21.22 14.16 21.23 14.16C21.25 14.1 21.25 13.75 21.25 13.5V11.5C21.25 11.25 21.25 10.91 21.21 10.82C21.2 10.83 21.05 10.75 20.5 10.75C20.09 10.75 19.75 10.41 19.75 10C19.75 9.59 20.09 9.25 20.5 9.25C22.58 9.25 22.75 10.27 22.75 11.5V13.5C22.75 14.73 22.58 15.75 20.5 15.75Z" fill="white"/>
+                      <path d="M6.38007 15.2501C6.32007 15.2501 6.26007 15.2401 6.20007 15.2301C5.80007 15.1301 5.55007 14.7201 5.65007 14.3201C5.95007 13.1301 5.95007 11.8701 5.65007 10.6801C5.55007 10.2801 5.79007 9.8701 6.20007 9.7701C6.60007 9.6701 7.00007 9.9201 7.10007 10.3201C7.46007 11.7501 7.46007 13.2601 7.10007 14.6801C7.02007 15.0201 6.71007 15.2501 6.38007 15.2501Z" fill="white"/>
+                      <path d="M9.88007 15.2499C9.82007 15.2499 9.76007 15.2399 9.70007 15.2299C9.30007 15.1299 9.05007 14.7199 9.15007 14.3199C9.45007 13.1299 9.45007 11.8699 9.15007 10.6799C9.05007 10.2799 9.29007 9.86995 9.70007 9.76995C10.1001 9.66995 10.5101 9.90995 10.6101 10.3199C10.9701 11.7499 10.9701 13.2599 10.6101 14.6799C10.5201 15.0199 10.2101 15.2499 9.88007 15.2499Z" fill="white"/>
+                      <path d="M13 20.25H7C2.59 20.25 1.25 18.91 1.25 14.5V10.5C1.25 6.09 2.59 4.75 7 4.75H13C17.41 4.75 18.75 6.09 18.75 10.5V14.5C18.75 18.91 17.41 20.25 13 20.25ZM7 6.25C3.43 6.25 2.75 6.93 2.75 10.5V14.5C2.75 18.07 3.43 18.75 7 18.75H13C16.57 18.75 17.25 18.07 17.25 14.5V10.5C17.25 6.93 16.57 6.25 13 6.25H7Z" fill="white"/>
+                      </svg>
+
+                    </a>
+                    <a  :href="auction_details?.live_video_url" target="_blank" class="flex mx-3 items-center w-14 h-10 rounded-lg text-center bg-[#CA0505]">
+                      <svg class="m-auto" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 17C2.59 17 2.25 16.66 2.25 16.25V8.75C2.25 8.34 2.59 8 3 8C3.41 8 3.75 8.34 3.75 8.75V16.25C3.75 16.66 3.41 17 3 17Z" fill="white"/>
+                  <path d="M7.5 19.5C7.09 19.5 6.75 19.16 6.75 18.75V6.25C6.75 5.84 7.09 5.5 7.5 5.5C7.91 5.5 8.25 5.84 8.25 6.25V18.75C8.25 19.16 7.91 19.5 7.5 19.5Z" fill="white"/>
+                  <path d="M12 22C11.59 22 11.25 21.66 11.25 21.25V3.75C11.25 3.34 11.59 3 12 3C12.41 3 12.75 3.34 12.75 3.75V21.25C12.75 21.66 12.41 22 12 22Z" fill="white"/>
+                  <path d="M16.5 19.5C16.09 19.5 15.75 19.16 15.75 18.75V6.25C15.75 5.84 16.09 5.5 16.5 5.5C16.91 5.5 17.25 5.84 17.25 6.25V18.75C17.25 19.16 16.91 19.5 16.5 19.5Z" fill="white"/>
+                  <path d="M21 17C20.59 17 20.25 16.66 20.25 16.25V8.75C20.25 8.34 20.59 8 21 8C21.41 8 21.75 8.34 21.75 8.75V16.25C21.75 16.66 21.41 17 21 17Z" fill="white"/>
+                  </svg>
+                    </a>
+
+
+                  </div>
+
+
+
+
+                  <img class="w-full" src="../images/auctions.png">
+                </div>
+
         <!-- Doctor -->
       </swiper-slide>
       <div class="swiper-button-next"></div>
@@ -135,6 +166,7 @@
           </swiper>
       </div>
       <div  class="w-full h-full gap-2 grid grid-cols-2">
+
         <img v-for=" x in 6" class="h-full " src="../images/auctions.png">
       </div>
 
@@ -297,7 +329,43 @@
 
 
 
+   <div v-if="assets != '' " class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px]">
+      <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md  max-w-[1390px] m-auto " >
+        <div    @click="toggle(5)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
+          <h3 class="text-3xl font-bold  " > الموقع</h3>
+          <div class="my-auto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
+            </svg>
+          </div>
+        </div>
+          <div v-if="activeIndex === 5" class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 duration-2000">
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">المدينة</h4>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{  assets?.location.city }}</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">الحي</h4>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.location.area }}</p>
+           </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg ">المساحة</h4>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.total_area }}</p>
+          </div>
+          <div class="  md:col-span-2 lg:col-span-6">
+            <iframe class="w-full h-[250px]"
+                           :src="mapLink"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
 
+
+
+
+      </div>
+      </div>
+
+    </div>
    <!--  معلومات إضافية -->
 
    <div v-if="assets != '' " class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px]">
@@ -313,27 +381,27 @@
           <div v-if="activeIndex === 1" class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 duration-2000">
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">المدينة</h4>
-            <p class="text-[#7C7B7B] font-medium py-2"> {{ auction_details.city }}</p>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{  assets?.location.city }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">الحي</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.location.area }}</p>
+           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg "> رقم الصك</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.deed_number }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">تاريخ الصك</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.deed_date }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">نوع المنتج</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.asset_type }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">المساحة</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.total_area }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">الواجهة</h4>
@@ -341,11 +409,15 @@
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">نوع الملكية</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.addional_info.ownership_type }}</p>
+          </div>
+          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
+            <h4 class="font-bold text-lg "> الخدمات العامة</h4>
+            <span v-for="serv in  assets?.addional_info.public_service " class="text-[#7C7B7B] font-medium py-2"> {{ serv }} ,</span>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-extrabold text-xs py-1">الحقوق على الملكية</h4>
-            <p class="text-[#7C7B7B] font-medium py-3">شبكة عامة</p>
+            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.addional_info.ownership_rights }}</p>
           </div>
 
       </div>
@@ -387,99 +459,6 @@
       </div>
 
     </div>
-    <!-- الخدمات العامة -->
-    <div v-if="assets != '' " class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] ">
-      <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
-        <div    @click="toggle(2)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
-          <h3 class="text-3xl font-bold  " > الخدمات العامة</h3>
-          <div class="my-auto">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
-            </svg>
-          </div>
-        </div>
-        <div v-if="activeIndex === 2" class="grid grid-cols-2 lg:grid-cols-6 gap-3 py-4 ">
-          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
-            <h4 class="font-bold text-lg ">كهرباء</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
-            <h4 class="font-bold text-lg ">مياه</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
-            <h4 class="font-bold text-lg ">صرف صحى</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
-            <h4 class="font-bold text-lg ">الهاتف / إنترنت</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
-            <h4 class="font-bold text-lg ">الهاتف / إنترنت</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-4">
-            <h4 class="font-bold text-lg ">الهاتف / إنترنت</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-      </div>
-      </div>
-
-    </div>
-       <!--  نوع الملكية -->
-       <div v-if="assets != '' " class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px]">
-      <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
-        <div    @click="toggle(4)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
-          <h3 class="text-3xl font-bold  " > نوع الملكية</h3>
-          <div class="my-auto">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
-            </svg>
-          </div>
-        </div>
-          <div v-if="activeIndex === 4" class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 duration-2000">
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">المدينة</h4>
-            <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.asset_type }}</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">الحي</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg "> رقم الصك</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">تاريخ الصك</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">نوع المنتج</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">المساحة</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">الواجهة</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">نوع الملكية</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
-          </div>
-          <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-extrabold text-xs py-1">الحقوق على الملكية</h4>
-            <p class="text-[#7C7B7B] font-medium py-3">شبكة عامة</p>
-          </div>
-
-      </div>
-      </div>
-
-    </div>
 
     <Footer></Footer>
 </template>
@@ -505,6 +484,7 @@ const assets=ref('')
 const active=ref('all')
 const swiperRef = ref(null);
 const currentDate = ref(new Date());
+const mapLink=ref('')
 const state = reactive({
   currentSlide: 0,
   totalSlides: 0,
@@ -529,6 +509,7 @@ const navigation = {
   nextEl: '.swiper-button-next',
   prevEl: '.swiper-button-prev',
 };
+
 const currentMinutes = computed(() => {
   return currentDate.value.toLocaleTimeString([], { minute: '2-digit', hour12: false }).split(':')[0];
 });
@@ -567,6 +548,8 @@ const change_asset=(e)=>{
 
 
     assets.value=res.data.result.data
+
+    mapLink.value=`https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d226.5815642852766!2d${res.data.result.data.location.longitude}!3d${res.data.result.data.location.latitude}!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1711451887994!5m2!1sar!2seg`
   })
 }
 const fetchdata=()=>{
@@ -578,6 +561,8 @@ axios
 
 
     auction_details.value.name=res.data.result.data.name,
+    auction_details.value.auction_video_url=res.data.result.data.auction_video_url,
+    auction_details.value.live_video_url=res.data.result.data.live_video_url,
     auction_details.value.auction_id= res.data.result.data.auction_id,
     auction_details.value.status= res.data.result.data.status,
     auction_details.value.duration_by_hours= res.data.result.data.duration_by_hours,
