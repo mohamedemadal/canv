@@ -425,7 +425,7 @@ margin-top: 1%
 .p-paginator .p-paginator-last ,.p-paginator .p-paginator-first{
   visibility: hidden !important;
 }
-.p-icon {
+.p-paginator .p-icon {
   transform: rotate(180deg) !important;
     width: 2rem;
     height: 3rem;
