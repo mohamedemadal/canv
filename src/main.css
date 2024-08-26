@@ -43,7 +43,7 @@ td{
   background-color: #135C65 !important;
 }
 .p-inputnumber-input{
-  background-color: #f7f5f5 !important;
+  background-color: #FFFFFF !important;
 }
 .p-datatable .p-sortable-column .p-sortable-column-icon{
   margin-right: 5px !important;
@@ -61,8 +61,9 @@ td{
 .show{
   background-color: #6A6AE7 !important;
 }
-.p-inputtext:enabled{
-  background-color: #f7f5f5 !important;
+.p-inputtext:enabled ,.p-password{
+  width: 100%;
+  background-color: #FFFFFF !important;
 ;
 }
 .p-button:hover{
@@ -96,6 +97,9 @@ canvas {
 .p-inputtext:enabled{
 
   height: 50px!important;
+}
+.p-input-icon-right > svg:last-of-type, .p-input-icon-right > i:last-of-type {
+  right: 90% !important;
 }
 /* .fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title{
   background-color: #135C65!important;

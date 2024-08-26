@@ -11,9 +11,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: 'login',
     path: '/login',
-    component: () => import('../frontend/pages/login.vue'),
+    component: () => import('../frontend/pages/signup.vue'),
   },
-
+  {
+    name: 'signup',
+    path: '/signup',
+    component: () => import('../frontend/pages/signup.vue'),
+  },
   {
     name: 'home',
     path: '/home',
@@ -112,11 +116,11 @@ const routes: Array<RouteRecordRaw> = [
     component: AuthLayout,
     children: [
 
-      {
-        name: 'signup',
-        path: 'signup',
-        component: () => import('../pages/auth/signup/Signup.vue'),
-      },
+      // {
+      //   name: 'signup',
+      //   path: 'signup',
+      //   component: () => import('../pages/auth/signup/Signup.vue'),
+      // },
       {
         name: 'recover-password',
         path: 'recover-password',

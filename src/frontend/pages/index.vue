@@ -43,7 +43,7 @@
 
            <div style="background: linear-gradient(to right, #624336 , rgb(0, 0, 0));" class="absolute w-full h-full  opacity-60"></div>
           <div class="bg-white   w-full h-full m-auto">
-            <img :src="image.img" class="m-auto w-full h-full">
+            <img :src="image.img" class="hidden lg:block m-auto w-full h-full">
           </div>
         </div>
         <!-- Doctor -->
@@ -56,7 +56,7 @@
   </div>
 
    <!-- about canv -->
- <div class="bg-white">
+ <div class="bg-white hidden lg:block">
   <div class=  " py-[3%] m-auto  max-w-[1290px] ">
         <div class="">
          <h3 class="text-center text-3xl lg:text-5xl pb-[5%]">عن كانف</h3>

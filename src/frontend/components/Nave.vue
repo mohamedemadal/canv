@@ -3,7 +3,7 @@
 
 <nav ref="staticDiv"  :class="{ 'fixed': isFixed }" style="direction: ltr;" class="static-div bg-white border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
-    <a href="/home" class="flex  items-center space-x-3 rtl:space-x-reverse">
+    <a href="/signup" class="flex  items-center space-x-3 rtl:space-x-reverse">
 
       <Button
   style="background-color: #AA1E22 !important;"
@@ -27,7 +27,7 @@
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
         </li>
-        <li class="my-auto text-center py-1 lg:py-0">
+        <li class="hidden lg:block my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> من نحن</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">

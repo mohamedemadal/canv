@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white Customer">
+  <div class="bg-white Customer hidden">
     <div class="px-[1%] py-[3%] m-auto">
       <div>
         <h3 class="text-center text-3xl lg:text-5xl py-4">عملائنا</h3>

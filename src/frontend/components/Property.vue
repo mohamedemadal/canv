@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white Property pro">
+  <div class="bg-white Property pro hidden">
   <div class=  "  px-[2%] py-[1%] m-auto  max-w-[1290px] ">
 
      <div class="flex justify-between py-[2%]">
