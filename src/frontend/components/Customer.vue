@@ -46,12 +46,12 @@
             }"
           >
             <swiper-slide
-              v-for="(image, index) in customer"
+              v-for="(image, index) in 7"
               :key="index"
               :class="{ 'hidden': index !== activeIndex }"
             >
-              <div class="h-full mx-4 my-auto text-center">
-                <img class="my-auto" :class="{ ' opacity-10': index !== slid }" :src="image" />
+              <div class="h-full mx-4 m-auto text-center">
+                <img class="my-auto" :class="{ ' opacity-10': index !== slid }" src="../images/customer/brand_img01.png" />
               </div>
             </swiper-slide>
 
@@ -59,9 +59,7 @@
         </div>
         <div class="swiper-pagination"></div>
         <!-- Display Active Slide Index -->
-        <div class="text-center mt-4">
-          <h4>Active Slide Index: {{ slid }}</h4>
-        </div>
+
       </div>
     </div>
   </div>
@@ -72,6 +70,7 @@ import { EffectCoverflow } from 'swiper/modules';
 import { ref, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
+import axios from "axios";
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import img1 from "../images/customer/brand_img01.png";
@@ -80,7 +79,7 @@ import img3 from "../images/customer/brand_img03.png";
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 const customer = ref([img1, img2, img3, img1, img2, img3, img1, img2, img3]);
-
+const clients=ref('')
 const swiperRef = ref(null);
 const activeIndex = ref(0);
 const slid = ref(0);
@@ -92,6 +91,19 @@ const onSlideChange = (swiper) => {
   slid.value = Math.floor(activeIndex.value + (slidesPerView / 2) - 0.5);
 
 };
+
+const fetchdata=()=>{
+        axios.post('api/get_our_clients',{
+        })
+        .then((res) => {
+          clients.value=res.data.result.data
+        })
+        }
+        onMounted(() => {
+          fetchdata()
+
+        });
+
 
 const pagination = {
   el: '.swiper-pagination',

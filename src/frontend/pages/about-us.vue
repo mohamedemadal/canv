@@ -38,22 +38,66 @@
          </div>
       </div>
    </div>
+
+
       <!-- about canv -->
-      <div class="bg-white">
-    <div class=  " py-[3%] m-auto  max-w-[1290px]">
+      <div class="bg-white banner">
+    <div class=  "px-2 py-[3%] m-auto  max-w-[1290px]">
           <div class="">
            <h3 class="text-center text-5xl p-[2%]"> تعرف على فريق كانف</h3>
            <p class="text-center text-2xl pb-[1%] text-[#AEAEAE]">نعرض لكم إنجازاتنا المهنية بالأرقام ، والتي تظهر المهارات المكتسبة وثقة العديد من العملاء. </p>
          </div>
-         <div class="grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-4 p-4 ">
-            <div style="transition: 1s;" v-for="x in 4" class="shadow-xl hover:scale-[1.03]">
-              <div class="w-full"><img class="w-full " src="../images/team/man.png"></div>
-              <div class="flex p-[3%] rounded-md">
-                <div class="w-[80%]">
-                  <h4 class="text-2xl font-bold">محمد بدر</h4>
-                  <h4 class="text-xl text-[#AEAEAE]"> المسمى الوظيقي</h4>
-                </div>
-                <div class="flex justify-between ">
+
+         <div class="w-full">
+        <div>
+          <swiper
+            effect="coverflow"
+            :coverflowEffect="{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }"
+            ref="swiperRef"
+            :modules="[Navigation, Autoplay]"
+            @slideChange="onSlideChange"
+            @swiper="onSwiper"
+            :navigation="navigation"
+            :pagination="{ clickable: true }"
+            :scrollbar="{ draggable: true }"
+            :autoplay="{
+              delay: 3000,
+              disableOnInteraction: false,
+            }"
+            :breakpoints="{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+            }"
+          >
+            <swiper-slide
+              v-for="(team, index) in our_team"
+              :key="index"
+              class="shadow-xl h-full"
+
+            >
+            <div style="transition: 1s;"  class=" hover:scale-[1.03] h-full bg-white">
+              <div class="w-full"><img class="w-full h-[290px] "  src="../images/team/man.png"></div>
+              <!-- <div class="w-full"><img class="w-full " :src="team?.img_link"></div> -->
+              <div class=" p-[3%] border-r-2 border-b-2 border-l-2 rounded-md ">
+                <div class="flex  justify-between">
+                  <div><h4 class="text-xl font-bold "> {{ team?.name }}</h4></div>
+                  <div class="flex justify-between ">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M19.8997 23.0075H22.0677L12.0882 9.03973H9.92014L19.8997 23.0075Z" fill="#121212"/>
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M5 0C2.23859 0 0 2.23859 0 5V27C0 29.7614 2.23859 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23859 29.7614 0 27 0H5ZM23.4785 8L17.5218 14.7749L24 24H19.2356L14.8732 17.7878L9.41156 24H8L14.2466 16.8955L8 8H12.7644L16.8952 13.8826L22.0671 8H23.4785Z" fill="#121212"/>
@@ -67,9 +111,26 @@
 
                 </div>
 
+                </div>
+                <h4 class="text-xl text-[#AEAEAE] pt-1">   {{ team?.job_title }}</h4>
               </div>
+              <div class="w-[80%] p">
+
+
+              </div>
+
             </div>
-         </div>
+            </swiper-slide>
+
+          </swiper>
+        </div>
+
+        <!-- Display Active Slide Index -->
+        <div class="text-center mt-4">
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
       </div>
    </div>
    <!-- metting -->
@@ -96,9 +157,82 @@
   import Nave from '../components/Nave.vue'
   import Customer from '../components/Customer.vue'
   import Footer from '../components/Footer.vue'
+  import axios from "axios";
+  import { ref, reactive, onMounted } from 'vue';
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import 'swiper/css/navigation';
+  const our_team=ref('')
+  const pagination = {
+  el: '.swiper-pagination',
+  clickable: true,
+};
+
+const swiperRef = ref(null);
+const activeIndex = ref(0);
+const slid = ref(0);
+
+const onSlideChange = (swiper) => {
+
+  activeIndex.value = swiper.realIndex;
+  const slidesPerView = swiper.params.slidesPerView;
+  slid.value = Math.floor(activeIndex.value + (slidesPerView / 2) - 0.5);
+
+};
+
+
+const navigation = {
+  nextEl: '.swiper-button-next',
+  prevEl: '.swiper-button-prev',
+};
+  const fetchdata=()=>{
+        axios.post('api/get_our_team',{
+        })
+        .then((res) => {
+          our_team.value=res.data.result.data
+        })
+        }
+        onMounted(() => {
+          fetchdata()
+
+        });
 
   </script>
-  <style>
+<style>
+.banner .swiper-pagination-bullet {
+
+  margin-top: 12px;
+  background-color: rgb(255, 255, 255) !important;
+  z-index: 60;
+}
+.banner .swiper-pagination{
+  position: absolute;
+  margin-top: 10px
+
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #007bff;
+}
+.swiper-button-prev{
+  background-color: red !important;
+  border-radius: 50% !important ;
+  transform: scale(.7) !important;
+  color:  white !important;
+ width: 50px !important ;
+ height: 50px !important ;
+}
+.swiper-button-next{
+  background-color: red !important;
+  border-radius: 50% !important ;
+  transform: scale(.7) !important;
+  color:  white !important;
+ width: 50px !important ;
+ height: 50px !important ;
+}
 
 
-  </style>
+</style>

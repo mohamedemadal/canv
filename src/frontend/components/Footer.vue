@@ -32,18 +32,12 @@
       </div>
       <div>
         <Button style=" background-color: #AA1E22 !important;"  label=" فروع كانف" class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
-        <div class="">
-          <h5 class="text-base  pt-2 font-semibold text-[#ffff]">الرياض</h5>
-          <p class="text-sm py-2 font-normal text-[#ffff]"> الرياض ، طريق أنس بن مالك</p>
+        <div v-for="bran in branchs" class="">
+          <h5 class="text-base  pt-2 font-semibold text-[#ffff]">{{ bran?.name }}</h5>
+          <p class="text-sm py-2 font-normal text-[#ffff]"> {{ bran?.address.country +', '+ bran?.address.city+' , '+ bran?.address.street   }} </p>
         </div>
-        <div class="">
-          <h5 class="text-base font-semibold  pt-2 text-[#ffff]">الرياض</h5>
-          <p class="text-sm py-2 font-normal text-[#ffff]"> الرياض ، طريق أنس بن مالك</p>
-        </div>
-        <div class="">
-          <h5 class="text-base font-semibold pt-2 text-[#ffff]">الرياض</h5>
-          <p class="text-sm py-2 font-normal text-[#ffff]"> الرياض ، طريق أنس بن مالك</p>
-        </div>
+
+
       </div>
       <div>
         <Button style=" background-color: #AA1E22 !important;"  label="فروع كانف" class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
@@ -60,3 +54,24 @@
     </div>
   </div>
 </template>
+<script setup>
+
+
+import { ref, onMounted } from 'vue';
+import axios from "axios";
+
+const branchs=ref('')
+
+const fetchdata=()=>{
+      axios.post('api/get_our_branchs',{
+      })
+      .then((res) => {
+        branchs.value=res.data.result.data
+      })
+      }
+      onMounted(() => {
+        fetchdata()
+
+      });
+
+</script>

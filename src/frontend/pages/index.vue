@@ -84,46 +84,46 @@
         نعرض لكم إنجازاتنا المهنية بالأرقام ، والتي تظهر المهارات المكتسبة وثقة العديد من العملاء.
       </p>
     </div>
-    <div ref="counterRef" class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:grid-cols-7 z-50 px-2 ">
+    <div ref="counterRef" class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:grid-cols-7 z-50 px-2 ">
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">7993+</p>
+          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_transactions_number }}</p>
           <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">عدد الصفقات المبرمة</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">1789,568,904+</p>
+          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_property_units_number }}</p>
           <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">وحدة عقارية تحت إدارتنا</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">794+</p>
+          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.auctions_assets_value }}</p>
           <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">قيمة أصول المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">80+</p>
+          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_auctions_assets_number }}</p>
           <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">مجموع أصول المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">7993+</p>
+          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_auctions_number }}</p>
           <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">125,859,45+</p>
+          <p class="hidden group-hover:block transition  text-white text-center font-bold text-xl">+{{ company_statistics?.auctions_assets_total_area }}</p>
           <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> مساحة أصول المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">8702+</p>
+          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_clients_number }}</p>
           <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">عميل</p>
         </div>
       </div>
@@ -225,6 +225,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import axios from "axios";
+const company_statistics=ref('')
 const counter = ref({
   count1:''
 });
@@ -270,13 +271,16 @@ function handleIntersect(entries) {
   }
 }
 const fetchdata=()=>{
-  axios
-    .post('get_auctions',{
-     auctions_filter:"all"
+
+
+
+    axios
+    .post('api/get_company_statistics',{
+
     })
     .then((res) => {
 
-
+      company_statistics.value=res.data.result.data
     })
 }
 
