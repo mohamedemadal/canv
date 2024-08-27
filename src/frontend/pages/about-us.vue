@@ -80,8 +80,8 @@
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 3,
-                spaceBetween: 20,
+                slidesPerView: 4,
+                spaceBetween: 15,
               },
             }"
           >
@@ -96,7 +96,7 @@
               <!-- <div class="w-full"><img class="w-full " :src="team?.img_link"></div> -->
               <div class=" p-[3%] border-r-2 border-b-2 border-l-2 rounded-md ">
                 <div class="flex  justify-between">
-                  <div><h4 class="text-xl font-bold "> {{ team?.name }}</h4></div>
+                  <div><h4 class="text-xl font-bold "> {{ (team?.name).split(' ').slice(0, 2).join(' ') }}</h4></div>
                   <div class="flex justify-between ">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M19.8997 23.0075H22.0677L12.0882 9.03973H9.92014L19.8997 23.0075Z" fill="#121212"/>

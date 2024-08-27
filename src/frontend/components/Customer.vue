@@ -9,7 +9,7 @@
       </div>
 
       <div class="w-full">
-        <div>
+        <div class=" m-auto">
           <swiper
             effect="coverflow"
             :coverflowEffect="{
@@ -41,17 +41,17 @@
               },
               768: {
                 slidesPerView: 7,
-                spaceBetween: 10,
+                spaceBetween: lengthe,
               },
             }"
           >
             <swiper-slide
-              v-for="(image, index) in 7"
+              v-for="(image, index) in clients"
               :key="index"
               :class="{ 'hidden': index !== activeIndex }"
             >
-              <div class="h-full mx-4 m-auto text-center">
-                <img class="my-auto" :class="{ ' opacity-10': index !== slid }" src="../images/customer/brand_img01.png" />
+              <div class="h-full  m-auto text-center">
+                <img class="m-auto" :class="{ ' opacity-10': index !== slid }" src="../images/customer/brand_img01.png" />
               </div>
             </swiper-slide>
 
@@ -77,7 +77,7 @@ import img1 from "../images/customer/brand_img01.png";
 import img2 from "../images/customer/brand_img02.png";
 import img3 from "../images/customer/brand_img03.png";
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
-
+const lengthe=ref(0)
 const customer = ref([img1, img2, img3, img1, img2, img3, img1, img2, img3]);
 const clients=ref('')
 const swiperRef = ref(null);
@@ -93,10 +93,15 @@ const onSlideChange = (swiper) => {
 };
 
 const fetchdata=()=>{
-        axios.post('api/get_our_clients',{
+        axios.post('api/get_our_posted_jobs',{
         })
         .then((res) => {
           clients.value=res.data.result.data
+          if(clients.value.length > 7){
+            lengthe.value=7
+          }else{
+            lengthe.value=clients.value.length
+          }
         })
         }
         onMounted(() => {
@@ -147,5 +152,6 @@ height: 50px !important ;
 position: relative !important;
 margin-top: 2% !important
 }
+
 </style>
 

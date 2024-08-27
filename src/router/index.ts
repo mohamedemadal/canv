@@ -39,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../frontend/pages/auction-details.vue'),
   },
   {
+    name: 'jobs',
+    path: '/jobs',
+    component: () => import('../frontend/pages/jobs.vue'),
+  },
+  {
     name: 'admin',
     path: '/admin',
     component: AppLayout,
