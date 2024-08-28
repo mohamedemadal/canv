@@ -56,7 +56,7 @@
       }"
     >
       <swiper-slide v-for="(auction, index) in allauctions" :key="index">
-        <div class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md ">
+        <div class="text-center relative text-4xl bg-white rounded-lg w-full shadow-lg ">
           <!-- <div class="absolute w-full h-full bg-white opacity-20"></div> -->
           <div class="h-full">
              <div class="relative" >

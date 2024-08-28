@@ -9,6 +9,11 @@ import UIRoute from '../pages/admin/ui/route'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    name: 'contact-us',
+    path: '/contact-us',
+    component: () => import('../frontend/pages/contact-us.vue'),
+  },
+  {
     name: 'login',
     path: '/login',
     component: () => import('../frontend/pages/signup.vue'),
