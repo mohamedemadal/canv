@@ -22,9 +22,8 @@
     <div class=" w-full md:block md:w-auto" id="navbar-default" :class="{ hidden: show }">
       <ul class="flex flex-col font-medium    border border-gray-100 rounded-lg bg-gray-50  rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
 
-        <!-- <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
-        </li> -->
+
+
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
         </li>
