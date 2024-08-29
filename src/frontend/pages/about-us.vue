@@ -142,7 +142,7 @@
           </div>
           <div>
             <h3 class="font-bold text-4xl ">الرسالة</h3>
-            <p class="text-[#AEAEAE] text-2xl" > {{ about_us?.company_message }}</p>
+            <p class="text-[#AEAEAE] text-2xl py-2" > {{ about_us?.company_message }}</p>
           </div>
         </div>
        <div><img class="lg:h-[85%] w-full" src="../images/business-meeting.png"></div>

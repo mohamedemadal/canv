@@ -9,7 +9,7 @@ import vuesticGlobalConfig from './services/vuestic-ui/global-config'
 import App from './App.vue'
 import './axios'
 import PrimeVue from 'primevue/config'
-
+import 'animate.css'
 import 'primevue/resources/primevue.min.css'
 
 import AutoComplete from 'primevue/autocomplete'

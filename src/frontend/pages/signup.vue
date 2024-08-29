@@ -1,7 +1,7 @@
 <template>
 
   <div class="  h-screen flex items-center">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8  rounded-lg  overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8 animate__animated animate__backInRight animate__delay-.5s rounded-lg  overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
 
 
           <div class="bg-white py-6 px-10 shadow-lg rounded-lg">

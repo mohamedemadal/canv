@@ -13,7 +13,7 @@
 
     </a>
 
-    <button @click="opennave" data-collapse-toggle="navbar-default" type="button" class="mx-1 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-default" aria-expanded="false">
+    <button @click="visible = true" data-collapse-toggle="navbar-default" type="button" class="mx-1 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
@@ -63,7 +63,28 @@
     </div>
   </div>
 </nav>
+<div class="card flex justify-content-center opacity-0">
+        <Sidebar v-model:visible="visible" header="Sidebar">
+         <ul>
+          <li class="my-auto text-center py-4 lg:py-0">
+          <router-link :to="{ name: 'home' }" class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;" > الرئيسية</router-link>
+        </li>
+        <li class="hidden lg:block my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> من نحن</router-link>
+        </li>
+        <li class="my-auto text-center py-4 lg:py-0">
+          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
+        </li>
+        <li class="my-auto text-center py-4 lg:py-0">
+          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
+        </li>
+        <li class="my-auto text-center py-4 lg:py-0">
+          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
+        </li>
+         </ul>
+        </Sidebar>
 
+    </div>
 </template>
 <script setup>
 
@@ -73,7 +94,7 @@ const scrollContainer = ref(null);
 const content = ref(null);
 const staticDiv = ref(null);
 const isFixed = ref(false);
-
+const visible = ref(false);
 let observer;
 const show=ref(true)
 const opennave=()=>{
@@ -131,5 +152,8 @@ border-radius: 5px !important;
   border-left: 8px solid transparent;
   border-right: 0px solid transparent;
   border-bottom: 10px solid #fdfdfd; /* Triangle color matching the button */
+}
+.p-sidebar-left .p-sidebar{
+
 }
 </style>
