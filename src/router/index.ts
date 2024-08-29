@@ -60,11 +60,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'dashboard',
         component: () => import('../pages/admin/dashboard/Dashboard.vue'),
       },
-      {
-        name: 'chate',
-        path: 'chate',
-        component: () => import('../pages/admin/chate/index.vue'),
-      },
+
 
 
 
@@ -79,16 +75,7 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('../pages/admin/users.vue'),
           },
 
-          {
-            name: 'drivers-show',
-            path: 'drivers-show/:id',
-            component: () => import('../pages/admin/drivers/show.vue'),
-          },
-          {
-            name: 'drivers',
-            path: 'drivers',
-            component: () => import('../pages/admin/drivers/index.vue'),
-          },
+
 
         ],
       },

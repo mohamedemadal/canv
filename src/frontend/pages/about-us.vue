@@ -30,8 +30,7 @@
           </div>
           <div class="p-4">
            <h4 class="text-4xl font-bold">لماذا تختار كانف ؟</h4>
-           <p style="line-height: initial" class="text-2xl font-medium text-[#AEAEAE]">تأسست الفوزان العقارية، في سنة 1991 ميلادي، والتي تعتبر الأن من الشركات العقارية، الرائده في منطقة القصيم وذلك في محاولة منا لتطوير وتحسين تجربة العملاء الباحثين عن خدمات عقارية و بقيم سامية</p>
-           <Button style=" background-color: #AA1E22 !important;"  label="إقرأ المزيد" class="mt-3 w-[200px] bg focus:ring-0 text-[#AA1E22]"/>
+           <p style="line-height: initial" class="text-2xl font-medium text-[#AEAEAE]"> {{ about_us?.about_us }} </p>
 
 
           </div>
@@ -139,11 +138,11 @@
         <div style="display:inline-grid;" class="lg:py-[3%]">
           <div class="py-[1%]" >
             <h3 class="font-bold text-4xl ">الرؤية</h3>
-            <p class="text-[#AEAEAE] text-2xl" >نستمد طاقتنا المهنية الإبداعية وخبرتنا العميقة الطويلة في القطاع العقاري من إرثنا الإسلامي الأصيل وقيمنا العربية العريقة ، ونصبوا إلى تحقيق الريادة وأن نكون من أهم الشركات العقارية في المملكة العربية السعودية .</p>
+            <p class="text-[#AEAEAE] text-2xl py-2" >{{ about_us?.company_vision }}</p>
           </div>
           <div>
             <h3 class="font-bold text-4xl ">الرسالة</h3>
-            <p class="text-[#AEAEAE] text-2xl" >نحرص على وضع عملائنا في محور عملياتنا اليومية ونهتم بأدق التفاصيل المتعلقة بهم لنحقق لهم أفضل العوائد على استثماراتهم ، ونسعى بكل عزم إلى تطوير وتحسين أساليب التسويق العقاري والاستغلال الأمثل للتقنيات التسويقية محليا وعالميا ، وتوظيف أفضل وسائل العمل الإدارية والبشرية لتتواكب مع متطلبات العملاء واحتياجات قطاع العقار بالمملكة</p>
+            <p class="text-[#AEAEAE] text-2xl" > {{ about_us?.company_message }}</p>
           </div>
         </div>
        <div><img class="lg:h-[85%] w-full" src="../images/business-meeting.png"></div>
@@ -165,6 +164,7 @@
   import 'swiper/css/pagination';
   import 'swiper/css/navigation';
   const our_team=ref('')
+  const about_us=ref('')
   const pagination = {
   el: '.swiper-pagination',
   clickable: true,
@@ -192,6 +192,11 @@ const navigation = {
         })
         .then((res) => {
           our_team.value=res.data.result.data
+        })
+        axios.post('api/about_us',{
+        })
+        .then((res) => {
+          about_us.value=res.data.result.data
         })
         }
         onMounted(() => {

@@ -19,7 +19,23 @@
         </clipPath>
         </defs>
         </svg>
-        <p class="text-base py-2 text-[#ffff]">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال او نماذج مواقع انترنت .</p>
+        <p class="text-base py-2 text-[#ffff]">{{ about_us?.about_us?.slice(0, 180)  }} </p>
+        <div class="flex">
+          <a  target="_blank">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="25" height="23" transform="translate(4 6)" fill="white"/>
+            <path d="M19.8997 23.0075H22.0677L12.0882 9.03973H9.92014L19.8997 23.0075Z" fill="#121212"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M5 0C2.23859 0 0 2.23859 0 5V27C0 29.7614 2.23859 32 5 32H27C29.7614 32 32 29.7614 32 27V5C32 2.23859 29.7614 0 27 0H5ZM23.4785 8L17.5218 14.7749L24 24H19.2356L14.8732 17.7878L9.41156 24H8L14.2466 16.8955L8 8H12.7644L16.8952 13.8826L22.0671 8H23.4785Z" fill="#121212"/>
+            </svg>
+          </a>
+          <a class="mx-3" :href='"https://wa.me/"+company_details?.phone ' target="_blank">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="25" height="23" transform="translate(3 3)" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6 21.7C13.6 22.3 14.8 22.6 16 22.6C19.7 22.6 22.6 19.6 22.6 16.1C22.6 14.3 22 12.7 20.7 11.4C19.4 10.2 17.8 9.5 16 9.5C12.4 9.5 9.39999 12.5 9.39999 16.1C9.39999 17.3 9.7 18.5 10.4 19.6L10.6 19.9L9.89999 22.3L12.4 21.6L12.6 21.7ZM18.2 17C18.4 17 19.4 17.5 19.6 17.6C19.6311 17.6156 19.6623 17.6287 19.6931 17.6417C19.8599 17.7121 20.0156 17.7779 20.1 18.2C20.2 18.2 20.2 18.6 20 19.1C19.9 19.5 19.1 20 18.7 20C18.6322 20 18.5673 20.0057 18.498 20.0119C18.1582 20.0419 17.712 20.0814 16.3 19.5C14.5475 18.799 13.3325 17.0999 12.9913 16.6228C12.9431 16.5554 12.9124 16.5124 12.9 16.5C12.883 16.466 12.8485 16.4116 12.8031 16.3399C12.5819 15.9906 12.1 15.2297 12.1 14.4C12.1 13.4 12.6 12.9 12.8 12.7C13 12.5 13.2 12.5 13.3 12.5H13.7C13.8 12.5 14 12.5 14.1 12.8C14.3 13.2 14.7 14.2 14.7 14.3C14.7 14.3333 14.7111 14.3667 14.7222 14.4C14.7445 14.4667 14.7667 14.5333 14.7 14.6C14.65 14.65 14.625 14.7 14.6 14.75C14.575 14.8 14.55 14.85 14.5 14.9L14.2 15.2C14.1 15.3 14 15.4 14.1 15.6C14.2 15.8 14.6 16.5 15.2 17C15.8751 17.5907 16.4078 17.8254 16.6778 17.9443C16.7278 17.9663 16.7688 17.9844 16.8 18C17 18 17.1 18 17.2 17.9C17.25 17.8 17.375 17.65 17.5 17.5C17.625 17.35 17.75 17.2 17.8 17.1C17.9 16.9 18 16.9 18.2 17Z" fill="#339F00"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5C0 2.23858 2.23858 0 5 0H27C29.7614 0 32 2.23858 32 5V27C32 29.7614 29.7614 32 27 32H5C2.23858 32 0 29.7614 0 27V5ZM16 8C18.1 8 20.1 8.8 21.6 10.3C23.1 11.8 24 13.8 24 15.9C24 20.3 20.4 23.9 16 23.9C14.7 23.9 13.4 23.5 12.2 22.9L8 24L9.10001 20C8.40001 18.8 8 17.4 8 16C8 11.6 11.6 8 16 8Z" fill="#339F00"/>
+            </svg>
+          </a>
+        </div>
       </div>
       <div>
         <Button style=" background-color: #AA1E22 !important;"  label="لينكات سريعة" class=" w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
@@ -43,11 +59,11 @@
         <Button style=" background-color: #AA1E22 !important;"  label="فروع كانف" class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
         <div class="">
           <h5 class="text-base  pt-2 font-semibold text-[#ffff]">رقم الجوال</h5>
-          <p class="text-sm py-2 font-normal text-[#ffff]"> +966920013393</p>
+          <p class="text-sm py-2 font-normal text-[#ffff]"> {{ company_details?.phone }}</p>
         </div>
         <div class="">
           <h5 class="text-base font-semibold  pt-2 text-[#ffff]">البريد الإليكتروني</h5>
-          <p class="text-sm py-2 font-normal text-[#ffff]"> info@canv.sa </p>
+          <p class="text-sm py-2 font-normal text-[#ffff]"> {{ company_details?.email }}</p>
         </div>
 
       </div>
@@ -61,6 +77,8 @@ import { ref, onMounted } from 'vue';
 import axios from "axios";
 
 const branchs=ref('')
+const company_details=ref('')
+const about_us=ref('')
 
 const fetchdata=()=>{
       axios.post('api/get_our_branchs',{
@@ -68,6 +86,17 @@ const fetchdata=()=>{
       .then((res) => {
         branchs.value=res.data.result.data
       })
+
+      axios.post('api/get_company_main_data',{
+        })
+        .then((res) => {
+          company_details.value=res.data.result.data
+        })
+        axios.post('api/about_us',{
+        })
+        .then((res) => {
+          about_us.value=res.data.result.data
+        })
       }
       onMounted(() => {
         fetchdata()

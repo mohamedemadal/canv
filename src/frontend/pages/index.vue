@@ -67,9 +67,10 @@
         </div>
         <div class="p-4">
          <h4 class="text-3xl lg:text-4xl font-bold">لماذا تختار كانف ؟</h4>
-         <p style="line-height: initial" class="text-xl lg:text-2xl font-medium text-[#AEAEAE]">تأسست الفوزان العقارية، في سنة 1991 ميلادي، والتي تعتبر الأن من الشركات العقارية، الرائده في منطقة القصيم وذلك في محاولة منا لتطوير وتحسين تجربة العملاء الباحثين عن خدمات عقارية و بقيم سامية</p>
-         <Button style=" background-color: #AA1E22 !important;"  label="إقرأ المزيد" class="mt-3 w-[200px] bg focus:ring-0 text-[#AA1E22]"/>
-
+         <p style="line-height: initial" class="text-xl lg:text-2xl font-medium text-[#AEAEAE]">{{ about_us?.about_us?.slice(0,190) }} ...</p>
+          <a href="/about">
+           <Button style=" background-color: #AA1E22 !important;"  label="إقرأ المزيد" class="mt-3 w-[200px] bg focus:ring-0 text-[#AA1E22]"/>
+          </a>
         </div>
        </div>
     </div>
@@ -226,6 +227,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import axios from "axios";
 const company_statistics=ref('')
+const about_us=ref('')
 const counter = ref({
   count1:''
 });
@@ -282,6 +284,11 @@ const fetchdata=()=>{
 
       company_statistics.value=res.data.result.data
     })
+    axios.post('api/about_us',{
+        })
+        .then((res) => {
+          about_us.value=res.data.result.data
+        })
 }
 
 
