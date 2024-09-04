@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     name: 'home',
-    path: '/home',
+    path: '/',
     component: () => import('../frontend/pages/index.vue'),
   },
   {

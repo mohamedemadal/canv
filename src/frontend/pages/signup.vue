@@ -38,7 +38,7 @@
                   <Password  v-model="parent.pass" toggleMask   placeholder="  أكتب كلمة المرور "/>
                 </div>
               </div>
-              <a href="/home" class="flex  " >
+              <a href="/" class="flex  " >
 
                 <Button
                 style="background-color: #AA1E22 !important;"

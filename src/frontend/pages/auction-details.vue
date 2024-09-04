@@ -279,10 +279,10 @@
         },
       }"
     >
-      <swiper-slide v-for="(auction, index) in assets?.asset_imags" :key="index">
+      <swiper-slide v-for="(img, index) in assets?.asset_imags" :key="index">
             <div class="relative ">
                <div class="absolute w-full h-full opacity-50" style="background: linear-gradient(to right, #00000099 , rgb(0, 0, 0));"></div>
-              <img class="w-full max-h-[80vh]" src="../images/auctions.png">
+              <img class="w-full max-h-[80vh]" :src="img?.image_link">
               <p class="absolute top-[10%] right-[5%] font-bold text-2xl text-white"> {{ auction?.image_description }}</p>
 
             </div>

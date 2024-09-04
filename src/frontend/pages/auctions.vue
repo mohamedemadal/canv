@@ -20,6 +20,29 @@
     </div>
    </div>
 
+
+
+   <div class=  "filter px-[1%] py-[3%] m-auto  max-w-[1290px]">
+    <div class="grid lg:grid-cols-3 grid-cols-1 bg-white shadow-lg w-full gap-4 px-[3%] py-[2%]">
+      <div class=" py-2 relative sh">
+
+          <div class="relative ">
+            <InputText  required class="bg-[#f7f5f5] w-full shadow"  placeholder="أكتب اسم المزاد" />
+            <span class="pi pi-search absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
+          </div>
+     </div>
+     <div class=" py-1 relative my-auto ">
+      <div class="relative ">
+        <Dropdown  style="height: 100% !important;"  option-value="department_id" :options="cityes" optionLabel="name" placeholder=' إختر المدينة ' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+      </div>
+    </div>
+    <div class="flex items-center text-center">
+      <Button style="background-color:#AA1E22 ;"   label=" بحث  " class="mt-3 bg-[#AA1E22] w-[50%]  m-auto "/>
+
+    </div>
+
+    </div>
+  </div>
    <!-- auctions -->
   <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1290px]">
       <div class="flex justify-between">
@@ -430,5 +453,8 @@ margin-top: 1%
     width: 2rem;
     height: 3rem;
 }
+ .filter .p-inputtext:enabled{
+  height: 42px !important;
+ }
 </style>
 

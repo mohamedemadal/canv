@@ -39,12 +39,12 @@
       </div>
       <div>
         <Button style=" background-color: #AA1E22 !important;"  label="لينكات سريعة" class=" w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
-        <div class="pt-4 px-1"><a href="/home" class="text-base py-2 pt-4 text-[#ffff]">الرئيسية</a></div>
-        <div class="px-1 py-1"><a href="/home" class="text-base py-2 pt-4 text-[#ffff]">من نحن</a></div>
-        <div class="px-1 py-1"><a href="/home" class="text-base py-2 pt-4 text-[#ffff]"> المزادات</a></div>
-        <div class="px-1 py-1"><a href="/home" class="text-base py-2 pt-4 text-[#ffff]"> الإيجارات</a></div>
-        <div class="px-1 py-1"><a href="/home" class="text-base py-2 pt-4 text-[#ffff]"> الأملاك</a></div>
-        <div class="px-1 py-1"><a href="/home" class="text-base py-2 pt-4 text-[#ffff]"> تواصل معنا</a></div>
+        <div class="pt-4 px-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]">الرئيسية</a></div>
+        <div class="px-1 py-1"><a href="/about" class="text-base py-2 pt-4 text-[#ffff]">من نحن</a></div>
+        <div class="px-1 py-1"><a href="/auctions" class="text-base py-2 pt-4 text-[#ffff]"> المزادات</a></div>
+        <!-- <div class="px-1 py-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]"> الإيجارات</a></div>
+        <div class="px-1 py-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]"> الأملاك</a></div> -->
+        <div class="px-1 py-1"><a href="/contact-us" class="text-base py-2 pt-4 text-[#ffff]"> تواصل معنا</a></div>
       </div>
       <div>
         <Button style=" background-color: #AA1E22 !important;"  label=" فروع كانف" class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>

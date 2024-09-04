@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white Property pro hidden">
+  <div class="bg-white Property pro ">
   <div class=  "  px-[2%] py-[1%] m-auto  max-w-[1290px] ">
 
      <div class="flex justify-between py-[2%]">
@@ -29,7 +29,7 @@
         spaceBetween: 10,
       },
       480: {
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 20,
       },
       768: {
@@ -44,14 +44,14 @@
   >
 
 
-    <swiper-slide v-for="(image, index) in 4" :key="index">
+    <swiper-slide v-for="(project, index) in projects" :key="index">
       <div class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md">
         <!-- <div class="absolute w-full h-full bg-white opacity-20"></div> -->
         <div class="h-full ">
           <img alt="not found" class="h-[230px] w-full" src="../images/auctions.png">
             <div class="flex justify-between p-2">
               <div>
-                <p class="text-xl font-bold text-right">كمباوند الغدير</p>
+                <p class="text-xl font-bold text-right"> {{ project?.name }}</p>
                 <div class="flex py-1 ">
                   <a style="border: 2px solid #046A72;" class="flex bg-[#E6F4F6] py-1 px-4  mx-1 rounded-md">
                   <div>
@@ -153,7 +153,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import axios from "axios";
 
-
+const projects=ref('')
 const swiperRef = ref(null);
 const rent=ref({
   text:"تمتع بالإقامة في شقة مكونة من ثلاث غرف نوم وتتكون من غرفة نوم ماستر بدورة مياة بكامل ملحقاتها وغرفة نوم سريرين منفصل..."
@@ -178,18 +178,18 @@ prevEl: '.swiper-button-prev',
 
 const fetchdata=()=>{
 axios
-  .post('get_auctions',{
-   auctions_filter:"all"
+  .post('api/get_projects',{
+   projects_filter:"all"
   })
   .then((res) => {
 
-
+    projects.value=res.data.result.data
   })
 }
 
 onMounted(() => {
 
-
+  fetchdata()
 
 
 });

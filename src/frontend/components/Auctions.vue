@@ -1,9 +1,9 @@
 <template>
     <div class="bg-slate-50 auctions">
-  <div class=  " px-[2%] py-[3%] m-auto  max-w-[1295px]">
+  <div class=  " px-[2%] py-[3%] m-auto  max-w-[1350px]">
       <div class=" ">
-         <h3 class="text-center text-3xl lg:text-5xl py-4 ">تعرف أكثر على خدمات كانف ... </h3>
-         <p class="text-center text-xl lg:text-2xl px-1 pb-[5%] text-[#AEAEAE]"> لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p>
+         <h3 class="text-center text-3xl lg:text-5xl py-4 ">تعرف أكثر على خدمات كانف  </h3>
+         <!-- <p class="text-center text-xl lg:text-2xl px-1 pb-[5%] text-[#AEAEAE]"> لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p> -->
        </div>
 
 

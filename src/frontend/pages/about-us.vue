@@ -1,9 +1,20 @@
 <template>
   <Nave></Nave>
   <!-- banner -->
+
+
+
    <div  class="banner flex items-center h-[35vh] lg:h-[55vh] relative ">
-    <div class="absolute bg-black opacity-40 w-full h-full z-50"></div>
-    <img class="w-full absolute h-full" src="../images/breadcrumb.png">
+    <div  style="position: absolute; width: 100%; height: 100%;" v-if="banner_url">
+      <iframe
+        style="position: absolute; width: 100%; height: 100%;"
+        :src="`${banner_url}?autoplay=1&controls=0&mute=1&showinfo=0&rel=0&modestbranding=1`"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+  </div>
+
 
     <div class="z-50 text-white w-full m-auto w-[80%] ">
       <H1 class="font-bold text-5xl text-white z-50">من نحن</H1>
@@ -40,7 +51,7 @@
 
 
       <!-- about canv -->
-      <div class="bg-white banner">
+      <div class="bg-white banner hidden">
     <div class=  "px-2 py-[3%] m-auto  max-w-[1290px]">
           <div class="">
            <h3 class="text-center text-5xl p-[2%]"> تعرف على فريق كانف</h3>
@@ -169,7 +180,8 @@
   el: '.swiper-pagination',
   clickable: true,
 };
-
+const banner=ref('')
+const banner_url=ref('')
 const swiperRef = ref(null);
 const activeIndex = ref(0);
 const slid = ref(0);
@@ -192,6 +204,14 @@ const navigation = {
         })
         .then((res) => {
           our_team.value=res.data.result.data
+        })
+        axios.post('api/get_company_banner',{
+        })
+        .then((res) => {
+           banner.value = res.data.result.data
+           const videoId = banner.value.banner_url.split('youtu.be/')[1]
+           banner_url.value = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
+
         })
         axios.post('api/about_us',{
         })
@@ -237,6 +257,33 @@ const navigation = {
   color:  white !important;
  width: 50px !important ;
  height: 50px !important ;
+}
+.video-background {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 

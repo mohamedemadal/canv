@@ -25,9 +25,9 @@
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
         </li>
-        <li class="my-auto text-center py-1 lg:py-0">
+        <!-- <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
-        </li>
+        </li> -->
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
         </li>
@@ -75,9 +75,9 @@
         <li class="my-auto text-center py-4 lg:py-0">
           <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
         </li>
-        <li class="my-auto text-center py-4 lg:py-0">
+        <!-- <li class="my-auto text-center py-4 lg:py-0">
           <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
-        </li>
+        </li> -->
         <li class="my-auto text-center py-4 lg:py-0">
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
         </li>

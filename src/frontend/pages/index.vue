@@ -4,7 +4,7 @@
   <!-- slider -->
 
   <!-- swiper -->
-  <div  class=" w-full md:h-[40vh] h-[60vh] lg:h-full isolate  bg-[#060B15] ">
+  <div  class=" hidden lg:block w-full md:h-[40vh] h-[60vh] lg:h-full isolate  bg-[#060B15] ">
 
 
     <swiper
@@ -35,10 +35,10 @@
         <div class="text-center relative text-4xl bg-teal-100 rounded-3xl w-full h-[60vh] md:h-[40vh] lg:h-full">
           <!-- Doctor -->
           <div class="absolute inset-0 flex flex-col items-start lg:px-[5%] justify-center p-[1%] z-50">
-    <h1 class="font-bold text-3xl lg:text-7xl w-full lg:w-[60%] lg:pb-6 text-white text-right">كن شريك</h1>
+    <!-- <h1 class="font-bold text-3xl lg:text-7xl w-full lg:w-[60%] lg:pb-6 text-white text-right">كن شريك</h1>
     <h2 class="font-medium text-xl lg:text-2xl w-full lg:w-[60%] text-right text-[#CECECE]" style="line-height: initial;">
       لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال .
-    </h2>
+    </h2> -->
   </div>
 
            <div style="background: linear-gradient(to right, #624336 , rgb(0, 0, 0));" class="absolute w-full h-full  opacity-60"></div>
@@ -76,9 +76,9 @@
     </div>
  </div>
   <!-- counter -->
-  <div :style="{ backgroundImage: `url(${img2})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;">
+  <div class="hidden lg:block" :style="{ backgroundImage: `url(${img2})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;">
 
-  <div class="py-[5%] m-auto z-50 max-w-[1290px]">
+  <div class="py-[5%] m-auto z-50 max-w-[1295px]">
     <div class="">
       <h3 class="text-center text-3xl lg:text-5xl text-white  py-4">سنوات خبرتنا العديدة بالأرقام</h3>
       <p class="text-center text-xl lg:text-2xl  pb-[5%] text-[#AEAEAE]">
@@ -88,44 +88,44 @@
     <div ref="counterRef" class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:grid-cols-7 z-50 px-2 ">
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_transactions_number }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">عدد الصفقات المبرمة</p>
+          <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_transactions_number }}</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> الصفقات المبرمة</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_property_units_number }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">وحدة عقارية تحت إدارتنا</p>
+          <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_property_units_number }}</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">  تحت إدارتنا</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.auctions_assets_value }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">قيمة أصول المزادات</p>
+          <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl"> {{ company_statistics?.auctions_assets_value }}</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> أصول المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_auctions_assets_number }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">مجموع أصول المزادات</p>
+          <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_auctions_assets_number }}</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> عدد المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_auctions_number }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> المزادات</p>
+          <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_auctions_number }}</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">  عدد المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-xl">+{{ company_statistics?.auctions_assets_total_area }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> مساحة أصول المزادات</p>
+          <p class="invisible group-hover:visible transition  text-white text-center font-bold text-xl">+{{ company_statistics?.auctions_assets_total_area }}</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> مساحة  المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
-          <p class="hidden group-hover:block transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_clients_number }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">عميل</p>
+          <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_clients_number }}</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">عدد العملاء</p>
         </div>
       </div>
 
@@ -135,9 +135,73 @@
 
     <!-- counter -->
  <Auctions></Auctions>
- <Property></Property>
+
+
+
+
+
+
+
+
+ <div class="lg:hidden" :style="{ backgroundImage: `url(${img2})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;">
+
+<div class="py-[5%] m-auto z-50 max-w-[1295px]">
+  <div class="">
+    <h3 class="text-center text-3xl lg:text-5xl text-white  py-4">سنوات خبرتنا العديدة بالأرقام</h3>
+    <p class="text-center text-xl lg:text-2xl  pb-[5%] text-[#AEAEAE]">
+      نعرض لكم إنجازاتنا المهنية بالأرقام ، والتي تظهر المهارات المكتسبة وثقة العديد من العملاء.
+    </p>
+  </div>
+  <div ref="counterRef" class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:grid-cols-7 z-50 px-2 ">
+    <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
+      <div class="text-base transition duration-1000">
+        <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_transactions_number }}</p>
+        <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> الصفقات المبرمة</p>
+      </div>
+    </div>
+    <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
+      <div class="text-base transition duration-1000">
+        <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_property_units_number }}</p>
+        <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">  تحت إدارتنا</p>
+      </div>
+    </div>
+    <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
+      <div class="text-base transition duration-1000">
+        <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl"> {{ company_statistics?.auctions_assets_value }}</p>
+        <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> أصول المزادات</p>
+      </div>
+    </div>
+    <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
+      <div class="text-base transition duration-1000">
+        <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_auctions_assets_number }}</p>
+        <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> عدد المزادات</p>
+      </div>
+    </div>
+    <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
+      <div class="text-base transition duration-1000">
+        <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_auctions_number }}</p>
+        <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">  عدد المزادات</p>
+      </div>
+    </div>
+    <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
+      <div class="text-base transition duration-1000">
+        <p class="invisible group-hover:visible transition  text-white text-center font-bold text-xl">+{{ company_statistics?.auctions_assets_total_area }}</p>
+        <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> مساحة  المزادات</p>
+      </div>
+    </div>
+    <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
+      <div class="text-base transition duration-1000">
+        <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+{{ company_statistics?.total_clients_number }}</p>
+        <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl">عدد العملاء</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+ <!-- <Complexes></Complexes> -->
 <!-- how to confirme -->
- <div>
+ <div class="hidden">
   <div class="bg-slate-50 auctions ">
     <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1280px]">
       <div class=" ">
@@ -213,7 +277,7 @@ import Nave from '../components/Nave.vue';
 import Auctions from '../components/Auctions.vue'
 import Customer from '../components/Customer.vue'
 import Rentals from '../components/Rentals.vue'
-import Property from '../components/Property.vue'
+import Complexes from '../components/Complexes.vue'
 import Footer from '../components/Footer.vue'
 import img1 from "../images/header.png";
 import img2 from "../images/back.png";
