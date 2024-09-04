@@ -101,13 +101,13 @@
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
           <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl"> {{ company_statistics?.auctions_assets_value }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> أصول المزادات</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> قيمة المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">
         <div class="text-base transition duration-1000">
           <p class="invisible group-hover:visible transition  text-white text-center font-bold text-2xl">+ {{ company_statistics?.total_auctions_assets_number }}</p>
-          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> عدد المزادات</p>
+          <p class="transition group-hover:text-white  duration-100 pt-[5%] text-center text-xl"> اصول المزادات</p>
         </div>
       </div>
       <div  class="px-2 h-[170px] text-black hover:text-white group z-50  bg-[#FFFFFF] transition hover:bg-[#AA1E22] duration-1000 py-8 border-b-4 rounded-md border-[#AA1E22]">

@@ -2,7 +2,7 @@
     <div class="bg-slate-50 auctions">
   <div class=  " px-[2%] py-[3%] m-auto  max-w-[1350px]">
       <div class=" ">
-         <h3 class="text-center text-3xl lg:text-5xl py-4 ">تعرف أكثر على خدمات كانف  </h3>
+         <h3 class="text-center text-3xl lg:text-5xl py-4 hidden lg:block ">تعرف أكثر على خدمات كانف  </h3>
          <!-- <p class="text-center text-xl lg:text-2xl px-1 pb-[5%] text-[#AEAEAE]"> لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p> -->
        </div>
 
@@ -12,8 +12,8 @@
           <a href="/auctions" class="text-xl lg:text-2xl font-bold text-[#ef5258]">مشاهدة المزيد</a>
         </div>
 
-       <div class=" grid lg:grid-cols-3 w-full lg:w-fit grid-cols-2 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
-        <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" المزادات الحاليه" class="mt-3 bg-[#AA1E22]   "/>
+       <div class=" grid lg:grid-cols-3 w-full lg:w-fit grid-cols-3 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
+        <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="  الحاليه" class="mt-3 bg-[#AA1E22]   "/>
         <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" القادمة" class="mt-3 bg-[#AA1E22]   "/>
         <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="المنتهية " class="mt-3 bg-[#AA1E22]   "/>
        </div>

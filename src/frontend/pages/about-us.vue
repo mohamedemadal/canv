@@ -1,10 +1,19 @@
 <template>
   <Nave></Nave>
   <!-- banner -->
+  <div class="video-container">
+    <video
+      src="../banner.mp4"
+      autoplay
+      loop
+
+      playsinline
+      class="responsive-video">
+    </video>
+  </div>
 
 
-
-   <div  class="banner flex items-center h-[35vh] lg:h-[55vh] relative ">
+   <div  class="banner flex items-center h-[35vh] lg:h-[55vh] relative hidden">
     <div  style="position: absolute; width: 100%; height: 100%;" v-if="banner_url">
       <iframe
         style="position: absolute; width: 100%; height: 100%;"
@@ -285,6 +294,17 @@ const navigation = {
   top: 50%;
   transform: translateY(-50%);
 }
+.video-container {
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+}
 
+.responsive-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 </style>
