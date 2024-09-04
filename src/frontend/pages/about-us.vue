@@ -6,7 +6,7 @@
       src="../banner.mp4"
       autoplay
       loop
-
+      controls
       playsinline
       class="responsive-video">
     </video>
@@ -267,33 +267,6 @@ const navigation = {
  width: 50px !important ;
  height: 50px !important ;
 }
-.video-background {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-#background-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-  color: white;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-}
 .video-container {
   width: 100%;
   height: 80vh;
@@ -306,5 +279,4 @@ const navigation = {
   height: 100%;
   object-fit: cover;
 }
-
 </style>
