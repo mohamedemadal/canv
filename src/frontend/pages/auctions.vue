@@ -27,17 +27,17 @@
       <div class=" py-2 relative sh">
 
           <div class="relative ">
-            <InputText  required class="bg-[#f7f5f5] w-full shadow"  placeholder="أكتب اسم المزاد" />
+            <InputText v-model="filter.name"  required class="bg-[#f7f5f5] w-full shadow"  placeholder="أكتب اسم المزاد" />
             <span class="pi pi-search absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
           </div>
      </div>
      <div class=" py-1 relative my-auto ">
       <div class="relative ">
-        <Dropdown  style="height: 100% !important;"  option-value="department_id" :options="cityes" optionLabel="name" placeholder=' إختر المدينة ' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+        <Dropdown  style="height: 100% !important;" v-model="filter.city_id_filter"  option-value="city_id" :options="cityes" optionLabel="name" placeholder=' إختر المدينة ' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
       </div>
     </div>
     <div class="flex items-center text-center">
-      <Button style="background-color:#AA1E22 ;"   label=" بحث  " class="mt-3 bg-[#AA1E22] w-[50%]  m-auto "/>
+      <Button @click="fetchdata" style="background-color:#AA1E22 ;"   label=" بحث  " class="mt-3 bg-[#AA1E22] w-[50%]  m-auto "/>
 
     </div>
 
@@ -219,7 +219,8 @@ const total_pages=ref(2)
 const current_page=ref(0)
 const active=ref('all')
 const swiperRef = ref(null);
-
+const cityes=ref('')
+const filter=ref({})
 const state = reactive({
 currentSlide: 0,
 totalSlides: 0,
@@ -314,6 +315,7 @@ watch(current_page, (newPage, oldPage) => {
     axios
   .post('api/get_auctions',{
     auctions_filter:active.value,
+    city_id_filter:50,
     page_number:newPage+1,
     page_scope:"9",
   })
@@ -357,6 +359,8 @@ const fetchdata=()=>{
 axios
   .post('api/get_auctions',{
     auctions_filter:"all",
+    city_id_filter:filter.value.city_id_filter,
+    name_like_filter:filter.value.name,
     page_number:"1",
     page_scope:"9",
   })
@@ -383,6 +387,11 @@ axios
 
 
   })
+  axios.post('api/get_ksa_cities',{
+        })
+        .then((res) => {
+          cityes.value=res.data.result.data
+        })
 }
 
 
