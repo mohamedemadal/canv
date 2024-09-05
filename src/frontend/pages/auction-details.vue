@@ -438,20 +438,21 @@
         </div>
           <div v-if="activeIndex === 3" class=" gap-3 py-4 duration-2000">
           <div   class="p-2 m-a flex">
-            <h4 class="font-bold text-xl ">الحدود الشمالية  :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.north_boundary }}</p>
+            <h4 class="font-bold text-lg lg:text-xl  "> شمالا  :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.north_boundary }} <span class="text-lg font-bold text-black">بطول : </span>  {{ assets?.boundaries_and_dimensions.north_boundary_length }}</p>
           </div>
           <div   class="p-2 m-a flex">
             <h4 class="font-bold text-xl ">شـرقـاً :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.south_boundary }}</p>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.south_boundary }}<span class="text-lg font-bold text-black"> بطول : </span>  {{ assets?.boundaries_and_dimensions.east_boundary_length }}
+            </p>
           </div>
           <div   class="p-2 m-a flex">
             <h4 class="font-bold text-xl ">جنوباً :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.east_boundary }}</p>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.east_boundary }} <span class="text-lg font-bold text-black">بطول : </span>  {{ assets?.boundaries_and_dimensions.south_boundary_length }}</p>
           </div>
           <div   class="p-2 m-a flex">
             <h4 class="font-bold text-xl ">غـربـاً :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.west_boundary }}</p>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.west_boundary }} <span class="text-lg font-bold text-black">بطول : </span>  {{ assets?.boundaries_and_dimensions.east_boundary_length }}</p>
           </div>
 
 
