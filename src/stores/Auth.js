@@ -33,9 +33,10 @@ export const useAuthStore = defineStore('Auth', {
       // this.router.push({name: "admin"});
       this.resetAuthStore()
 
-      const response = await axios.post('/api/login', {
-        email: data.email,
+      const response = await axios.post('/api/canv/user_login', {
+        login: data.login,
         password: data.password,
+        "db":"live_7_8"
       })
       const headers = {
         Authorization: `"Bearer ${response.data.token}"`, // Headers your auth endpoint needs

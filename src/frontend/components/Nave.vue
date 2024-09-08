@@ -3,7 +3,7 @@
 
 <nav ref="staticDiv"  :class="{ 'fixed': isFixed }" style="direction: ltr;" class="static-div bg-white border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
-    <a href="/signup" class="flex  items-center space-x-3 rtl:space-x-reverse hidden lg:block">
+    <a href="/login" class="flex  items-center space-x-3 rtl:space-x-reverse hidden lg:block">
 
       <Button
   style="background-color: #AA1E22 !important;"

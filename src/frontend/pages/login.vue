@@ -9,17 +9,17 @@
             <p class="pb-1" style="line-height:29px">أهلا بك فى منصة إيوا للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p>
             <div class=" py-2 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#AA1E22]" for="username">الاسم كامل</p>
+                  <p class="py-2 font-bold text-[#AA1E22]" for="username"> البريد الالكتروني</p>
                   <span class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <InputText  required class="bg-[#f7f5f5] w-full " v-model="parent.name" placeholder="أكتب الإسم الكامل" />
-                  <span class="pi pi-user absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
+                  <InputText  required class="bg-[#f7f5f5] w-full " v-model="parent.login" placeholder="أكتب البريد الالكتروني" />
+                  <span v-if="parent.login" class="pi pi-envelope  absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
 
               </div>
 
-              <div class=" py-2 relative ">
+              <!-- <div class=" py-2 relative ">
                   <div class="flex ">
                   <p class="py-2 font-bold text-[#AA1E22]" for="username"> رقم الجوال</p>
                   <span class="my-auto text-[#AA1E22] px-1">*</span>
@@ -28,26 +28,27 @@
                   <InputNumber  :useGrouping="false"  required class="bg-[#f7f5f5] w-full " v-model="parent.phone" placeholder="أكتب رقم الجوال " />
                   <span class="pi pi-phone absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
-              </div>
+              </div> -->
               <div class=" py-2 relative ">
                   <div class="flex ">
                   <p class="py-2 font-bold text-[#AA1E22]" for="username">  كلمة المرور</p>
-                  <span class="my-auto text-[#AA1E22] px-1">*</span>
+                  <span v-if="parent.password" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Password  v-model="parent.pass" toggleMask   placeholder="  أكتب كلمة المرور "/>
+                  <Password  v-model="parent.password" toggleMask   placeholder="  أكتب كلمة المرور "/>
                 </div>
               </div>
-              <a href="/" class="flex  " >
+              <a class="flex  " >
 
                 <Button
+                @click="authStore.handleLogin(parent)"
                 style="background-color: #AA1E22 !important;"
                 label="تسجيل الدخول"
                 class="mt-3 h-full relative mb- pl-4 lg:w-[70%] mx-auto  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
                 </Button>
 
                 </a>
-                <p class="m-auto text-center pt-2 text-base">   هل لديك حساب بالفعل ؟ <a href="/login" class="text-[#AA1E22] font-bold text-base"> تسجيل دخول</a></p>
+                <p class="m-auto text-center pt-2 text-base">ليس لديك حساب ؟ <a href="/signup" class="text-[#AA1E22] font-bold text-base">انشاء حساب</a></p>
 
 
 
@@ -80,4 +81,6 @@
 <script setup>
 import { ref, reactive, onMounted,computed } from 'vue';
 const parent=ref({})
+import { useAuthStore } from '../../stores/Auth'
+const authStore = useAuthStore();
 </script>
