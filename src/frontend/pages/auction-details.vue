@@ -354,9 +354,11 @@
           </div>
           <div class="  md:col-span-2 lg:col-span-6">
             <iframe class="w-full h-[250px]"
-                           :src="mapLink"
-                            style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          :src="mapLink"
+          style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
           </div>
 
 
@@ -549,8 +551,9 @@ const change_asset=(e)=>{
 
 
     assets.value=res.data.result.data
+    mapLink.value = `https://www.google.com/maps?q=${res.data.result.data.location.latitude},${res.data.result.data.location.longitude}&hl=es;z=14&output=embed`;
 
-    mapLink.value=`https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d226.5815642852766!2d${res.data.result.data.location.longitude}!3d${res.data.result.data.location.latitude}!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1711451887994!5m2!1sar!2seg`
+
   })
 }
 const fetchdata=()=>{

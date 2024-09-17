@@ -49,9 +49,7 @@
         <!-- Doctor -->
       </swiper-slide>
 
-      <!-- Add navigation buttons -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+
     </swiper>
   </div>
 
@@ -377,6 +375,7 @@ onMounted(() => {
  .swiper-pagination-bullet{
   background-color: rgb(255, 255, 255) !important;
   z-index: 60;
+  visibility: hidden !important;
 }
 
 .swiper-button-next,

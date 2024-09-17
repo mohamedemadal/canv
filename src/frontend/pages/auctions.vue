@@ -33,7 +33,7 @@
      </div>
      <div class=" py-1 relative my-auto ">
       <div class="relative ">
-        <Dropdown  style="height: 100% !important;" v-model="filter.city_id_filter"  option-value="city_id" :options="cityes" optionLabel="name" placeholder=' إختر المدينة ' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+        <Dropdown  style="height: 100% !important;" filter v-model="filter.city_id_filter"  option-value="city_id" :options="cityes" optionLabel="name" placeholder=' إختر المدينة ' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
       </div>
     </div>
     <div class="flex items-center text-center">
@@ -76,8 +76,6 @@
                       <circle cx="9" cy="8.25" r="2.25" stroke="#7A0505" stroke-width="1.5"/>
                       <path d="M15.75 8.16667C15.75 11.8486 11.5312 16.5 9 16.5C6.46875 16.5 2.25 11.8486 2.25 8.16667C2.25 4.48477 5.27208 1.5 9 1.5C12.7279 1.5 15.75 4.48477 15.75 8.16667Z" stroke="#7A0505" stroke-width="1.5"/>
                       </svg>
-
-
 
 
                     </div>
