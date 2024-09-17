@@ -49,7 +49,7 @@
             <p>{{ job?.shift_type }}</p>
           </div>
         </div>
-        <h5  class="text-[#AEAEAE] py-6 leading-6 ">{{ (job?.description).trim().slice(0,140) }}</h5>
+        <h5  class="text-[#AEAEAE] py-6 leading-6 ">{{ (job?.description)?.trim().slice(0,140) }}</h5>
         <div>
            <Button  style=" background-color: #AA1E22 "  label=" التفاصيل" class="my-2 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
         </div>
