@@ -60,7 +60,7 @@
 
 
       <!-- about canv -->
-      <div class="bg-white banner hidden">
+      <div class="bg-white banner ">
     <div class=  "px-2 py-[3%] m-auto  max-w-[1290px]">
           <div class="">
            <h3 class="text-center text-5xl p-[2%]"> تعرف على فريق كانف</h3>
@@ -111,7 +111,7 @@
 
             >
             <div style="transition: 1s;"  class=" hover:scale-[1.03] h-full bg-white">
-              <div class="w-full"><img class="w-full h-[290px] "  src="../images/team/man.png"></div>
+              <div class="w-full"><img class="w-full h-[290px] "  :src="team?.img_link"></div>
               <!-- <div class="w-full"><img class="w-full " :src="team?.img_link"></div> -->
               <div class=" p-[3%] border-r-2 border-b-2 border-l-2 rounded-md ">
                 <div class="flex  justify-between">

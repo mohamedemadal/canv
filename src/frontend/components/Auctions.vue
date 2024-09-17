@@ -61,7 +61,7 @@
           <div class="h-full">
              <div class="relative" >
 
-              <img alt="not found" class="h-[230px] w-full" src="../images/auctions.png">
+              <img alt="not found" class="h-[230px] w-full" :src="auction?.profile_img_link">
               <p  :class="{'bg-[#CE3C3CB8]': auction.status == 'finished','bg-[#5BFF338F]': auction.status == 'running','bg-[#C9AA3FBF]': auction.status == 'comming',}" class="absolute z-50 top-[70%] left-3   text-white text-base p-2 rounded-lg">{{ auction.status }}</p>
              </div>
               <div class="flex justify-between p-2">

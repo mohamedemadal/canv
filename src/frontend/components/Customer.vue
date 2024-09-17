@@ -41,7 +41,7 @@
               },
               768: {
                 slidesPerView: 7,
-                spaceBetween: lengthe,
+                spaceBetween: 7,
               },
             }"
           >
@@ -98,7 +98,7 @@ const fetchdata=()=>{
         .then((res) => {
           clients.value=res.data.result.data
           if(clients.value.length > 7){
-            lengthe.value=7
+            lengthe.value=2
           }else{
             lengthe.value=clients.value.length
           }

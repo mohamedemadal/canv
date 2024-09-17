@@ -199,7 +199,7 @@
   </div>
 </div>
 </div>
- <!-- <Complexes></Complexes> -->
+  <!-- <Property></Property> -->
 <!-- how to confirme -->
  <div class="hidden">
   <div class="bg-slate-50 auctions ">
@@ -277,7 +277,7 @@ import Nave from '../components/Nave.vue';
 import Auctions from '../components/Auctions.vue'
 import Customer from '../components/Customer.vue'
 import Rentals from '../components/Rentals.vue'
-import Complexes from '../components/Complexes.vue'
+import Property from '../components/Complexes.vue'
 import Footer from '../components/Footer.vue'
 import img1 from "../images/header.png";
 import img2 from "../images/back.png";
