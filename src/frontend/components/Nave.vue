@@ -115,12 +115,13 @@
         <li class="my-auto text-center py-4 lg:py-0 border-b-2">
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
         </li>
+        <div class="text-center w-full mt-1"> <LocaleSelect id="local-switcher"></LocaleSelect></div>
 
-        <a href="/signup" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
+        <a href="/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
           <Button
           style="background-color: #AA1E22 !important;"
           label="تسجيل الدخول"
-          class="mt-3 m-auto h-full relative mb- pl-4 lg:w-[200px]  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
+          class="mt-1 m-auto h-full relative mb- pl-4 lg:w-[200px]  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
           </Button>
 
           </a>

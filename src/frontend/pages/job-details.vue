@@ -31,14 +31,31 @@
     <p class="text-3xl font-bold " >بيانات الوظيفة</p>
     <div class="grid lg:grid-cols-2 gap-4 grid-cols-1 py-[2%]">
        <div>
-        <p class="text-xl py-2 font-semibold text-[#7C7B7B]" ><span class="text-xl font-bold text-black">نوع الوظيفة : </span> {{ job?.name }}</p>
-        <p class="text-xl py-2 font-semibold text-[#7C7B7B]" ><span class="text-xl font-bold text-black"> المكان : </span>{{ job?.shift_type }} </p>
-        <p class="text-xl py-2 font-semibold text-[#7C7B7B]" ><span class="text-xl font-bold text-black"> العدد المطلوب : </span>{{ job?.applied_number }} </p>
-        <p class="text-xl py-2 font-semibold text-[#7C7B7B]" ><span class="text-xl font-bold text-black">  مكان الوظيفة  : </span>{{ job?.shift_place }} </p>
+        <div class="flex py-2">
+          <p class="text-xl font-bold text-black" >نوع الوظيفة : </p>
+          <p  class="text-xl  font-semibold text-[#7C7B7B]" >{{  job?.name }}</p>
+        </div>
+        <div class="flex py-2">
+          <p class="text-xl font-bold text-black" >المكان  : </p>
+          <p  class="text-xl  font-semibold text-[#7C7B7B]" >{{  job?.shift_type }}</p>
+        </div>
+        <div class="flex py-2">
+          <p class="text-xl font-bold text-black" >اسم القسم   : </p>
+          <p  class="text-xl  font-semibold text-[#7C7B7B]" >{{  job?.department?.name }}</p>
+        </div>
+        <div class="flex py-2">
+          <p class="text-xl font-bold text-black" >مكان الوظيفة   : </p>
+          <p  class="text-xl  font-semibold text-[#7C7B7B]" >{{  job?.shift_place }}</p>
+        </div>
+        <div class="flex py-2">
+          <p class="text-xl font-bold text-black" >العدد المطلوب  : </p>
+          <p  class="text-xl  font-semibold text-[#7C7B7B]" >{{  job?.applied_number }}</p>
+        </div>
+
        </div>
        <div>
         <p class="font-bold text-xl" >الوصف :</p>
-        <p class="text-[#AEAEAE] text-lg leading-8" > {{ (job?.description)?.slice(0,470) }} ...</p>
+        <p class="text-[#AEAEAE] text-lg leading-8" > {{ (job?.description)?.slice(0,460) }} ...</p>
        </div>
     </div>
     <div class="text-center py-6">
