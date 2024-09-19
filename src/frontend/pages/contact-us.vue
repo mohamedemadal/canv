@@ -121,7 +121,7 @@
                 </div>
                 <div class="relative ">
                   <InputText  required class="bg-[#f7f5f5] w-full " v-model="contact.name" placeholder="أكتب الإسم الكامل" />
-                  <span class="pi pi-user absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
+                  <span class="pi pi-user absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
 
               </div>
@@ -135,7 +135,7 @@
                 </div>
                 <div class="relative ">
                   <InputText    required class="bg-[#f7f5f5] w-full " v-model="contact.phone" placeholder="أكتب رقم الجوال " />
-                  <span class="pi pi-phone absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
+                  <span class="pi pi-phone absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
               </div>
               <div class=" py-1 relative ">
@@ -145,7 +145,7 @@
                 </div>
                 <div class="relative ">
                   <InputText  type="email" required class="bg-[#303843] w-full " v-model="contact.email" placeholder="أكتب الإسم الكامل" />
-                  <span class="pi pi-envelope absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
+                  <span class="pi pi-envelope absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
 
               </div>

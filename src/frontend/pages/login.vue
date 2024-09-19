@@ -7,10 +7,12 @@
           <div class="bg-white py-6 px-10 shadow-lg rounded-lg">
             <h2 class="font-bold text-3xl text-[#AA1E22] py-3" >سجل حساب جديد</h2>
             <p class="pb-1" style="line-height:29px">أهلا بك فى منصة إيوا للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p>
+            <p class="pb-1 w-full text-center text-[#AA1E22] font-bold " style="line-height:29px">{{ errore }}</p>
+
             <div class=" py-2 relative ">
                   <div class="flex ">
                   <p class="py-2 font-bold text-[#AA1E22]" for="username"> البريد الالكتروني</p>
-                  <span class="my-auto text-[#AA1E22] px-1">*</span>
+                  <span v-if="!parent.login" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
                   <InputText  required class="bg-[#f7f5f5] w-full " v-model="parent.login" placeholder="أكتب البريد الالكتروني" />
@@ -32,7 +34,7 @@
               <div class=" py-2 relative ">
                   <div class="flex ">
                   <p class="py-2 font-bold text-[#AA1E22]" for="username">  كلمة المرور</p>
-                  <span v-if="parent.password" class="my-auto text-[#AA1E22] px-1">*</span>
+                  <span v-if="!parent.password" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
                   <Password  v-model="parent.password" toggleMask   placeholder="  أكتب كلمة المرور "/>
@@ -41,6 +43,7 @@
               <a class="flex  " >
 
                 <Button
+                :loading="loading"
                 @click="authStore.handleLogin(parent)"
                 style="background-color: #AA1E22 !important;"
                 label="تسجيل الدخول"
@@ -81,6 +84,9 @@
 <script setup>
 import { ref, reactive, onMounted,computed } from 'vue';
 const parent=ref({})
-import { useAuthStore } from '../../stores/Auth'
+import { useAuthStore ,load ,error} from '../../stores/Auth'
 const authStore = useAuthStore();
+const loading =load
+const errore=error
+
 </script>

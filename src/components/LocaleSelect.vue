@@ -1,15 +1,15 @@
 <script setup>
-import { computed } from "vue";
+import { computed ,ref,onMounted} from "vue";
 import i18n from "../plugins/i18n";
 
 import { useAppLangStore } from "../stores/AppLangStore";
-
+const langs = ref([]);
 const appLang = useAppLangStore();
-
+const value=ref('')
 const localeBtn = computed({
   get() {
-    if (appLang.appLang == "en") return "ar";
-    else return "en";
+    if (appLang.appLang == "en") return "Ar";
+    else return "En";
   },
   set(val) {
     appLang.appLang = val;
@@ -18,6 +18,8 @@ const localeBtn = computed({
 
 const changeLocale = () => {
   i18n.global.locale.value == "ar" ? executeArCode() : executeEnCode();
+
+  getlang()
 };
 
 const executeArCode = () => {
@@ -30,7 +32,27 @@ const executeArCode = () => {
   appLang.setAppLang(i18n.global.locale.value);
   appLang.setAppRtl(false);
 };
+const getlang=()=>{
+   if(localStorage.getItem('appLang')== 'ar'){
+     langs.value = [
 
+    { name: 'Ar', code: 'ar' },
+   ];
+     value.value='ar'
+   }else{
+    langs.value = [
+    { name: 'En', code: 'en' },
+
+   ];
+     value.value='en'
+   }
+ }
+
+ onMounted(() => {
+
+  getlang()
+
+});
 const executeEnCode = () => {
   document.body.dir = "rtl";
   let k = document.getElementsByClassName("switcher");
@@ -43,10 +65,11 @@ const executeEnCode = () => {
 </script>
 
 <template>
-  <button style="width: 90px !important; text-align: center !important; background-color: red !important;font-weight: bold;font-size: larger;" class="rounded-xl py-3 mx-4" @click="changeLocale">
-    {{ localeBtn }}
+  <Button icon="pi pi-globe" :label="localeBtn" style="  background-color: #AA1E22 !important" class="rounded-xl  text-white " @click="changeLocale">
 
-  </button>
+
+  </Button>
+
 </template>
 
 <style scoped>

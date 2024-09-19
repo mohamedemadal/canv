@@ -1,17 +1,13 @@
 <template>
 
 
-<nav ref="staticDiv"  :class="{ 'fixed': isFixed }" style="direction: ltr;" class="static-div bg-white border-gray-200 ">
+<nav ref="staticDiv"  :class="{ 'fixed': isFixed }" class="static-div bg-white border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
-    <a href="/login" class="flex  items-center space-x-3 rtl:space-x-reverse hidden lg:block">
 
-      <Button
-  style="background-color: #AA1E22 !important;"
-  label="تسجيل الدخول"
-  class="mt-3 h-full relative mb- pl-4 lg:w-[200px]  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
-</Button>
 
-    </a>
+
+
+
     <p class="my-auto text-center py-1 my-1 lg:py-0 lg:hidden">
           <router-link :to="{ name: 'home' }" class="text-lg font-extrabold lg:mx-6 "  >
             <svg class="mx-6" width="81" height="41" viewBox="0 0 81 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,23 +38,7 @@
         </svg>
     </button>
     <div class=" w-full md:block md:w-auto" id="navbar-default" :class="{ hidden: show }">
-      <ul class="flex flex-col font-medium    border border-gray-100 rounded-lg bg-gray-50  rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
-
-        <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
-        </li>
-        <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
-        </li>
-        <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
-        </li>
-        <li class="hidden lg:block my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> من نحن</router-link>
-        </li>
-        <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'home' }" class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;" > الرئيسية</router-link>
-        </li>
+      <ul class="flex flex-col font-medium     border border-gray-100 rounded-lg bg-gray-50  rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
         <li class="m-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'home' }" class="text-lg font-extrabold lg:mx-6 "  >
             <svg class="mx-6" width="81" height="41" viewBox="0 0 81 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,9 +60,41 @@
             </svg>
           </router-link>
         </li>
+        <li class="my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'home' }" class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;" > {{ $t("home") }}</router-link>
+        </li>
+        <li class="hidden lg:block my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("about_us") }} </router-link>
+        </li>
+        <li class="my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
+        </li>
+        <li class="my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
+        </li>
+        <li class="my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
+        </li>
+
+
+
 
       </ul>
     </div>
+    <div class="hidden lg:block">
+      <span><LocaleSelect id="local-switcher"></LocaleSelect></span>
+      <a href="/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
+
+      <Button
+      style="background-color: #AA1E22 !important;"
+      label="تسجيل الدخول"
+      class="mt-3 h-full relative mb- pl-4 lg:w-[200px]  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
+      </Button>
+
+      </a>
+
+    </div>
+
   </div>
 </nav>
 <div class="card flex justify-content-center opacity-0" style="direction: ltr;">
@@ -120,7 +132,7 @@
 <script setup>
 
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-
+  import LocaleSelect from '../../components/LocaleSelect.vue'
 const scrollContainer = ref(null);
 const content = ref(null);
 const staticDiv = ref(null);

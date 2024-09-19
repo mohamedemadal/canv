@@ -64,10 +64,10 @@
           <img src="../images/about.png" class="w-full h-full">
         </div>
         <div class="p-4">
-         <h4 class="text-3xl lg:text-4xl font-bold">لماذا تختار كانف ؟</h4>
+         <h4 class="text-3xl lg:text-4xl font-bold">{{ $t("why_choose_canv") }}</h4>
          <p style="line-height: initial" class="text-xl lg:text-2xl font-medium text-[#AEAEAE]">{{ about_us?.about_us?.slice(0,190) }} ...</p>
           <a href="/about">
-           <Button style=" background-color: #AA1E22 !important;"  label="إقرأ المزيد" class="mt-3 w-[200px] bg focus:ring-0 text-[#AA1E22]"/>
+           <Button style=" background-color: #AA1E22 !important;"  :label='$t("read_more")' class="mt-3 w-[200px] bg focus:ring-0 text-[#AA1E22]"/>
           </a>
         </div>
        </div>

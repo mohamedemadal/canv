@@ -6,9 +6,6 @@
 
   }
 
-body{
-  direction: rtl;
-}
   Button{
     transform: scale(.9) !important;
   }
