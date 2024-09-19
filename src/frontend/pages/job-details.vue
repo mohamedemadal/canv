@@ -27,7 +27,7 @@
     </div>
 <!-- content -->
 <div class="bg-white py-[3%] ">
-  <div class=  "  m-auto shadow-lg  max-w-[1280px] p-[3%]">
+  <div class=  "  m-auto shadow-lg animate__animated animate__backInRight animate__delay-.8s    max-w-[1280px] p-[3%]">
     <p class="text-3xl font-bold " >بيانات الوظيفة</p>
     <div class="grid lg:grid-cols-2 gap-4 grid-cols-1 py-[2%]">
        <div>
