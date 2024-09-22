@@ -83,8 +83,13 @@ export const useAuthStore = defineStore('Auth', {
         //   })
 
         // this.userPermissions = response.data.user.permissions;
-        this.router.push({ name: 'home' })
+        //  window.location.href = 'https://canv.sa/web#cids=1&home='
+        // this.router.push({ name: 'home' })
+        document.cookie = ` XSRF-TOKEN=${response.data.result.session_info.map_box_token};laravel_session=${response.data.result.session_info.map_box_token} ; path=/; SameSite=Strict`;
+        // window.location.href = 'https://canv.sa/web#cids=1&home='
+
       } else {
+
         error.value="Email or password Doesn't match our record"
 
         load.value=false

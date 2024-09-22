@@ -83,7 +83,7 @@
     </div>
     <div class="hidden lg:block">
       <span><LocaleSelect id="local-switcher"></LocaleSelect></span>
-      <a href="/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
+      <a href="https://canv.sa/web/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
 
       <Button
       style="background-color: #AA1E22 !important;"
@@ -117,7 +117,7 @@
         </li>
         <div class="text-center w-full mt-1"> <LocaleSelect id="local-switcher"></LocaleSelect></div>
 
-        <a href="/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
+        <a href="https://canv.sa/web/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
           <Button
           style="background-color: #AA1E22 !important;"
           label="تسجيل الدخول"
