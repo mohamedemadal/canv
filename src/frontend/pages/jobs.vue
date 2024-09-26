@@ -8,8 +8,8 @@
     <div class="z-50 text-white w-full m-auto w-[80%] ">
       <H1 class="font-bold text-5xl text-white z-50"> الوظائف</H1>
      <div class="flex py-8 ">
-      <p class="text-2xl font-semibold ">الرئيسية</p>
-      <svg class="my-auto mx-[1%]" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="text-2xl font-semibold ">{{ $t("home") }}</p>
+      <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -23,15 +23,15 @@
   <div class="bg-slate-50 auctions ">
     <div class=  "  px-[1%] py-[1%] m-auto  max-w-[1280px]">
       <div class=" ">
-         <h3 class="text-center text-3xl  py-4 ">انضم إلى فريق كانف، حيث الابتكار هو أولويتنا</h3>
-         <p class="text-center text-xl  text-[#AEAEAE]"> انضم إلى فريق متخصص ومبتكر وملتزم إلى التميز في كل خطوة. </p>
+         <h3 class="text-center text-3xl  py-4 ">{{ $t("join_team") }}</h3>
+         <p class="text-center text-xl  text-[#AEAEAE]"> {{ $t("join_team_desc") }} </p>
        </div>
 
     </div>
   </div>
   <div class="bg-slate-50 auctions " v-if="!jobs">
     <div class=  " px-[2%] py-[3%] m-auto  max-w-[1295px] h-[40vh] te  flex text-center items-center">
-      <h2 class="text-3xl text-[#BC1E1E] font-bold text-center m-auto">نأسف لعدم وجود وظائف شاغره فالوقت الحالي . 😢
+      <h2 class="text-3xl text-[#BC1E1E] font-bold text-center m-auto">{{ $t("no_open_positions") }}
       </h2>
     </div>
   </div>
@@ -41,7 +41,7 @@
         <h3 class="text-2xl font-bold  "  style="text-wrap: nowrap; overflow: hidden;"> {{ (job?.name).split(' ').slice(0, 5).join(' ')}}</h3>
         <div class="flex justify-between pt-6">
           <div class="flex" >
-            <span class="font-bold " >المكان :</span>
+            <span class="font-bold " >{{ $t("location") }} :</span>
             <p>{{ job?.shift_place }}</p>
           </div>
           <div class="flex" >
@@ -75,6 +75,7 @@ const router = useRouter()
     }
   const fetchdata=()=>{
         axios.post('api/get_our_posted_jobs',{
+          lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           jobs.value=res.data.result.data

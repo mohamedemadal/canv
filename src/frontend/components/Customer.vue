@@ -94,6 +94,7 @@ const onSlideChange = (swiper) => {
 
 const fetchdata=()=>{
         axios.post('api/get_our_posted_jobs',{
+          lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           clients.value=res.data.result.data

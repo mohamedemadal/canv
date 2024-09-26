@@ -42,14 +42,14 @@
      <div class="bg-white">
     <div class=  " py-[3%] m-auto  max-w-[1290px] ">
           <div class="">
-           <h3 class="text-center text-5xl pb-[5%]">عن كانف</h3>
+           <h3 class="text-center text-5xl pb-[5%]">{{ $t("About_CANF") }} </h3>
          </div>
          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 p-4">
           <div>
             <img src="../images/about.png" class="w-full h-full">
           </div>
           <div class="p-4">
-           <h4 class="text-4xl font-bold">لماذا تختار كانف ؟</h4>
+           <h4 class="text-4xl font-bold">{{ $t("why_choose_canv") }}</h4>
            <p style="line-height: initial" class="text-2xl font-medium text-[#AEAEAE]"> {{ about_us?.about_us }} </p>
 
 
@@ -63,8 +63,8 @@
       <div class="bg-white banner ">
     <div class=  "px-2 py-[3%] m-auto  max-w-[1290px]">
           <div class="">
-           <h3 class="text-center text-5xl p-[2%]"> تعرف على فريق كانف</h3>
-           <p class="text-center text-2xl pb-[1%] text-[#AEAEAE]">نعرض لكم إنجازاتنا المهنية بالأرقام ، والتي تظهر المهارات المكتسبة وثقة العديد من العملاء. </p>
+           <h3 class="text-center text-5xl p-[2%]"> {{ $t("meet_the_team") }}</h3>
+           <p class="text-center text-2xl pb-[2%] text-[#AEAEAE]">{{ $t("We_show_you_our_professional") }} </p>
          </div>
 
          <div class="w-full">
@@ -157,11 +157,11 @@
       <div class=  " px-[2%] py-[3%] grid grid-cols-1 gap-4 lg:grid-cols-2 m-auto max-w-[1290px]">
         <div style="display:inline-grid;" class="lg:py-[3%]">
           <div class="py-[1%]" >
-            <h3 class="font-bold text-4xl ">الرؤية</h3>
+            <h3 class="font-bold text-4xl ">{{ $t("vision") }}</h3>
             <p class="text-[#AEAEAE] text-2xl py-2" >{{ about_us?.company_vision }}</p>
           </div>
           <div>
-            <h3 class="font-bold text-4xl ">الرسالة</h3>
+            <h3 class="font-bold text-4xl ">{{ $t("mission") }}</h3>
             <p class="text-[#AEAEAE] text-2xl py-2" > {{ about_us?.company_message }}</p>
           </div>
         </div>
@@ -210,11 +210,13 @@ const navigation = {
 };
   const fetchdata=()=>{
         axios.post('api/get_our_team',{
+          lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           our_team.value=res.data.result.data
         })
         axios.post('api/get_company_banner',{
+          lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
            banner.value = res.data.result.data
@@ -223,6 +225,7 @@ const navigation = {
 
         })
         axios.post('api/about_us',{
+          lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           about_us.value=res.data.result.data

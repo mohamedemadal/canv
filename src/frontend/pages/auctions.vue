@@ -7,15 +7,15 @@
     <img class="w-full absolute h-full" src="../images/breadcrumb.png">
 
     <div class="z-50 text-white w-full m-auto w-[80%] ">
-      <H1 class="font-bold text-5xl text-white z-50"> المزادات</H1>
+      <H1 class="font-bold text-5xl text-white z-50"> {{ $t("auctions") }}</H1>
      <div class="flex py-8 ">
-      <p class="text-2xl font-semibold ">الرئيسية</p>
-      <svg class="my-auto mx-[1%]" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="text-2xl font-semibold ">{{ $t("home") }}</p>
+      <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
 
-      <p class="text-2xl font-semibold ">المزادات </p>
+      <p class="text-2xl font-semibold ">{{ $t("auctions") }} </p>
      </div>
     </div>
    </div>
@@ -27,17 +27,17 @@
       <div class=" py-2 relative sh">
 
           <div class="relative ">
-            <InputText v-model="filter.name"  required class="bg-[#f7f5f5] w-full shadow"  placeholder="أكتب اسم المزاد" />
-            <span class="pi pi-search absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
+            <InputText v-model="filter.name"  required class="bg-[#f7f5f5] w-full shadow"  :placeholder='$t("enter_auction_name")' />
+            <span class="pi pi-search absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
           </div>
      </div>
      <div class=" py-1 relative my-auto ">
       <div class="relative ">
-        <Dropdown  style="height: 100% !important;" filter v-model="filter.city_id_filter"  option-value="city_id" :options="cityes" optionLabel="name" placeholder=' إختر المدينة ' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+        <Dropdown  style="height: 100% !important;" filter v-model="filter.city_id_filter"  option-value="city_id" :options="cityes" optionLabel="name" :placeholder='$t("select_city")' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
       </div>
     </div>
     <div class="flex items-center text-center">
-      <Button @click="fetchdata" style="background-color:#AA1E22 ;"   label=" بحث  " class="mt-3 bg-[#AA1E22] w-[50%]  m-auto "/>
+      <Button @click="fetchdata" style="background-color:#AA1E22 ;"   :label='$t("search")' class="mt-3 bg-[#AA1E22] w-[50%]  m-auto "/>
 
     </div>
 
@@ -46,15 +46,15 @@
    <!-- auctions -->
   <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1290px]">
       <div class="flex justify-between">
-        <h2 class="text-4xl  font-bold">المزادات</h2>
+        <h2 class="text-4xl  font-bold">{{ $t("auctions") }}</h2>
 
       </div>
 
       <div class=" grid lg:grid-cols-4 w-full lg:w-fit grid-cols-2 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
-      <Button @click="getauction('all')"  :style=" active == 'all' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" كل المزادات " class="mt-3 bg-[#AA1E22]  my-auto "/>
-      <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" المزادات الحالية" class="mt-3 bg-[#AA1E22]   "/>
-      <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" المزادات القادمة" class="mt-3 bg-[#AA1E22]   "/>
-      <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="المزادات المنتهية " class="mt-3 bg-[#AA1E22]   "/>
+      <Button @click="getauction('all')"  :style=" active == 'all' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("all_Auctions")' class="mt-3 bg-[#AA1E22]  my-auto "/>
+      <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"  :label='$t("current_auctions")' class="mt-3 bg-[#AA1E22]   "/>
+      <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("upcoming_auctions")' class="mt-3 bg-[#AA1E22]   "/>
+      <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("ended_auctions")' class="mt-3 bg-[#AA1E22]   "/>
      </div>
 
      <div class="grid  grid-cols-1 lg:grid-cols-3 gap-3">
@@ -123,12 +123,12 @@
 
               <p class="text-sm font-bold text-center " v-if="auction.status == 'running'">ينتهي بعد :</p>
               <p class="text-sm font-bold text-center " v-if="auction.status == 'comming'">قادم بعد :</p>
-              <p class="text-sm font-bold text-center " v-if="auction.status == 'finished'"> منتهي :</p>
+              <p class="text-sm font-bold text-center " v-if="auction.status == 'finished'"> {{ $t("ended") }} :</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status != 'finished'">{{ auction.day }}</h4>
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
-              <p class="text-xl font-medium text-[#AA1E22] ">يوم</p>
+              <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("day") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
@@ -136,41 +136,41 @@
               <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'comming' && auction.start_time > currentHour">{{   auction.start_time - currentHour}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status == 'running' && auction.end_time < currentHour ">{{   currentHour  - auction.end_time}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'running' && auction.end_time > currentHour">{{   auction.end_time - currentHour}}</h4>
-              <p class="text-xl font-medium text-[#AA1E22] ">ساعة</p>
+              <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("hour") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.second > currentMinutes && auction.status != 'finished'">{{    59-(auction.second - currentMinutes)}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.second < currentMinutes && auction.status != 'finished'">{{   59-( currentMinutes- auction.second)}}</h4>
 
-              <p class="text-xl font-medium text-[#AA1E22] ">دقيقة</p>
+              <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("minute") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status != 'finished'">{{  59-currentSeconds}}</h4>
-              <p class="text-xl font-medium text-[#AA1E22] ">ثانية</p>
+              <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("second") }}</p>
             </div>
           </div>
           <div class="p-[2%] grid grid-cols-3 gap-1">
            <div class="flex border-l-2">
-            <p class="text-xs font-bold ">مدة المزاد :</p>
-            <p class="text-xs px-1" >{{ auction.duration }} يوم</p>
+            <p class="text-xs font-bold "> {{ $t("auction_duration") }} :</p>
+            <p class="text-xs px-1" >{{ auction.duration }} {{ $t("day") }} </p>
 
            </div>
            <div class="flex border-l-2">
-            <p class="text-xs font-bold"> وقت المزاد :</p>
+            <p class="text-xs font-bold"> {{ $t("auction_time") }}  :</p>
 
-            <p class="text-xs px-1" v-if=" auction.start_time > auction.end_time"> {{ auction.start_time - auction.end_time  }} ساعة</p>
-            <p class="text-xs px-1" v-if=" auction.start_time < auction.end_time"> {{ auction.end_time - auction.start_time   }} ساعة</p>
+            <p class="text-xs px-1" v-if=" auction.start_time > auction.end_time"> {{ auction.start_time - auction.end_time  }} {{ $t("hour") }}</p>
+            <p class="text-xs px-1" v-if=" auction.start_time < auction.end_time"> {{ auction.end_time - auction.start_time   }} {{ $t("hour") }}</p>
            </div>
            <div class="flex">
-            <p class="text-xs font-bold">عدد المنتجات :</p>
+            <p class="text-xs font-bold">{{ $t("product_count") }}  :</p>
             <p class="text-xs px-1"> {{ auction.assets_number }}</p>
            </div>
           </div>
           <div>
             <!-- @click="details(auction.auction_id)" -->
-             <Button @click="details(auction.auction_id)" style=" background-color: #AA1E22 !important;padding: 0px !important;margin-bottom: 2% !important;"  label="إقرأ المزيد" class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
+             <Button @click="details(auction.auction_id)" style=" background-color: #AA1E22 !important;padding: 0px !important;margin-bottom: 2% !important;"  :label='$t("read_more")' class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
           </div>
         </div>
       <!-- test -->
@@ -268,6 +268,7 @@ axios
     auctions_filter:e,
     page_number:"1",
     page_scope:"9",
+    lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
     console.log(res.data.result.data)
@@ -308,6 +309,7 @@ watch(current_page, (newPage, oldPage) => {
     city_id_filter:50,
     page_number:newPage+1,
     page_scope:"9",
+    lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
     console.log(res.data.result.data)
@@ -353,6 +355,7 @@ axios
     name_like_filter:filter.value.name,
     page_number:"1",
     page_scope:"9",
+    lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
     console.log(res.data.result.data)
@@ -378,6 +381,7 @@ axios
 
   })
   axios.post('api/get_ksa_cities',{
+    lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           cityes.value=res.data.result.data

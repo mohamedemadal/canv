@@ -68,7 +68,7 @@
         <Button style=" background-color: #AA1E22 !important;"  label=" فروع كانف" class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
         <div v-for="bran in branchs" class="">
           <h5 class="text-base  pt-2 font-semibold text-[#ffff]">{{ bran?.name }}</h5>
-          <p class="text-sm py-2 font-normal text-[#ffff]"> {{ bran?.address.country +', '+ bran?.address.city+' , '+ bran?.address.street   }} </p>
+          <p class="text-sm py-2 font-normal text-[#ffff]"> {{ bran?.address.country +' - '+ bran?.address.city+' - '+ bran?.address.street   }} </p>
         </div>
 
 
@@ -100,17 +100,23 @@ const about_us=ref('')
 
 const fetchdata=()=>{
       axios.post('api/get_our_branchs',{
+        lang:localStorage.getItem('appLang'),
+
       })
       .then((res) => {
         branchs.value=res.data.result.data
       })
 
       axios.post('api/get_company_main_data',{
+        lang:localStorage.getItem('appLang'),
+
         })
         .then((res) => {
           company_details.value=res.data.result.data
         })
         axios.post('api/about_us',{
+          lang:localStorage.getItem('appLang'),
+
         })
         .then((res) => {
           about_us.value=res.data.result.data

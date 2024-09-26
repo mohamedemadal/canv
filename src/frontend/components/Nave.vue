@@ -1,7 +1,7 @@
 <template>
 
 
-<nav ref="staticDiv"  :class="{ 'fixed': isFixed }" class="static-div bg-white border-gray-200 ">
+<nav ref="staticDiv"  :class="{ 'fixed': isFixed }" class="static-div bg-white border-gray-200  w-full " style="z-index: 100;">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
 
 
@@ -67,13 +67,13 @@
           <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("about_us") }} </router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
+          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
+          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("auctions") }}</router-link>
         </li>
 
 
@@ -87,7 +87,7 @@
 
       <Button
       style="background-color: #AA1E22 !important;"
-      label="تسجيل الدخول"
+      :label='$t("login")'
       class="mt-3 h-full relative mb- pl-4 lg:w-[200px]  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
       </Button>
 
@@ -113,14 +113,14 @@
           <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
         </li> -->
         <li class="my-auto text-center py-4 lg:py-0 border-b-2">
-          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  تواصل معنا</router-link>
+          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>
         </li>
         <div class="text-center w-full mt-1"> <LocaleSelect id="local-switcher"></LocaleSelect></div>
 
         <a href="https://canv.sa/web/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
           <Button
           style="background-color: #AA1E22 !important;"
-          label="تسجيل الدخول"
+          :label='$t("login")'
           class="mt-1 m-auto h-full relative mb- pl-4 lg:w-[200px]  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
           </Button>
 
@@ -137,7 +137,6 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 const scrollContainer = ref(null);
 const content = ref(null);
 const staticDiv = ref(null);
-const isFixed = ref(false);
 const visible = ref(false);
 let observer;
 const show=ref(true)
@@ -145,24 +144,22 @@ const opennave=()=>{
   show.value=!(show.value)
 }
 
-const handleIntersect = (entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      isFixed.value = false;
-    } else {
-      isFixed.value = true;
-    }
-  });
+const isFixed = ref(false);
+
+const handleScroll = () => {
+  // Set isFixed to true if scroll position is greater than 50px
+  isFixed.value = window.scrollY > 100;
 };
 
 onMounted(() => {
-  observer = new IntersectionObserver(handleIntersect, {
-    root: scrollContainer.value,
-    threshold: 1.0,
-  });
-
-
+  window.addEventListener('scroll', handleScroll);
 });
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+
+
 
 onBeforeUnmount(() => {
   if (observer) {

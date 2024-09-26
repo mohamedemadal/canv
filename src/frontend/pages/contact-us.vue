@@ -7,15 +7,15 @@
     <img class="w-full absolute h-full" src="../images/breadcrumb.png">
 
     <div class="z-50 text-white w-full m-auto w-[80%] ">
-      <H1 class="font-bold text-5xl text-white z-50"> تواصل معنا</H1>
+      <H1 class="font-bold text-5xl text-white z-50">{{ $t("Contact_us") }}</H1>
      <div class="flex py-8 ">
-      <p class="text-2xl font-semibold ">الرئيسية</p>
-      <svg class="my-auto mx-[1%]" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="text-2xl font-semibold "> {{ $t("home") }}</p>
+      <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
 
-      <p class="text-2xl font-semibold "> تواصل معنا</p>
+      <p class="text-2xl font-semibold "> {{ $t("Contact_us") }}</p>
      </div>
     </div>
    </div>
@@ -28,9 +28,10 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5003 2.44186C10.4246 2.44186 6.54356 4.88978 4.93241 8.69582C3.45499 12.1859 4.19678 15.0985 5.97254 17.8106C7.50704 20.1542 9.7422 22.2463 11.9727 24.334C12.4105 24.7438 12.8481 25.1534 13.2802 25.5647C13.6069 25.8733 14.0442 26.0465 14.5003 26.0465C14.9568 26.0465 15.3946 25.8729 15.7214 25.5637C16.1268 25.18 16.537 24.7975 16.9476 24.4146C19.2075 22.307 21.4793 20.1884 23.0304 17.8142C24.8046 15.0986 25.5436 12.1814 24.0681 8.69582C22.4569 4.88978 18.5759 2.44186 14.5003 2.44186ZM2.63734 7.75819C4.64323 3.01965 9.44472 0 14.5003 0C19.5558 0 24.3573 3.01965 26.3632 7.75819C28.2283 12.1642 27.2166 15.9274 25.1223 19.1331C23.393 21.7801 20.8615 24.1367 18.6099 26.2329C18.2111 26.6042 17.821 26.9673 17.4458 27.3223C16.6548 28.0708 15.5985 28.4884 14.5003 28.4884C13.402 28.4884 12.3457 28.0708 11.5548 27.3224L11.5521 27.3198C11.1554 26.9422 10.7417 26.5558 10.3184 26.1602C8.09056 24.0786 5.59349 21.7454 3.88207 19.1316C1.78512 15.929 0.76992 12.1696 2.63734 7.75819ZM14.5 9.76744C12.8984 9.76744 11.6001 11.0429 11.6001 12.6163C11.6001 14.1896 12.8984 15.4651 14.5 15.4651C16.1016 15.4651 17.3999 14.1896 17.3999 12.6163C17.3999 11.0429 16.1016 9.76744 14.5 9.76744ZM9.11451 12.6163C9.11451 9.69431 11.5257 7.32558 14.5 7.32558C17.4743 7.32558 19.8855 9.69431 19.8855 12.6163C19.8855 15.5383 17.4743 17.907 14.5 17.907C11.5257 17.907 9.11451 15.5383 9.11451 12.6163ZM4.9029 24.6399C5.46487 25.0271 5.60094 25.7885 5.20683 26.3406C4.0363 27.9803 3.25024 29.1313 2.82168 30.0268C2.39863 30.9109 2.46032 31.2666 2.558 31.4725C2.59645 31.5535 2.64174 31.6323 2.69372 31.7081C2.85717 31.9466 3.23728 32.232 4.50268 32.3949C5.75182 32.5556 7.49891 32.5581 9.99645 32.5581H19.0036C21.5011 32.5581 23.2482 32.5556 24.4973 32.3949C25.7627 32.232 26.1428 31.9466 26.3063 31.7081C26.3582 31.6323 26.4036 31.5535 26.442 31.4725C26.5397 31.2666 26.6014 30.9109 26.1783 30.0268C25.7498 29.1313 24.9637 27.9803 23.7932 26.3406C23.3991 25.7885 23.5351 25.0271 24.0971 24.6399C24.6591 24.2528 25.4341 24.3864 25.8282 24.9385C26.9685 26.5358 27.8905 27.8653 28.4278 28.9879C28.9705 30.1221 29.2557 31.3222 28.6949 32.5041C28.6013 32.7014 28.4919 32.8912 28.3681 33.072C27.5795 34.2225 26.2533 34.6316 24.8201 34.816C23.39 35.0001 21.4787 35 19.1 35H9.89995C7.5213 35 5.60996 35.0001 4.17985 34.816C2.74672 34.6316 1.42054 34.2225 0.63194 33.072C0.508063 32.8912 0.398734 32.7014 0.305108 32.5041C-0.255653 31.3222 0.029507 30.1221 0.572244 28.9879C1.10947 27.8653 2.0315 26.5358 3.17179 24.9385C3.5659 24.3864 4.34094 24.2528 4.9029 24.6399Z" fill="#AA1E22"/>
         </svg>
         </div>
-        <h3 class="font-bold text-lg text-center py-2">الفروع</h3>
-        <div class=" py-1">
-          <p v-for="branch in branches"  class="py-1 text-base text-center	"><span class="font-bold text-base ">{{ branch?.name }} : </span>  {{ branch?.address.city +' - '+branch?.address.street }} </p>
+        <h3 class="font-bold text-lg text-center py-2">{{ $t("Branches") }}</h3>
+        <div v-for="branch in branches"  class=" py-1 flex">
+          <p class="font-bold text-base p-1  " style="text-wrap: nowrap;">{{ branch?.name }} : </p>
+          <p  class="py-1 text-base text-center	my-auto">  {{ branch?.address.city +' - '+branch?.address.street }} </p>
 
         </div>
 
@@ -41,7 +42,7 @@
           <path fill-rule="evenodd" clip-rule="evenodd" d="M18.3878 2.0957C15.7873 2.03036 13.2127 2.03036 10.6122 2.09569C8.45855 2.1498 6.95365 2.19017 5.79198 2.39248C4.67578 2.58687 3.97982 2.91547 3.40755 3.48991C3.17294 3.72541 2.98022 3.97893 2.82147 4.26992L10.8349 8.81037C12.5281 9.76974 13.5555 10.1397 14.5 10.1397C15.4445 10.1397 16.4719 9.76974 18.1651 8.81037L26.1785 4.26992C26.0198 3.97894 25.8271 3.72543 25.5925 3.48993C25.0202 2.91549 24.3242 2.58689 23.208 2.3925C22.0464 2.19019 20.5415 2.14981 18.3878 2.0957ZM26.7461 6.2738L19.1625 10.5707C17.4181 11.5591 16.0006 12.163 14.5 12.163C12.9994 12.163 11.5819 11.5591 9.83747 10.5707L2.25392 6.2738C2.11436 7.34182 2.08352 8.69174 2.04429 10.5314C2.01624 11.8465 2.01624 13.1538 2.04429 14.469C2.08904 16.5671 2.12287 18.0283 2.31952 19.1607C2.5078 20.2449 2.8313 20.932 3.40756 21.5105C3.97982 22.0849 4.67578 22.4135 5.79199 22.6079C6.95366 22.8102 8.45856 22.8506 10.6122 22.9047C13.2127 22.97 15.7873 22.97 18.3878 22.9047C20.5415 22.8506 22.0464 22.8102 23.208 22.6079C24.3242 22.4135 25.0202 22.0849 25.5925 21.5105C26.1687 20.932 26.4922 20.2449 26.6805 19.1607C26.8771 18.0283 26.911 16.5671 26.9557 14.469C26.9838 13.1538 26.9838 11.8465 26.9557 10.5314C26.9165 8.69175 26.8856 7.34182 26.7461 6.2738ZM10.5614 0.0730731C13.1957 0.00688916 15.8043 0.00689246 18.4386 0.073082L18.5171 0.0750522C20.5738 0.126698 22.2288 0.168255 23.5552 0.399245C24.9438 0.641082 26.0724 1.10492 27.0258 2.06199C27.9753 3.01505 28.4367 4.12742 28.6739 5.49354C28.8998 6.79432 28.9342 8.40892 28.9768 10.409L28.9785 10.4883C29.0072 11.8322 29.0072 13.1682 28.9785 14.5121L28.9768 14.5913C28.9342 16.5915 28.8998 18.2061 28.6739 19.5068C28.4367 20.873 27.9753 21.9853 27.0258 22.9384C26.0724 23.8955 24.9438 24.3593 23.5552 24.6011C22.2288 24.8321 20.5739 24.8737 18.5172 24.9253L18.4386 24.9273C15.8043 24.9935 13.1957 24.9935 10.5614 24.9273L10.4829 24.9253C8.42614 24.8737 6.77118 24.8321 5.44485 24.6011C4.05623 24.3593 2.92763 23.8955 1.97419 22.9384C1.02474 21.9853 0.563334 20.873 0.326099 19.5068C0.100209 18.2061 0.0658042 16.5915 0.0231842 14.5914L0.0214955 14.5121C-0.00716458 13.1682 -0.00716514 11.8321 0.0214936 10.4882L0.0231821 10.409C0.0658006 8.4089 0.100204 6.7943 0.326093 5.49352C0.563328 4.1274 1.02473 3.01503 1.97418 2.06197C2.92763 1.1049 4.05622 0.64106 5.44485 0.399226C6.77119 0.168239 8.42618 0.126685 10.4829 0.0750433L10.5614 0.0730731Z" fill="#AA1E22"/>
           </svg>
         </div>
-        <h3 class="font-bold text-lg text-center py-2">البريد الإلكترونى</h3>
+        <h3 class="font-bold text-lg text-center py-2">{{ $t("Your_email_address") }} </h3>
         <div class=" py-1">
           <p   class="py-1 text-base text-center">{{ company_details?.email }}</p>
 
@@ -55,7 +56,7 @@
           </svg>
 
         </div>
-        <h3 class="font-bold text-lg text-center py-2"> رقم الجوال</h3>
+        <h3 class="font-bold text-lg text-center py-2"> {{ $t("Mobile_number") }} </h3>
         <div class=" py-1">
           <p   class="py-1 text-base text-center">{{ company_details?.phone }}</p>
 
@@ -70,7 +71,7 @@
 
 
         </div>
-        <h3 class="font-bold text-lg text-center py-2">مواقع التواصل الإجتماعى</h3>
+        <h3 class="font-bold text-lg text-center py-2">{{ $t("Social_networking_sites") }} </h3>
         <div class="flex justify-between py-1 text-center m-auto w-[70%]">
 
           <a  target="_blank" :href="company_details?.social_media_accounts?.instagram" >
@@ -112,15 +113,15 @@
      </div>
 
      <form class="bg-white py-6 px-10 shadow-lg rounded-lg">
-            <h2 class="font-bold text-3xl text-[#AA1E22] py-3" >تواصل معنا</h2>
-            <p class="pb-1" style="line-height:29px">ابق على تواصل مع فريق كانف، شاركنا أرائك من خلال ملء الفورم أدناه</p>
+            <h2 class="font-bold text-3xl text-[#AA1E22] py-3" >{{ $t("Contact_us") }}</h2>
+            <p class="pb-1" style="line-height:29px">{{ $t("Stay_in_touch") }} </p>
             <div class=" py-1 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username">الاسم كامل</p>
+                  <p class="py-2 font-bold text-[#303843]" for="username"> {{ $t("full_name") }}</p>
                   <span v-if="!contact.name"  class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <InputText  required class="bg-[#f7f5f5] w-full " v-model="contact.name" placeholder="أكتب الإسم الكامل" />
+                  <InputText  required class="bg-[#f7f5f5] w-full " v-model="contact.name" :placeholder='$t("full_name")'  />
                   <span class="pi pi-user absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
 
@@ -130,43 +131,43 @@
 
               <div class=" py-1 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username"> رقم الجوال</p>
+                  <p class="py-2 font-bold text-[#303843]" for="username"> {{ $t("Mobile_number") }} </p>
                   <span  v-if="!contact.phone" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <InputText    required class="bg-[#f7f5f5] w-full " v-model="contact.phone" placeholder="أكتب رقم الجوال " />
+                  <InputText    required class="bg-[#f7f5f5] w-full " v-model="contact.phone" :placeholder='$t("Mobile_number")' />
                   <span class="pi pi-phone absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
               </div>
               <div class=" py-1 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username"> البريد الإلكترونى</p>
+                  <p class="py-2 font-bold text-[#303843]" for="username">  {{ $t("Your_email_address") }}</p>
                   <span v-if="!contact.email" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <InputText  type="email" required class="bg-[#303843] w-full " v-model="contact.email" placeholder="أكتب الإسم الكامل" />
+                  <InputText  type="email" required class="bg-[#303843] w-full " v-model="contact.email" :placeholder='$t("Your_email_address")'  />
                   <span class="pi pi-envelope absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
 
               </div>
               <div class=" py-1 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username"> إختار القسم</p>
+                  <p class="py-2 font-bold text-[#303843]" for="username">  {{ $t("Select_the_section") }}</p>
                   <span v-if="!contact.department_id" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown   v-model="contact.department_id"  option-value="department_id" :options="departments" optionLabel="name" placeholder=' إختار القسم ' class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown   v-model="contact.department_id"  option-value="department_id" :options="departments" optionLabel="name" :placeholder='$t("Select_the_section")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
               <div class=" py-1 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username">الرسالة </p>
+                  <p class="py-2 font-bold text-[#303843]" for="username">{{ $t("mission") }} </p>
                   <span v-if="!contact.message" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div  class=" area ">
 
-                  <Textarea v-model="contact.message"  variant="filled" rows="4" cols="30"  placeholder="أكتب الرسالة"/>
+                  <Textarea v-model="contact.message"  variant="filled" rows="4" cols="30" :placeholder='$t("mission")' />
 
                 </div>
               </div>
@@ -175,7 +176,7 @@
                 <Button
                 @click="contact_us"
                 style="background-color: #AA1E22 !important;"
-                label=" ارسال"
+                :label='$t("send")'
                 class="mt-3 h-full relative mb- pl-4 lg:w-[50%] mx-auto  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
                 </Button>
 
@@ -214,16 +215,19 @@
   }
   const fetchdata=()=>{
        axios.post('api/get_our_branchs',{
+        lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           branches.value=res.data.result.data
         })
         axios.post('api/get_company_main_data',{
+          lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           company_details.value=res.data.result.data
         })
         axios.post('api/get_company_departments',{
+          lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           departments.value=res.data.result.data

@@ -2,20 +2,20 @@
     <div class="bg-slate-50 auctions">
   <div class=  " px-[2%] py-[3%] m-auto  max-w-[1350px]">
       <div class=" ">
-         <h3 class="text-center text-3xl lg:text-5xl py-4 hidden lg:block ">تعرف أكثر على خدمات كانف  </h3>
+         <h3 class="text-center text-3xl lg:text-5xl py-4 hidden lg:block ">{{ $t("Learn_more_about_CANF_services") }} </h3>
          <!-- <p class="text-center text-xl lg:text-2xl px-1 pb-[5%] text-[#AEAEAE]"> لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p> -->
        </div>
 
 
         <div class="flex justify-between">
-          <h2 class="text-3xl lg:text-4xl  font-bold">المزادات</h2>
-          <a href="/auctions" class="text-xl lg:text-2xl font-bold text-[#ef5258]">مشاهدة المزيد</a>
+          <h2 class="text-3xl lg:text-4xl  font-bold">{{ $t("auctions") }}</h2>
+          <a href="/auctions" class="text-xl lg:text-2xl font-bold text-[#ef5258]">{{ $t("Watch_more") }} </a>
         </div>
 
        <div class=" grid lg:grid-cols-3 w-full lg:w-fit grid-cols-3 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
-        <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="  الحاليه" class="mt-3 bg-[#AA1E22]   "/>
-        <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" القادمة" class="mt-3 bg-[#AA1E22]   "/>
-        <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="المنتهية " class="mt-3 bg-[#AA1E22]   "/>
+        <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("Current")' class="mt-3 bg-[#AA1E22]   "/>
+        <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("Upcoming")' class="mt-3 bg-[#AA1E22]   "/>
+        <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"  :label='$t("Ending")'  class="mt-3 bg-[#AA1E22]   "/>
        </div>
         <div v-if="allauctions.length >= 1" class=" mt-3">
 
@@ -124,12 +124,12 @@
 
               <p class="text-sm font-bold text-center " v-if="auction.status == 'running'">ينتهي بعد :</p>
               <p class="text-sm font-bold text-center " v-if="auction.status == 'comming'">قادم بعد :</p>
-              <p class="text-sm font-bold text-center " v-if="auction.status == 'finished'"> منتهي :</p>
+              <p class="text-sm font-bold text-center " v-if="auction.status == 'finished'"> {{ $t("ended") }} :</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status != 'finished'">{{ auction.day }}</h4>
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
-              <p class="text-xl font-medium text-[#AA1E22] ">يوم</p>
+              <p class="text-lg  font-medium text-[#AA1E22] ">{{ $t("day") }} </p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
@@ -137,35 +137,35 @@
               <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'comming' && auction.start_time > currentHour">{{   auction.start_time - currentHour}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status == 'running' && auction.end_time < currentHour ">{{   currentHour  - auction.end_time}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'running' && auction.end_time > currentHour">{{   auction.end_time - currentHour}}</h4>
-              <p class="text-xl font-medium text-[#AA1E22] ">ساعة</p>
+              <p class="text-lg  font-medium text-[#AA1E22] ">{{ $t("hour") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.second > currentMinutes && auction.status != 'finished'">{{    59-(auction.second - currentMinutes)}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.second < currentMinutes && auction.status != 'finished'">{{   59-( currentMinutes- auction.second)}}</h4>
 
-              <p class="text-xl font-medium text-[#AA1E22] ">دقيقة</p>
+              <p class="text-lg  font-medium text-[#AA1E22] ">{{ $t("minute") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
               <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status != 'finished'">{{  59-currentSeconds}}</h4>
-              <p class="text-xl font-medium text-[#AA1E22] ">ثانية</p>
+              <p class="text-lg font-medium text-[#AA1E22] ">{{ $t("second") }}</p>
             </div>
           </div>
           <div class="p-[2%] grid grid-cols-3 gap-1">
-           <div class="flex border-l-2">
-            <p class="text-xs font-bold ">مدة المزاد :</p>
-            <p class="text-xs px-1" >{{ auction.duration }} يوم</p>
+           <div class="flex ">
+            <p class="text-xs font-bold "> {{ $t("auction_duration") }} :</p>
+            <p class="text-xs px-1" >{{ auction.duration }} {{ $t("day") }}</p>
 
            </div>
-           <div class="flex border-l-2">
-            <p class="text-xs font-bold"> وقت المزاد :</p>
+           <div class="flex ">
+            <p class="text-xs font-bold"> {{ $t("auction_time") }}  :</p>
 
-            <p class="text-xs px-1" v-if=" auction.start_time > auction.end_time"> {{ auction.start_time - auction.end_time  }} ساعة</p>
-            <p class="text-xs px-1" v-if=" auction.start_time < auction.end_time"> {{ auction.end_time - auction.start_time   }} ساعة</p>
+            <p class="text-xs px-1" v-if=" auction.start_time > auction.end_time"> {{ auction.start_time - auction.end_time  }} {{ $t("hour") }}</p>
+            <p class="text-xs px-1" v-if=" auction.start_time < auction.end_time"> {{ auction.end_time - auction.start_time   }} {{ $t("hour") }}</p>
            </div>
            <div class="flex">
-            <p class="text-xs font-bold">عدد المنتجات :</p>
+            <p class="text-xs font-bold">{{ $t("product_count") }}  :</p>
             <p class="text-xs px-1"> {{ auction.assets_number }}</p>
            </div>
           </div>
@@ -259,6 +259,7 @@ axios
     auctions_filter:e,
     page_number:"1",
     page_scope:"7",
+    lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
     console.log(res.data.result.data)
@@ -301,6 +302,7 @@ axios
     auctions_filter:"comming",
     page_number:"1",
     page_scope:"7",
+    lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
     console.log(res.data.result.data)
