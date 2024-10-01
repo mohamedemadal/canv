@@ -56,16 +56,16 @@
         </div>
       </div>
       <div>
-        <Button style=" background-color: #AA1E22 !important;"  label="لينكات سريعة" class=" w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
-        <div class="pt-4 px-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]">الرئيسية</a></div>
-        <div class="px-1 py-1"><a href="/about" class="text-base py-2 pt-4 text-[#ffff]">من نحن</a></div>
-        <div class="px-1 py-1"><a href="/auctions" class="text-base py-2 pt-4 text-[#ffff]"> المزادات</a></div>
+        <Button style=" background-color: #AA1E22 !important;"  :label='$t("Quick_links")' class=" w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
+        <div class="pt-4 px-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]">{{ $t("home") }}</a></div>
+        <div class="px-1 py-1"><a href="/about" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("about us") }}</a></div>
+        <div class="px-1 py-1"><a href="/auctions" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("auctions us") }}</a></div>
         <!-- <div class="px-1 py-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]"> الإيجارات</a></div>
         <div class="px-1 py-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]"> الأملاك</a></div> -->
-        <div class="px-1 py-1"><a href="/contact-us" class="text-base py-2 pt-4 text-[#ffff]"> تواصل معنا</a></div>
+        <div class="px-1 py-1"><a href="/contact-us" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("Contact_us") }} </a></div>
       </div>
       <div>
-        <Button style=" background-color: #AA1E22 !important;"  label=" فروع كانف" class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
+        <Button style=" background-color: #AA1E22 !important;"  :label='$t("Branches")'  class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
         <div v-for="bran in branchs" class="">
           <h5 class="text-base  pt-2 font-semibold text-[#ffff]">{{ bran?.name }}</h5>
           <p class="text-sm py-2 font-normal text-[#ffff]"> {{ bran?.address.country +' - '+ bran?.address.city+' - '+ bran?.address.street   }} </p>
@@ -74,13 +74,13 @@
 
       </div>
       <div>
-        <Button style=" background-color: #AA1E22 !important;"  label="فروع كانف" class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
+        <Button style=" background-color: #AA1E22 !important;"  :label='$t("Branches")' class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
         <div class="">
-          <h5 class="text-base  pt-2 font-semibold text-[#ffff]">رقم الجوال</h5>
+          <h5 class="text-base  pt-2 font-semibold text-[#ffff]"> {{ $t("Mobile_number") }}</h5>
           <p class="text-sm py-2 font-normal text-[#ffff]"> {{ company_details?.phone }}</p>
         </div>
         <div class="">
-          <h5 class="text-base font-semibold  pt-2 text-[#ffff]">البريد الإليكتروني</h5>
+          <h5 class="text-base font-semibold  pt-2 text-[#ffff]"> {{ $t("Your_email_address") }}</h5>
           <p class="text-sm py-2 font-normal text-[#ffff]"> {{ company_details?.email }}</p>
         </div>
 

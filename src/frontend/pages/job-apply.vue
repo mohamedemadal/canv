@@ -15,7 +15,7 @@
     <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
-    <p class="text-2xl font-semibold ">الوظائف</p>
+    <p class="text-2xl font-semibold ">{{ $t("jobs") }}</p>
     <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -29,6 +29,7 @@
 <div class="bg-white py-[3%] ">
   <div class=  "  m-auto shadow-lg animate__animated animate__backInRight animate__delay-.8s    max-w-[1280px] p-[3%]">
     <p class="text-3xl font-bold text-center " >تقديم على وظيفة مصمم جرافيك </p>
+
     <form @submit.prevent="submitForm" class="grid lg:grid-cols-2 gap-6 grid-cols-1 py-[2%]">
       <div v-if="showInput.includes('name')" class=" py-1 relative ">
                   <div class="flex ">
@@ -62,18 +63,18 @@
                   <span class="pi pi-phone absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
                 </div>
             </div>
-
-              <div v-if="showInput.includes('nationality_id')" class=" py-1 relative ">
+            <div v-if="showInput.includes('nationality_id')" class=" py-1 relative ">
                   <div class="flex ">
                   <p class="py-2 font-bold text-[#303843]" for="username">  {{ $t("nationality_id") }}</p>
                   <span v-if="!job.nationality_id" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <InputNumber  :required="requiredArray.nationality_id"  v-model="job.nationality_id" inputId="withoutgrouping" :useGrouping="false" class="bg-[#f7f5f5] w-full "  />
-                  <span class="pi pi-globe absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
+                  <Dropdown filter :invalid="requiredArray.nationality_id" v-model="job.nationality_id" option-value="country_id" :options="inputs.nationalities" optionLabel="name" :placeholder='$t("nationality_id")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
+
+
 
               <div v-if="showInput.includes('city_id')" class=" py-1 relative ">
                   <div class="flex ">
@@ -81,7 +82,7 @@
                   <span v-if="!job.city_id" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown  :required="requiredArray.city_id" v-model="job.city_id"  option-value="department_id" :options="departments" optionLabel="name" :placeholder='$t("city_id")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown  :invalid="requiredArray.city_id" v-model="job.city_id"  option-value="department_id" :options="departments" optionLabel="name" :placeholder='$t("city_id")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
@@ -91,7 +92,7 @@
                   <span v-if="!job.gender" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown :required="requiredArray.gender"  v-model="job.gender"  option-value="id" :options="inputs.genders" optionLabel="name" :placeholder='$t("gender")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown @update:model-value="pushfiled($event)" :invalid="requiredArray.gender" option-value="id"  v-model="job.gender"   :options="inputs.genders" optionLabel="name" :placeholder='$t("gender")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
@@ -111,7 +112,7 @@
                   <span v-if="!job.are_you_on_job" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown :required="requiredArray.are_you_on_job"  v-model="job.are_you_on_job"  option-value="id" :options="inputs.are_you_on_job" optionLabel="name" :placeholder='$t("are_you_on_job")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown :invalid="requiredArray.are_you_on_job"  v-model="job.are_you_on_job" option-value="id"    :options="inputs.are_you_on_job" optionLabel="name" :placeholder='$t("are_you_on_job")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
@@ -133,7 +134,7 @@
                   <span v-if="!job.academic_qualification" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown :required="requiredArray.academic_qualification"  v-model="job.academic_qualification"  option-value="id" :options="inputs.academic_qualification" optionLabel="name" :placeholder='$t("academic_qualification")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown :invalid="requiredArray.academic_qualification"  v-model="job.academic_qualification"  option-value="id"  :options="inputs.academic_qualification" optionLabel="name" :placeholder='$t("academic_qualification")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -165,7 +166,7 @@
                   <span v-if="!job.experience_years" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown   :required="requiredArray.experience_years"  v-model="job.experience_years"  option-value="id" :options="inputs.experience_years" optionLabel="name" :placeholder='$t("experience_years")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown   :invalid="requiredArray.experience_years"  v-model="job.experience_years"   option-value="id" :options="inputs.experience_years" optionLabel="name" :placeholder='$t("experience_years")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -187,7 +188,7 @@
                   <span v-if="!job.has_professional_certificates" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown :required="requiredArray.has_professional_certificates"  v-model="job.has_professional_certificates"  option-value="id" :options="inputs.has_professional_certificates" optionLabel="name" :placeholder='$t("has_professional_certificates")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown :required="requiredArray.has_professional_certificates"  option-value="id" v-model="job.has_professional_certificates"   :options="inputs.has_professional_certificates" optionLabel="name" :placeholder='$t("has_professional_certificates")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -209,7 +210,7 @@
                   <span v-if="!job.prefered_job_type" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown   :required="requiredArray.prefered_job_type"  v-model="job.prefered_job_type"  option-value="id" :options="inputs.prefered_job_type" optionLabel="name" :placeholder='$t("prefered_job_type")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown   :required="requiredArray.prefered_job_type"  v-model="job.prefered_job_type" option-value="id"  :options="inputs.prefered_job_type" optionLabel="name" :placeholder='$t("prefered_job_type")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -219,7 +220,7 @@
                   <span v-if="!job.knowledge_of_microsoft_office" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown  :required="requiredArray.knowledge_of_microsoft_office"  v-model="job.knowledge_of_microsoft_office"  option-value="id" :options="inputs.knowledge_of_microsoft_office" optionLabel="name" :placeholder='$t("knowledge_of_microsoft_office")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown  :required="requiredArray.knowledge_of_microsoft_office"  v-model="job.knowledge_of_microsoft_office" option-value="id"  :options="inputs.knowledge_of_microsoft_office" optionLabel="name" :placeholder='$t("knowledge_of_microsoft_office")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -229,7 +230,7 @@
                   <span v-if="!job.knowledge_of_english" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown  :required="requiredArray.knowledge_of_english"  v-model="job.knowledge_of_english"  option-value="id" :options="inputs.knowledge_of_english" optionLabel="name" :placeholder='$t("knowledge_of_english")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown  :required="requiredArray.knowledge_of_english"  v-model="job.knowledge_of_english"  option-value="id"  :options="inputs.knowledge_of_english" optionLabel="name" :placeholder='$t("knowledge_of_english")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -261,6 +262,7 @@
           <Button  style=" background-color: #AA1E22 !important;" type="submit"  :label='$t("apply_now")' class="c w-[170px] m-auto pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
 
     </div>
+
     </form>
 <toast></toast>
 
@@ -273,7 +275,8 @@
   import Footer from '../components/Footer.vue'
   import { ref, onMounted } from 'vue';
   import axios from "axios";
-
+  import {useToast} from 'primevue/usetoast'
+  const toast = useToast()
   import {useRouter} from "vue-router";
   const inputs=ref({
     nationalities:[],
@@ -285,22 +288,49 @@
     has_professional_certificates:[],
     prefered_job_type:[],
     knowledge_of_english:[],
-    knowledge_of_microsoft_office:[]
+    knowledge_of_microsoft_office:[],
 
   })
-  import {useToast} from 'primevue/usetoast'
-  const toast = useToast()
+ const allform=ref({})
   const uploadedFileName = ref('');
  const showInput=ref([''])
  const requiredArray=ref({})
 const router = useRouter()
+
   const job=ref({
-    cv:'',
     form_id:'',
     job_id:'',
-    lang:''
+    lang:'',
+    fields:[]
+
   })
+
+const con =()=>{
+
+
+  console.log(job.value.fields)
+}
+
+  const pushfiled = (e) => {
+  // Check if job.value.fields[e.name] is an array
+  if (!Array.isArray(job.value.fields[e.name])) {
+    job.value.fields[e.name] = []; // Initialize as an array if it doesn't exist
+  }
+
+  // Now safely push into the array
+  job.value.fields[e.name].push(e);
+  console.log(e);
+};
  const submitForm=()=>{
+  job.value.fields=[]
+  Object.entries(job.value).forEach(([key, value]) => {
+    if(allform.value.find(field => field.name == key )?.id){
+      job.value.fields.push({ name:key,value:value, id: allform.value.find(field => field.name == key )?.id });
+    }
+
+
+});
+
   axios.post('api/job_apply',job.value)
         .then((res) => {
           toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
@@ -317,6 +347,20 @@ const router = useRouter()
         console.log("Uploaded file:", file);
       }
     };
+   const  getcountries=()=>{
+      axios.post('api/get_countries',{
+        lang:localStorage.getItem('appLang'),
+        })
+        .then((res) => {
+          inputs.value.nationalities=res.data.result.data
+        })
+        axios.post('api/get_ksa_cities',{
+        lang:localStorage.getItem('appLang'),
+        })
+        .then((res) => {
+          inputs.value.cities=res.data.result.data
+        })
+    }
 
   const fetchdata=()=>{
        axios.post(`api/get_job_apply_form_details`,{
@@ -326,47 +370,96 @@ const router = useRouter()
 
         })
         .then((res) => {
+        allform.value=res.data.result.data.form_fields
           for (let i = 0; i <= res.data.result.data.form_fields.length; i++) {
             if(res.data.result.data?.form_fields[i]?.name){
               showInput.value.push(res.data.result.data.form_fields[i].name)
               requiredArray.value[res.data.result.data.form_fields[i].name]=(res.data.result.data.form_fields[i].is_required_field  )
           }
-          if(res.data.result.data?.form_fields[i]?.name == 'gender'){
-            inputs.value.genders=res.data.result.data?.form_fields[i]?.selection_values
-          }
-          if(res.data.result.data?.form_fields[i]?.name == 'are_you_on_job'){
-            inputs.value.are_you_on_job=res.data.result.data?.form_fields[i]?.selection_values
-          }
-          if(res.data.result.data?.form_fields[i]?.name == 'academic_qualification'){
-            inputs.value.academic_qualification=res.data.result.data?.form_fields[i]?.selection_values
-          }
-          if(res.data.result.data?.form_fields[i]?.name == 'experience_years'){
-            inputs.value.experience_years=res.data.result.data?.form_fields[i]?.selection_values
-          }
-          if(res.data.result.data?.form_fields[i]?.name == 'has_professional_certificates'){
-            inputs.value.has_professional_certificates=res.data.result.data?.form_fields[i]?.selection_values
-          }
-          if(res.data.result.data?.form_fields[i]?.name == 'prefered_job_type'){
-            inputs.value.prefered_job_type=res.data.result.data?.form_fields[i]?.selection_values
-          }
-          if(res.data.result.data?.form_fields[i]?.name == 'knowledge_of_microsoft_office'){
-            inputs.value.knowledge_of_microsoft_office=res.data.result.data?.form_fields[i]?.selection_values
-          }
-          if(res.data.result.data?.form_fields[i]?.name == 'knowledge_of_english'){
-            inputs.value.knowledge_of_english=res.data.result.data?.form_fields[i]?.selection_values
-          }
+          if (res.data.result.data?.form_fields[i]?.name == 'gender') {
+                const field = res.data.result.data?.form_fields[i];
+
+                   inputs.value.genders = field.selection_values.map(value => ({
+                    name: value.name,
+                    field_id: field.id,  // Access the main field's `filed_id`
+                    id: value.id
+                }));
 
 
             }
+          if(res.data.result.data?.form_fields[i]?.name == 'are_you_on_job'){
 
+            const field = res.data.result.data?.form_fields[i];
 
+            inputs.value.are_you_on_job = field.selection_values.map(value => ({
+            name: value.name,
+            field_id: field.id,  // Access the main field's `filed_id`
+            id: value.id
+            }));
+          }
+          if(res.data.result.data?.form_fields[i]?.name == 'academic_qualification'){
 
+            const field = res.data.result.data?.form_fields[i];
+
+            inputs.value.academic_qualification = field.selection_values.map(value => ({
+            name: value.name,
+            field_id: field.id,  // Access the main field's `filed_id`
+            id: value.id
+            }));
+          }
+          if(res.data.result.data?.form_fields[i]?.name == 'experience_years'){
+            const field = res.data.result.data?.form_fields[i];
+
+              inputs.value.experience_years = field.selection_values.map(value => ({
+              name: value.name,
+              field_id: field.id,  // Access the main field's `filed_id`
+              id: value.id
+              }));
+          }
+          if(res.data.result.data?.form_fields[i]?.name == 'has_professional_certificates'){
+            const field = res.data.result.data?.form_fields[i];
+
+            inputs.value.has_professional_certificates = field.selection_values.map(value => ({
+            name: value.name,
+            field_id: field.id,  // Access the main field's `filed_id`
+            id: value.id
+            }));
+          }
+          if(res.data.result.data?.form_fields[i]?.name == 'prefered_job_type'){
+            const field = res.data.result.data?.form_fields[i];
+
+              inputs.value.prefered_job_type = field.selection_values.map(value => ({
+              name: value.name,
+              field_id: field.id,  // Access the main field's `filed_id`
+              id: value.id
+              }));
+          }
+          if(res.data.result.data?.form_fields[i]?.name == 'knowledge_of_microsoft_office'){
+            const field = res.data.result.data?.form_fields[i];
+
+              inputs.value.knowledge_of_microsoft_office = field.selection_values.map(value => ({
+              name: value.name,
+              field_id: field.id,  // Access the main field's `filed_id`
+              id: value.id
+              }));
+          }
+          if(res.data.result.data?.form_fields[i]?.name == 'knowledge_of_english'){
+            const field = res.data.result.data?.form_fields[i];
+
+              inputs.value.knowledge_of_english = field.selection_values.map(value => ({
+              name: value.name,
+              field_id: field.id,  // Access the main field's `filed_id`
+              id: value.id
+              }));
+            inputs.value.knowledge_of_english=res.data.result.data?.form_fields[i]?.selection_values
+          }
+            }
         })
 
         }
         onMounted(() => {
           fetchdata()
-
+          getcountries()
           job.value.form_id=router.currentRoute.value.params.id
           job.value.job_id=router.currentRoute.value.params.job_id
           job.value.lang=localStorage.getItem('appLang')

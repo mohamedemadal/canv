@@ -31,6 +31,7 @@ const executeArCode = () => {
   i18n.global.locale.value = "en";
   appLang.setAppLang(i18n.global.locale.value);
   appLang.setAppRtl(false);
+  window.location.reload();
 };
 const getlang=()=>{
    if(localStorage.getItem('appLang')== 'ar'){
@@ -61,6 +62,7 @@ const executeEnCode = () => {
   i18n.global.locale.value = "ar";
   appLang.setAppLang(i18n.global.locale.value);
   appLang.setAppRtl(true);
+  window.location.reload();
 };
 </script>
 

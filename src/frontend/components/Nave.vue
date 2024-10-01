@@ -70,7 +70,7 @@
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
+          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">   {{ $t("jobs") }}</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("auctions") }}</router-link>
@@ -101,16 +101,16 @@
         <Sidebar  v-model:visible="visible" header="Sidebar">
          <ul>
           <li class="my-auto text-center py-4 lg:py-0">
-          <router-link :to="{ name: 'home' }" class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;" > الرئيسية</router-link>
+          <router-link :to="{ name: 'home' }" class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;" > {{ $t("home") }}</router-link>
         </li>
         <li class="hidden lg:block my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> من نحن</router-link>
+          <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  {{ $t("about_us") }}</router-link>
         </li>
         <li class="my-auto text-center py-4 lg:py-0">
-          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  المزادات</router-link>
+          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  {{ $t("auctions") }}</router-link>
         </li>
         <!-- <li class="my-auto text-center py-4 lg:py-0">
-          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  الوظائف</router-link>
+          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  {{ $t("jobs") }}</router-link>
         </li> -->
         <li class="my-auto text-center py-4 lg:py-0 border-b-2">
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>

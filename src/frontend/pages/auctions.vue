@@ -360,8 +360,8 @@ axios
   .then((res) => {
     console.log(res.data.result.data)
 
-    allauctions.value = res.data.result.data.map(event => ({
-                "name": event.name,
+      allauctions.value = res.data.result.data.map(event => ({
+              "name": event.name,
                 "auction_id": event.auction_id,
                 "status": event.status,
                 "duration_by_hours": event.duration_by_hours,
