@@ -76,7 +76,7 @@ login:"login",
 full_name: "Full Name",
   email_address: "Your Email Address",
   mobile_number: "Mobile Number",
-  nationality_id: "Nationality ID",
+  nationality_id: "Nationality ",
   city_id: "City ID",
   gender: "Gender",
   birthdate: "Birthdate",
@@ -95,5 +95,6 @@ full_name: "Full Name",
   why_deserve_opportunity: "Why Do You Think You Deserve This Opportunity?",
   upload_cv: "Upload Your CV",
   jobs:"Jobs",
-  Working:"Working"
+  Working:"Working",
+  Apply_for_job:"Apply for a job"
 };

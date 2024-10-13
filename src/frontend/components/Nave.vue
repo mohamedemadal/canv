@@ -70,7 +70,7 @@
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">   {{ $t("jobs") }}</router-link>
+          <a href="https://canv.sa/jobs"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">   {{ $t("jobs") }}</a>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("auctions") }}</router-link>
@@ -83,7 +83,7 @@
     </div>
     <div class="hidden lg:block">
       <span><LocaleSelect id="local-switcher"></LocaleSelect></span>
-      <a href="https://canv.sa/web/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
+      <a href="/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
 
       <Button
       style="background-color: #AA1E22 !important;"
@@ -117,7 +117,7 @@
         </li>
         <div class="text-center w-full mt-1"> <LocaleSelect id="local-switcher"></LocaleSelect></div>
 
-        <a href="https://canv.sa/web/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
+        <a href="/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
           <Button
           style="background-color: #AA1E22 !important;"
           :label='$t("login")'

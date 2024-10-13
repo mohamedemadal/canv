@@ -5,6 +5,8 @@ axios.defaults.baseURL = "https://canv-back.visualinnovate.me/"
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['Content-Length'] = '42334'
+axios.defaults.headers.common['Content-Encoding'] = 'gzip'
+axios.defaults.headers.common['Transfer-Encoding'] = 'chunked'
 axios.defaults.headers.common['local'] = localStorage.getItem('appLang')
 
 axios.interceptors.request.use((config) => {

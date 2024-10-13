@@ -92,8 +92,8 @@
             </div>
     </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
-      <div class="lg:col-span-2">
+    <div class="grid grid-cols-1 lg:grid-cols-1 gap-2">
+      <div class="">
         <swiper
       ref="swiperRef"
       :modules="[Pagination, Navigation, Autoplay]"
@@ -165,10 +165,7 @@
 
           </swiper>
       </div>
-      <div  class="w-full h-full gap-2 grid grid-cols-2">
 
-        <img v-for=" x in 6" class="h-full " src="../images/auctions.png">
-      </div>
 
     </div>
    </div>

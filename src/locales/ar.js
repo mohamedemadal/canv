@@ -73,7 +73,7 @@ opportunity_analyst: "محلل فرص",
    full_name: "الاسم الكامل",
   email_address: "البريد الإلكتروني الخاص بك",
   mobile_number: "رقم الجوال",
-  nationality_id: "رقم الهوية الوطنية",
+  nationality_id: "الجنسية",
   city_id: "رقم المدينة",
   gender: "الجنس",
   birthdate: "تاريخ الميلاد",
@@ -92,5 +92,6 @@ opportunity_analyst: "محلل فرص",
   why_deserve_opportunity: "لماذا تعتقد أنك تستحق هذه الفرصة؟",
   upload_cv: "رفع السيرة الذاتية الخاصة بك",
    jobs:"الوظائف",
-   Working :"الدوام"
+   Working :"الدوام",
+   Apply_for_job:"تقديم على وظيفة"
 };
