@@ -112,7 +112,7 @@
       <iframe class="w-full h-[400px] lg:h-full " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743143.361816603!2d45.972632551724224!3d23.62536037833407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e7b33fe7952a41%3A0x5960504bc21ab69b!2z2KfZhNiz2LnZiNiv2YrYqQ!5e0!3m2!1sar!2seg!4v1724826990767!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
      </div>
 
-     <form class="bg-white py-6 px-10 shadow-lg rounded-lg">
+     <form  @submit.prevent="contact_us" class="bg-white py-6 px-10 shadow-lg rounded-lg">
             <h2 class="font-bold text-3xl text-[#AA1E22] py-3" >{{ $t("Contact_us") }}</h2>
             <p class="pb-1" style="line-height:29px">{{ $t("Stay_in_touch") }} </p>
             <div class=" py-1 relative ">
@@ -174,7 +174,7 @@
               <div class="flex  " >
 
                 <Button
-                @click="contact_us"
+                type="submit"
                 style="background-color: #AA1E22 !important;"
                 :label='$t("send")'
                 class="mt-3 h-full relative mb- pl-4 lg:w-[50%] mx-auto  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
@@ -235,7 +235,7 @@
         }
         onMounted(() => {
           fetchdata()
-
+          contact.value.lang=localStorage.getItem('appLang')
         });
 </script>
 <style>

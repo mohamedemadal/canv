@@ -82,7 +82,7 @@
                   <span v-if="requiredArray.city_id[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown  :invalid="requiredArray.city_id" v-model="job.city_id"  option-value="city_id" :options="inputs?.cities" optionLabel="name" :placeholder=requiredArray?.city_id[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter :invalid="requiredArray.city_id" v-model="job.city_id"  option-value="city_id" :options="inputs?.cities" optionLabel="name" :placeholder=requiredArray?.city_id[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
@@ -92,7 +92,7 @@
                   <span v-if="requiredArray.gender[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown @update:model-value="pushfiled($event)" :invalid="requiredArray.gender" option-value="id"  v-model="job.gender"   :options="inputs.genders" optionLabel="name" :placeholder=requiredArray.gender[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter @update:model-value="pushfiled($event)" :invalid="requiredArray.gender" option-value="id"  v-model="job.gender"   :options="inputs.genders" optionLabel="name" :placeholder=requiredArray.gender[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
@@ -112,7 +112,7 @@
                   <span v-if="requiredArray.are_you_on_job[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown :invalid="requiredArray.are_you_on_job"  v-model="job.are_you_on_job" option-value="id"    :options="inputs.are_you_on_job" optionLabel="name" :placeholder='$t("are_you_on_job")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter :invalid="requiredArray.are_you_on_job"  v-model="job.are_you_on_job" option-value="id"    :options="inputs.are_you_on_job" optionLabel="name" :placeholder='$t("are_you_on_job")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
               </div>
@@ -134,7 +134,7 @@
                   <span v-if="requiredArray.academic_qualification[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown :invalid="requiredArray.academic_qualification[0]"  v-model="job.academic_qualification"  option-value="academic_specialization_id"  :options="inputs.academices" optionLabel="name" :placeholder=requiredArray.academic_qualification[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter :invalid="requiredArray.academic_qualification[0]"  v-model="job.academic_qualification"  option-value="academic_specialization_id"  :options="inputs.academices" optionLabel="name" :placeholder=requiredArray.academic_qualification[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -156,7 +156,7 @@
                   <span  v-if="requiredArray.another_academic_specialization[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown  :required="requiredArray.another_academic_specialization[0]"  v-model="job.another_academic_specialization"  option-value="id"  :options="inputs.knowledge_of_english" optionLabel="name" :placeholder=requiredArray.another_academic_specialization[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter :required="requiredArray.another_academic_specialization[0]"  v-model="job.another_academic_specialization"  option-value="id"  :options="inputs.knowledge_of_english" optionLabel="name" :placeholder=requiredArray.another_academic_specialization[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
             </div>
             <div v-if="showInput.includes('experience_years')" class=" py-1 relative ">
@@ -165,7 +165,7 @@
                   <span v-if="requiredArray.experience_years[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown   :invalid="requiredArray.experience_years[0]"  v-model="job.experience_years"   option-value="id" :options="inputs.experience_years" optionLabel="name" :placeholder=requiredArray.experience_years[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter  :invalid="requiredArray.experience_years[0]"  v-model="job.experience_years"   option-value="id" :options="inputs.experience_years" optionLabel="name" :placeholder=requiredArray.experience_years[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -187,7 +187,7 @@
                   <span v-if="requiredArray.has_professional_certificates[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown :required="requiredArray.has_professional_certificates[0]"  option-value="id" v-model="job.has_professional_certificates"   :options="inputs.has_professional_certificates" optionLabel="name" :placeholder=requiredArray.has_professional_certificates[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter :required="requiredArray.has_professional_certificates[0]"  option-value="id" v-model="job.has_professional_certificates"   :options="inputs.has_professional_certificates" optionLabel="name" :placeholder=requiredArray.has_professional_certificates[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -209,7 +209,7 @@
                   <span v-if="requiredArray.prefered_job_type[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown   :required="requiredArray.prefered_job_type[0]"  v-model="job.prefered_job_type" option-value="id"  :options="inputs.prefered_job_type" optionLabel="name" :placeholder=requiredArray.prefered_job_type[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown  filter :required="requiredArray.prefered_job_type[0]"  v-model="job.prefered_job_type" option-value="id"  :options="inputs.prefered_job_type" optionLabel="name" :placeholder=requiredArray.prefered_job_type[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -219,7 +219,7 @@
                   <span v-if="requiredArray.knowledge_of_microsoft_office[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown  :required="requiredArray.knowledge_of_microsoft_office[0]"  v-model="job.knowledge_of_microsoft_office" option-value="id"  :options="inputs.knowledge_of_microsoft_office" optionLabel="name" :placeholder=requiredArray.knowledge_of_microsoft_office[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter :required="requiredArray.knowledge_of_microsoft_office[0]"  v-model="job.knowledge_of_microsoft_office" option-value="id"  :options="inputs.knowledge_of_microsoft_office" optionLabel="name" :placeholder=requiredArray.knowledge_of_microsoft_office[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -229,7 +229,7 @@
                   <span v-if="!job.knowledge_of_english" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown  :required="requiredArray.knowledge_of_english"  v-model="job.knowledge_of_english"  option-value="id"  :options="inputs.knowledge_of_english" optionLabel="name" :placeholder='$t("knowledge_of_english")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <Dropdown filter :required="requiredArray.knowledge_of_english"  v-model="job.knowledge_of_english"  option-value="id"  :options="inputs.knowledge_of_english" optionLabel="name" :placeholder='$t("knowledge_of_english")'  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
                 </div>
 
             </div>
@@ -248,6 +248,7 @@
               <i class="fas fa-upload text-3xl text-[#AA1E22]"></i>
               <span   v-if="!uploadedFileName">Upload Your CV</span>
               <p class="text-[#28a745] my-2" v-if="uploadedFileName">Uploaded: {{ uploadedFileName }}</p>
+              <input class="hidden" v-model="job.cv">
               <input
                 id="cv-upload"
                 type="file"
@@ -258,12 +259,11 @@
             </label>
           </div>
             <div class="text-center py-6 col-span-2">
-          <Button  style=" background-color: #AA1E22 !important;" type="submit"  :label='$t("apply_now")' class="c w-[170px] m-auto pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
+          <Button :loading="loading" style=" background-color: #AA1E22 !important;" type="submit"  :label='$t("apply_now")' class="c w-[170px] m-auto pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
 
     </div>
-    <button @click="test">saddsdvdsvsvdsv</button>
     </form>
-<toast></toast>
+    <Toast/>
 
   </div>
 </div>
@@ -291,6 +291,7 @@
     academices:[]
 
   })
+  const loading=ref(false)
   const job_name=ref('')
  const allform=ref({})
   const uploadedFileName = ref('');
@@ -337,34 +338,30 @@ const submitForm = () => {
       job.value.fields.push({ name: key, value: value, id: field.id });
     }
   });
-
-  // Create FormData
   const formData = new FormData();
-  job.value.fields.forEach(field => {
-    formData.append("value", field.value);  // Append field name and value
-    formData.append('id', field.id);  // Append corresponding field id (optional)
-  });
-  console.log( job.value.fields)
+  formData.append("fields", JSON.stringify(job.value.fields));
+  formData.append("form_id", job.value.form_id);
+  formData.append("job_id", job.value.job_id);
+  formData.append("lang", localStorage.getItem('appLang'));
+  formData.append("cv", job.value.cv);
 
-  axios.post('api/job_apply',{
-    fields:formData,
-    job_id: job.value.job_id,
-    form_id:job.value.form_id,
-    lang:localStorage.getItem('appLang'),
-  })
+
+  axios.post('api/job_apply/form_data',formData)
         .then((res) => {
           toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
         })
 
- }
+   }
 
  const handleFileUpload = (event) => {
+      loading.value=true
       const file = event.target.files[0];
       job.value.cv= event.target.files[0];
       if (file) {
         uploadedFileName.value = file.name; // Update the file name
         // Handle the file upload logic here (e.g., send it to a server)
         console.log("Uploaded file:", file);
+        loading.value=false
       }
     };
    const  getcountries=()=>{
