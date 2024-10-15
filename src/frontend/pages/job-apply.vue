@@ -169,6 +169,16 @@
                 </div>
 
             </div>
+            <div v-if="showInput.includes('experience_years_2')" class=" py-1 relative ">
+                  <div class="flex ">
+                  <p class="py-2 font-bold text-[#303843]" for="username">  {{ requiredArray.experience_years_2[1] }}</p>
+                  <span v-if="requiredArray.experience_years_2[0]" class="my-auto text-[#AA1E22] px-1">*</span>
+                </div>
+                <div class="relative ">
+                  <Dropdown filter  :invalid="requiredArray.experience_years_2[0]"  v-model="job.experience_years_2"   option-value="id" :options="inputs.experience_years_2" optionLabel="name" :placeholder=requiredArray.experience_years_2[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                </div>
+
+            </div>
 
             <div v-if="showInput.includes('old_experiences')" class=" py-1 relative ">
                   <div class="flex ">
@@ -284,6 +294,7 @@
     are_you_on_job:[],
     academic_qualification:[],
     experience_years:[],
+    experience_years_2:[],
     has_professional_certificates:[],
     prefered_job_type:[],
     knowledge_of_english:[],
@@ -348,7 +359,11 @@ const submitForm = () => {
 
   axios.post('api/job_apply/form_data',formData)
         .then((res) => {
-          toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
+          if(res.data?.result?.message == 'success'){
+            toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
+          }else {
+            alert("please enter required fileds")
+          }
         })
 
    }
@@ -396,12 +411,13 @@ const submitForm = () => {
           job_name.value=res.data.result.data.name
         allform.value=res.data.result.data.form_fields
           for (let i = 0; i <= res.data.result.data.form_fields.length; i++) {
+               console.log(res.data.result.data?.form_fields[i])
             if(res.data.result.data?.form_fields[i]?.name){
               showInput.value.push(res.data.result.data.form_fields[i].name)
               requiredArray.value[res.data.result.data.form_fields[i].name]=[(res.data.result.data.form_fields[i].is_required_field ),(res.data.result.data.form_fields[i].label_on_form )]
 
           }
-          console.log( requiredArray.value)
+          console.log(res.data.result.data.form_fields)
           if (res.data.result.data?.form_fields[i]?.name == 'gender') {
                 const field = res.data.result.data?.form_fields[i];
 
@@ -433,6 +449,8 @@ const submitForm = () => {
             id: value.id
             }));
           }
+
+
           if(res.data.result.data?.form_fields[i]?.name == 'experience_years'){
             const field = res.data.result.data?.form_fields[i];
 
@@ -442,15 +460,16 @@ const submitForm = () => {
               id: value.id
               }));
           }
-          if(res.data.result.data?.form_fields[i]?.name == 'has_professional_certificates'){
+          if(res.data.result.data?.form_fields[i]?.name == 'experience_years_2'){
             const field = res.data.result.data?.form_fields[i];
 
-            inputs.value.has_professional_certificates = field.selection_values.map(value => ({
-            name: value.name,
-            field_id: field.id,  // Access the main field's `filed_id`
-            id: value.id
-            }));
+              inputs.value.experience_years_2 = field.selection_values.map(value => ({
+              name: value.name,
+              field_id: field.id,  // Access the main field's `filed_id`
+              id: value.id
+              }));
           }
+
           if(res.data.result.data?.form_fields[i]?.name == 'prefered_job_type'){
             const field = res.data.result.data?.form_fields[i];
 
