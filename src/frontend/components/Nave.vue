@@ -70,7 +70,7 @@
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'jobs' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">   {{ $t("jobs") }}</router-link>
+          <a href="https://canv.sa/en/jobs"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">   {{ $t("jobs") }}</a>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("auctions") }}</router-link>
