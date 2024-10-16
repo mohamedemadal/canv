@@ -193,11 +193,12 @@
 
             <div v-if="showInput.includes('has_professional_certificates')" class=" py-1 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username">  {{ requiredArray.has_professional_certificates[1] }}</p>
+                  <p class="py-2 font-bold text-[#303843]" for="username"> {{ requiredArray.has_professional_certificates[1] }}</p>
                   <span v-if="requiredArray.has_professional_certificates[0]" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <Dropdown filter :required="requiredArray.has_professional_certificates[0]"  option-value="id" v-model="job.has_professional_certificates"   :options="inputs.has_professional_certificates" optionLabel="name" :placeholder=requiredArray.has_professional_certificates[1]  class="w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+                  <InputText    :required="requiredArray.has_professional_certificates[0]"  class="bg-[#f7f5f5] w-full " v-model="job.has_professional_certificates" :placeholder=requiredArray.has_professional_certificates[1] />
+
                 </div>
 
             </div>
@@ -362,8 +363,10 @@ const submitForm = () => {
           if(res.data?.result?.message == 'success'){
             toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
           }else {
-            alert("please enter required fileds")
+            alert(res.data?.result)
           }
+        }).catch((el)=>{
+          alert(el)
         })
 
    }
