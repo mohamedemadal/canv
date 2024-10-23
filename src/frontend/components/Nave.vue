@@ -61,19 +61,19 @@
           </router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'home' }" class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;" > {{ $t("home") }}</router-link>
+          <router-link :to="{ name: 'home' }" class="text-xl font-bold  px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;" > {{ $t("home") }}</router-link>
         </li>
         <li class="hidden lg:block my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'about-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("about_us") }} </router-link>
+          <router-link :to="{ name: 'about-us' }"  class="text-xl font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;"> {{ $t("about_us") }} </router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>
+          <router-link :to="{ name: 'contact-us' }"  class="text-xl font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;">{{ $t("Contact_us") }}</router-link>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <a href="https://canv.sa/en/jobs"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">   {{ $t("jobs") }}</a>
+          <a href="https://canv.sa/en/jobs"  class="text-xl font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;">   {{ $t("jobs") }}</a>
         </li>
         <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'auctions' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;"> {{ $t("auctions") }}</router-link>
+          <router-link :to="{ name: 'auctions' }"  class="text-xl font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;"> {{ $t("auctions") }}</router-link>
         </li>
 
 

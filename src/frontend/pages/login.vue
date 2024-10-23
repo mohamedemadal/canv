@@ -1,7 +1,7 @@
 <template>
 
   <div class="  h-screen flex items-center">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8 animate__animated animate__backInRight animate__delay-.5s rounded-lg  overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
+      <form   class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8 animate__animated animate__backInRight animate__delay-.5s rounded-lg  overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
 
 
           <div class="bg-white py-6 px-10 shadow-lg rounded-lg">
@@ -21,16 +21,7 @@
 
               </div>
 
-              <!-- <div class=" py-2 relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#AA1E22]" for="username"> رقم الجوال</p>
-                  <span class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-                  <InputNumber  :useGrouping="false"  required class="bg-[#f7f5f5] w-full " v-model="parent.phone" placeholder="أكتب رقم الجوال " />
-                  <span class="pi pi-phone absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
-                </div>
-              </div> -->
+
               <div class=" py-2 relative ">
                   <div class="flex ">
                   <p class="py-2 font-bold text-[#AA1E22]" for="username">  كلمة المرور</p>
@@ -77,7 +68,7 @@
                   </svg>
 
           </div>
-      </div>
+      </form>
   </div>
 
   </template>

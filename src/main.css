@@ -123,8 +123,9 @@ canvas {
 }
 .fc-h-event .fc-event-main-frame{
   background-color: white !important;
-  border: 0 !important;
+  borde0r: 0 !important;
 } */
+
 .v-textarea .v-field--no-label textarea, .v-textarea .v-field--active textarea {
 
     background-color: #EAE8E9 !important;

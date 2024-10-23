@@ -58,17 +58,17 @@
      </div>
 
      <div class="grid  grid-cols-1 lg:grid-cols-3 gap-3">
-      <div v-for="(auction, index) in allauctions" :key="index"  class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md ">
+      <div v-if="allauctions" v-for="(auction, index) in allauctions" :key="index"  class="text-center relative text-4xl bg-white rounded-lg w-full shadow-md ">
           <!-- <div class="absolute w-full h-full bg-white opacity-20"></div> -->
           <div class="">
              <div class="relative" >
 
               <img alt="not found" class="h-[230px] w-full" :src="auction?.profile_img_link">
-              <p  :class="{'bg-[#CE3C3CB8]': auction.status == 'finished','bg-[#5BFF338F]': auction.status == 'running','bg-[#C9AA3FBF]': auction.status == 'comming',}" class="absolute z-50 top-[70%] left-3   text-white text-base p-2 rounded-lg">{{ auction.status }}</p>
+              <p  :class="{'bg-[#CE3C3CB8]': auction?.status == 'finished','bg-[#5BFF338F]': auction?.status == 'running','bg-[#C9AA3FBF]': auction?.status == 'comming',}" class="absolute z-50 top-[70%] left-3   text-white text-base p-2 rounded-lg">{{ auction?.status }}</p>
              </div>
               <div class="flex justify-between p-2">
                 <div>
-                  <p class="text-xl font-bold text-right">{{ auction.name }}</p>
+                  <p class="text-xl font-bold text-right">{{ auction?.name }}</p>
                   <div class="flex py-1 ">
                     <a  class="flex bg-[#F6E4E4]  py-1 px-1 mx-1 rounded-md" style="border: 2px solid #810206;">
                     <div class="my-auto">
@@ -79,7 +79,7 @@
 
 
                     </div>
-                    <p class="text-[#810206] text-base px-1">{{ auction.city }} </p>
+                    <p class="text-[#810206] text-base px-1">{{ auction?.city }} </p>
                    </a>
                    <a class="flex bg-[#F6E4E4] py-1 px-2 rounded-md " style="border: 2px solid #810206;">
                     <div class="m-auto">
@@ -93,7 +93,7 @@
                       <path d="M5.39326 10.0246C5.39326 10.3974 5.09105 10.6996 4.71825 10.6996C4.34545 10.6996 4.04323 10.3974 4.04323 10.0246C4.04323 9.65182 4.34545 9.3496 4.71825 9.3496C5.09105 9.3496 5.39326 9.65182 5.39326 10.0246Z" fill="#7A0505"/>
                       </svg>
                     </div>
-                    <p class="text-[#810206] text-sm px-1"> {{ auction.start_date }}</p>
+                    <p class="text-[#810206] text-sm px-1"> {{ auction?.start_date }}</p>
                    </a>
                   </div>
                 </div>
@@ -121,56 +121,56 @@
           <div class="grid grid-cols-5 p-[1%] gap-1">
             <div class=" p-1 flex items-center  rounded-sm">
 
-              <p class="text-sm font-bold text-center " v-if="auction.status == 'running'">ينتهي بعد :</p>
-              <p class="text-sm font-bold text-center " v-if="auction.status == 'comming'">قادم بعد :</p>
-              <p class="text-sm font-bold text-center " v-if="auction.status == 'finished'"> {{ $t("ended") }} :</p>
+              <p class="text-sm font-bold text-center " v-if="auction?.status == 'running'">ينتهي بعد :</p>
+              <p class="text-sm font-bold text-center " v-if="auction?.status == 'comming'">قادم بعد :</p>
+              <p class="text-sm font-bold text-center " v-if="auction?.status == 'finished'"> {{ $t("ended") }} :</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
-              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status != 'finished'">{{ auction.day }}</h4>
-              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
+              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction?.status != 'finished'">{{ auction?.day }}</h4>
+              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction?.status == 'finished'">0</h4>
               <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("day") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
-              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status == 'comming' && auction.start_time < currentHour ">{{   currentHour  - auction.start_time}}</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'comming' && auction.start_time > currentHour">{{   auction.start_time - currentHour}}</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status == 'running' && auction.end_time < currentHour ">{{   currentHour  - auction.end_time}}</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction.status == 'running' && auction.end_time > currentHour">{{   auction.end_time - currentHour}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction?.status == 'finished'">0</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction?.status == 'comming' && auction.start_time < currentHour ">{{   currentHour  - auction.start_time}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction?.status == 'comming' && auction.start_time > currentHour">{{   auction.start_time - currentHour}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction?.status == 'running' && auction.end_time < currentHour ">{{   currentHour  - auction.end_time}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if=" auction?.status == 'running' && auction.end_time > currentHour">{{   auction.end_time - currentHour}}</h4>
               <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("hour") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
-              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.second > currentMinutes && auction.status != 'finished'">{{    59-(auction.second - currentMinutes)}}</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.second < currentMinutes && auction.status != 'finished'">{{   59-( currentMinutes- auction.second)}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction?.status == 'finished'">0</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction?.second > currentMinutes && auction.status != 'finished'">{{    59-(auction.second - currentMinutes)}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction?.second < currentMinutes && auction.status != 'finished'">{{   59-( currentMinutes- auction.second)}}</h4>
 
               <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("minute") }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
-              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction.status == 'finished'">0</h4>
-              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction.status != 'finished'">{{  59-currentSeconds}}</h4>
+              <h4 class="text-xl font-medium text-[#46494A] " v-if="auction?.status == 'finished'">0</h4>
+              <h4 class="text-xl font-medium text-[#46494A]  " v-if="auction?.status != 'finished'">{{  59-currentSeconds}}</h4>
               <p class="text-xl font-medium text-[#AA1E22] ">{{ $t("second") }}</p>
             </div>
           </div>
           <div class="p-[2%] grid grid-cols-3 gap-1">
            <div class="flex border-l-2">
             <p class="text-xs font-bold "> {{ $t("auction_duration") }} :</p>
-            <p class="text-xs px-1" >{{ auction.duration }} {{ $t("day") }} </p>
+            <p class="text-xs px-1" >{{ auction?.duration }} {{ $t("day") }} </p>
 
            </div>
            <div class="flex border-l-2">
             <p class="text-xs font-bold"> {{ $t("auction_time") }}  :</p>
 
-            <p class="text-xs px-1" v-if=" auction.start_time > auction.end_time"> {{ auction.start_time - auction.end_time  }} {{ $t("hour") }}</p>
-            <p class="text-xs px-1" v-if=" auction.start_time < auction.end_time"> {{ auction.end_time - auction.start_time   }} {{ $t("hour") }}</p>
+            <p class="text-xs px-1" v-if=" auction?.start_time > auction?.end_time"> {{ auction.start_time - auction.end_time  }} {{ $t("hour") }}</p>
+            <p class="text-xs px-1" v-if=" auction?.start_time < auction?.end_time"> {{ auction.end_time - auction.start_time   }} {{ $t("hour") }}</p>
            </div>
            <div class="flex">
             <p class="text-xs font-bold">{{ $t("product_count") }}  :</p>
-            <p class="text-xs px-1"> {{ auction.assets_number }}</p>
+            <p class="text-xs px-1"> {{ auction?.assets_number }}</p>
            </div>
           </div>
           <div>
             <!-- @click="details(auction.auction_id)" -->
-             <Button @click="details(auction.auction_id)" style=" background-color: #AA1E22 !important;padding: 0px !important;margin-bottom: 2% !important;"  :label='$t("read_more")' class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
+             <Button @click="details(auction?.auction_id)" style=" background-color: #AA1E22 !important;padding: 0px !important;margin-bottom: 2% !important;"  :label='$t("read_more")' class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
           </div>
         </div>
       <!-- test -->
@@ -272,7 +272,7 @@ axios
   })
   .then((res) => {
     console.log(res.data.result.data)
-
+    allauctions.value=ref({})
     allauctions.value = res.data.result.data.map(event => ({
                 "name": event.name,
                 "auction_id": event.auction_id,
@@ -306,7 +306,7 @@ watch(current_page, (newPage, oldPage) => {
     axios
   .post('api/get_auctions',{
     auctions_filter:active.value,
-    city_id_filter:50,
+    city_id_filter:filter.value.city_id_filter,
     page_number:newPage+1,
     page_scope:"9",
     lang:localStorage.getItem('appLang'),
@@ -317,7 +317,7 @@ watch(current_page, (newPage, oldPage) => {
       total_pages.value ++
     }
 
-
+    allauctions.value=ref({})
     allauctions.value = res.data.result.data.map(event => ({
                 "name": event.name,
                 "auction_id": event.auction_id,
@@ -338,7 +338,7 @@ watch(current_page, (newPage, oldPage) => {
                   : Math.ceil((new Date(event.start_date) - new Date(formattedDate.value)) / (1000 * 60 * 60 * 24)),
                 "duration": event.end_date && event.start_date ? Math.ceil((new Date(event.end_date) - new Date(event.start_date)) / (1000 * 60 * 60 * 24)): null
           }));
-          console.log( allauctions.value)
+
 
 
 
@@ -436,9 +436,11 @@ height: 50px !important ;
 position: relative ;
 margin-top: 1%
 }
+
 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight{
-  background-color: red !important;
-  color: white;
+  background-color: white !important;
+  border: 1px solid #AA1E22;
+  color: black;
 }
 .p-paginator .p-paginator-pages .p-paginator-page{
   background-color: #CCCCCC !important;

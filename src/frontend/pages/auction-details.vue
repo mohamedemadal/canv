@@ -153,7 +153,7 @@
 
 
 
-                  <img class="w-full" src="../images/auctions.png">
+                  <img class="w-full" :src="auction_details?.profile_img_link">
                 </div>
 
         <!-- Doctor -->
@@ -279,7 +279,9 @@
       <swiper-slide v-for="(img, index) in assets?.asset_imags" :key="index">
             <div class="relative ">
                <div class="absolute w-full h-full opacity-50" style="background: linear-gradient(to right, #00000099 , rgb(0, 0, 0));"></div>
-              <img class="w-full max-h-[80vh]" :src="img?.image_link">
+               <div class="w-full lg:h-[90vh] h-[60vh]" :style="{ backgroundImage: `url(${img?.image_link})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
+
+              <!-- <img class="w-full max-h-[80vh]" :src="img?.image_link"> -->
               <p class="absolute top-[10%] right-[5%] font-bold text-2xl text-white"> {{ auction?.image_description }}</p>
 
             </div>
@@ -542,7 +544,8 @@ const updateTime = () => {
 
 const change_asset=(e)=>{
   axios.post('api/get_asset_details',{
-    asset_id:e
+    asset_id:e,
+     lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
 
@@ -556,7 +559,8 @@ const change_asset=(e)=>{
 const fetchdata=()=>{
 axios
   .post('api/get_auction_details',{
-    auction_id:router.currentRoute.value.params.id
+    auction_id:router.currentRoute.value.params.id,
+    lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
 

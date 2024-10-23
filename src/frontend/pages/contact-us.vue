@@ -31,7 +31,7 @@
         <h3 class="font-bold text-lg text-center py-2">{{ $t("Branches") }}</h3>
         <div v-for="branch in branches"  class=" py-1 flex">
           <p class="font-bold text-base p-1  " style="text-wrap: nowrap;">{{ branch?.name }} : </p>
-          <p  class="py-1 text-base text-center	my-auto">  {{ branch?.address.city +' - '+branch?.address.street }} </p>
+          <a :href="branch?.location_url" target="_blank" class="py-1 text-base text-center	my-auto">  {{ branch?.address.city +' - '+branch?.address.street }} </a>
 
         </div>
 

@@ -8,15 +8,18 @@
 
 
         <div class="flex justify-between">
-          <h2 class="text-3xl lg:text-4xl  font-bold">{{ $t("auctions") }}</h2>
-          <a href="/auctions" class="text-xl lg:text-2xl font-bold text-[#ef5258]">{{ $t("Watch_more") }} </a>
-        </div>
+          <h2 class="text-3xl lg:text-4xl my-auto font-bold">{{ $t("auctions") }}</h2>
 
-       <div class=" grid lg:grid-cols-3 w-full lg:w-fit grid-cols-3 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
+        </div>
+        <div class="flex justify-between">
+         <div class=" grid lg:grid-cols-3 w-full lg:w-fit grid-cols-3 shadow-lg rounded-md bg-[#FFFFFF] px-2 pb-2 m-1 ">
         <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("Current")' class="mt-3 bg-[#AA1E22]   "/>
         <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("Upcoming")' class="mt-3 bg-[#AA1E22]   "/>
         <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#AA1E22' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"  :label='$t("Ending")'  class="mt-3 bg-[#AA1E22]   "/>
        </div>
+          <a href="/auctions" class="text-xl lg:text-2xl lg:px-10 font-bold text-[#AA1E22]">{{ $t("Watch_more") }} </a>
+        </div>
+
         <div v-if="allauctions.length >= 1" class=" mt-3">
 
           <div class="w-full relative ">

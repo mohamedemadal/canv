@@ -32,72 +32,39 @@ export const useAuthStore = defineStore('Auth', {
       }
     },
     async handleLogin(data) {
-      // this.router.push({name: "admin"});
+      this.resetAuthStore();
+      load.value = true;
 
-      // this.resetAuthStore()
-      // load.value=true
-      // const response = await axios.post('/api/canv/user_login', {
-      //   login: data.login,
-      //   lang:localStorage.getItem('appLang'),
-      //   password: data.password,
-      //    "db":"live"
-      // })
+      try {
+        const response = await axios.post('/api/canv/user_login', {
+          login: data.login,
+          lang: localStorage.getItem('appLang'),
+          password: data.password,
+          db: "live"
+        });
 
+        if (response?.data?.session_id) {
+          // Send session ID to the canv.sa domain to set the cookie
+          await axios.post('https://canv.sa/api/set_session_cookie', {
+            session_id: response.data.session_id
+          }, {
+            withCredentials: true // Make sure this is set to send cookies to the correct domain
+          });
 
+          load.value = false;
 
-      // const headers = {
-      //   Authorization: `"Bearer ${response.data.token}"`, // Headers your auth endpoint needs
-      //   Accept: 'application/json', // Headers your auth endpoint needs
-      // }
-      // headers['Access-Control-Allow-Origin']='*'
-//       if (response.data?.result?.message == 'success') {
-
-//         load.value=true
-
-//         this.authUser = response.data.result.session_info
-        document.cookie = `session_id=55; path=https://canv.sa`;
-
-        // Redirect to login page
-        window.location.href = 'https://canv.sa/web#cids=1&home=';
-
-        // const beamsTokenProvider = new PusherPushNotifications.TokenProvider({
-        //   url: `${import.meta.env.VITE_API}/pusher/beams-auth`,
-        //   queryParams: {
-        //     user_id: `${response.data.user.id}`, // URL query params your auth endpoint needs
-        //   },
-
-        //   headers: {
-        //     Authorization: `Bearer ${response.data.token}`, // Headers your auth endpoint needs
-        //     Accept: 'application/json', // Headers your auth endpoint needs
-        //     'Access-Control-Allow-Origin': '*',
-        //     Origin: import.meta.env.VITE_URI,
-        //   },
-        // })
-        // const beamsClient = new PusherPushNotifications.Client({
-        //   instanceId: '140343aa-f173-4a2d-940a-7724c7c12be1',
-        // })
-        // beamsClient
-        //   .start()
-        //   .then(() => {
-        //     beamsClient.setUserId(`"${response.data.user.id}"`, beamsTokenProvider)
-        //     console.log('hello auth ')
-        //   })
-        //   .catch((error) => {
-        //     console.log(error)
-        //   })
-
-        // this.userPermissions = response.data.user.permissions;
-        //  window.location.href = 'https://canv.sa/web#cids=1&home='
-        // this.router.push({ name: 'home' })
-        // window.location.href = 'https://canv.sa/web#cids=1&home='
-      //   load.value=false
-      // } else {
-
-      //   error.value="Email or password Doesn't match our record"
-
-      //   load.value=false
-      // }
+          // Redirect or take further actions
+        } else {
+          error.value = "Email or password doesn't match our records";
+          load.value = false;
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        error.value = "An error occurred during login";
+        load.value = false;
+      }
     },
+
     async handleRegister(data) {
       if (this.loading) return
       this.resetAuthStore()

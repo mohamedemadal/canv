@@ -19,7 +19,7 @@
         </clipPath>
         </defs>
         </svg>
-        <p class="text-base py-2 text-[#ffff]">{{ about_us?.about_us?.slice(0, 180)  }} </p>
+        <p style="text-align: justify;" class="text-base py-2 text-[#ffff]">{{ about_us?.about_us?.slice(0, 180)  }} </p>
         <div class="flex">
           <a class="mx-1" :href='company_details?.social_media_accounts?.x ' target="_blank">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,8 +67,8 @@
       <div>
         <Button style=" background-color: #AA1E22 !important;"  :label='$t("Branches")'  class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
         <div v-for="bran in branchs" class="">
-          <h5 class="text-base  pt-2 font-semibold text-[#ffff]">{{ bran?.name }}</h5>
-          <p class="text-sm py-2 font-normal text-[#ffff]"> {{ bran?.address.country +' - '+ bran?.address.city+' - '+ bran?.address.street   }} </p>
+          <h5 class="text-base  py-2 font-semibold text-[#ffff]">{{ bran?.name }}</h5>
+          <a :href="bran?.location_url" target="_blank" class="text-sm  font-normal text-[#ffff]"> {{ bran?.address.country +' - '+ bran?.address.city+' - '+ bran?.address.street   }} </a>
         </div>
 
 
