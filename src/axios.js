@@ -7,7 +7,12 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['Content-Length'] = '42334'
 axios.defaults.headers.common['Content-Encoding'] = 'gzip'
 axios.defaults.headers.common['Transfer-Encoding'] = 'chunked'
-axios.defaults.headers.common['local'] = localStorage.getItem('appLang')
+if(localStorage.getItem('appLang')){
+  axios.defaults.headers.common['local'] = localStorage.getItem('appLang')
+}else{
+  axios.defaults.headers.common['local'] ="ar"
+}
+
 
 axios.interceptors.request.use((config) => {
   try {

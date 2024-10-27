@@ -260,7 +260,7 @@ const getauction=(e)=>{
 axios
   .post('api/get_auctions',{
     auctions_filter:e,
-    page_number:"1",
+    page:"1",
     page_scope:"7",
     lang:localStorage.getItem('appLang'),
   })
@@ -277,7 +277,7 @@ axios
                 "auction_type": event.auction_type,
                 "city": event.city,
                 "start_date": event.start_date,
-
+                "auction_logo":event.auction_logo,
                 "start_time": (event.start_time).split(":")[0],
                 "end_time": event.end_time ? event.end_time.split(":")[0] : null,
                 "second":(event.start_time).split(":")[1],
@@ -303,7 +303,7 @@ const fetchdata=()=>{
 axios
   .post('api/get_auctions',{
     auctions_filter:"comming",
-    page_number:"1",
+    page:"1",
     page_scope:"7",
     lang:localStorage.getItem('appLang'),
   })
@@ -321,7 +321,7 @@ axios
                 "city": event.city,
                 "start_date": event.start_date,
                 "start_date": event.start_date,
-
+                "auction_logo":event.auction_logo,
                 "start_time": (event.start_time).split(":")[0],
                 "end_time": event.end_time ? event.end_time.split(":")[0] : null,
                 "second":(event.start_time).split(":")[1],
