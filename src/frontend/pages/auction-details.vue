@@ -8,14 +8,14 @@
     <div class="z-50 text-white w-full m-auto w-[80%] ">
       <H1 class="font-bold text-5xl text-white z-50">المزادات </H1>
      <div class="flex py-8 ">
-      <p class="text-2xl font-semibold ">الرئيسية</p>
-      <svg class="my-auto mx-[1%]" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="text-2xl font-semibold ">{{ $t("home") }}</p>
+      <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
 
-      <p class="text-2xl font-semibold "> المزادات</p>
-      <svg class="my-auto mx-[1%]" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="text-2xl font-semibold "> {{ $t("auctions") }}</p>
+      <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -76,19 +76,19 @@
               <h4 class="text-xl font-medium text-[#46494A] text-center " v-if=" auction_details?.status == 'comming' && auction_details?.start_time > currentHour">{{   auction_details.start_time - currentHour}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  text-center" v-if="auction_details?.status == 'running' && auction_details?.end_time < currentHour ">{{   currentHour  - auction_details?.end_time}}</h4>
               <h4 class="text-xl font-medium text-[#46494A] text-center " v-if=" auction_details?.status == 'running' && auction_details?.end_time > currentHour">{{   auction_details?.end_time - currentHour}}</h4>
-              <p class="text-xl font-medium text-[#AA1E22] text-center">ساعة</p>
+              <p class="text-xl font-medium text-[#AA1E22] text-center">{{ $t('hour') }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl text-center font-medium text-[#46494A] " v-if="auction_details?.status == 'finished'">0</h4>
               <h4 class="text-xl font-medium text-[#46494A] text-center " v-if="auction_details?.second > currentMinutes && auction_details?.status != 'finished'">{{    59-(auction_details?.second - currentMinutes)}}</h4>
               <h4 class="text-xl font-medium text-[#46494A]  text-center" v-if="auction_details?.second < currentMinutes && auction_details?.status != 'finished'">{{   59-( currentMinutes- auction_details?.second)}}</h4>
 
-              <p class="text-xl font-medium text-[#AA1E22] text-center">دقيقة</p>
+              <p class="text-xl font-medium text-[#AA1E22] text-center">{{ $t('minute') }}</p>
             </div>
             <div class="border-2 p-[2%] rounded-sm">
               <h4 class="text-xl font-medium text-[#46494A] text-center" v-if="auction_details?.status == 'finished'">0</h4>
               <h4 class="text-xl font-medium text-[#46494A]  text-center" v-if="auction_details?.status != 'finished'">{{  59-currentSeconds}}</h4>
-              <p class="text-xl font-medium text-[#AA1E22] text-center">ثانية</p>
+              <p class="text-xl font-medium text-[#AA1E22] text-center">{{ $t('second') }}</p>
             </div>
     </div>
     </div>
@@ -151,9 +151,8 @@
                   </div>
 
 
+                  <div class="w-full lg:h-[75vh] h-[70vh]" :style="{ backgroundImage: `url(${auction_details?.profile_img_link})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
 
-
-                  <img class="w-full" :src="auction_details?.profile_img_link">
                 </div>
 
         <!-- Doctor -->
@@ -180,7 +179,7 @@
       </div>
       <div class="lg:col-span-2 shadow-md p-4">
          <div class="flex justify-between ">
-          <div><p class="text-[#303843] text-2xl font-bold">التفاصيل</p></div>
+          <div><p class="text-[#303843] text-2xl font-bold">{{ $t('Details') }}</p></div>
           <div class="flex">
             <svg width="64" height="47" viewBox="0 0 64 47" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect x="0.277344" y="0.933838" width="63.2247" height="45.3568" fill="url(#pattern0_96_2468)"/>
@@ -213,18 +212,18 @@
          </div>
          <div class="p-[2%] grid grid-cols-3 my-2 gap-1 md:gap-2 gap-4">
            <div class=" border-2 py-3">
-            <p class="text-base font-bold text-center ">مدة المزاد </p>
+            <p class="text-base font-bold text-center "> {{ $t('auction_duration') }} </p>
             <p class="text-base px-1 text-center text-[#AA1E22] " >{{ auction_details?.duration }} يوم</p>
 
            </div>
            <div class=" border-2 py-3">
-            <p class="text-base font-bold text-center "> وقت المزاد </p>
+            <p class="text-base font-bold text-center "> {{ $t('auction_time') }}  </p>
 
-            <p class="text-basepx-1 text-center text-[#AA1E22] " v-if=" auction_details?.start_time > auction_details?.end_time"> {{ auction_details?.start_time - auction_details?.end_time  }} ساعة</p>
-            <p class="text-base px-1 text-center text-[#AA1E22] " v-if=" auction_details?.start_time < auction_details?.end_time"> {{ auction_details?.end_time - auction_details.start_time   }} ساعة</p>
+            <p class="text-basepx-1 text-center text-[#AA1E22] " v-if=" auction_details?.start_time > auction_details?.end_time"> {{ auction_details?.start_time - auction_details?.end_time  }} {{ $t('hour') }}</p>
+            <p class="text-base px-1 text-center text-[#AA1E22] " v-if=" auction_details?.start_time < auction_details?.end_time"> {{ auction_details?.end_time - auction_details.start_time   }} {{ $t('hour') }}</p>
            </div>
            <div class=" border-2 py-3">
-            <p class="text-base  font-bold text-center ">عدد المنتجات </p>
+            <p class="text-base  font-bold text-center "> {{ $t('product_count') }} </p>
             <p class="text-base  px-1 text-center text-[#AA1E22]"> {{ auction_details?.assets_number }}</p>
            </div>
           </div>
@@ -279,7 +278,7 @@
       <swiper-slide v-for="(img, index) in assets?.asset_imags" :key="index">
             <div class="relative ">
                <div class="absolute w-full h-full opacity-50" style="background: linear-gradient(to right, #00000099 , rgb(0, 0, 0));"></div>
-               <div class="w-full lg:h-[90vh] h-[60vh]" :style="{ backgroundImage: `url(${img?.image_link})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
+               <div class="w-full lg:h-[70vh] h-[60vh]" :style="{ backgroundImage: `url(${img?.image_link})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
 
               <!-- <img class="w-full max-h-[80vh]" :src="img?.image_link"> -->
               <p class="absolute top-[10%] right-[5%] font-bold text-2xl text-white"> {{ auction?.image_description }}</p>
@@ -305,17 +304,17 @@
 
     <div class="bg-white grid grid-cols-1 lg:grid-cols-4 gap-2 p-[2%] max-w-[1390px] m-auto">
       <div class="lg:col-span-3 shadow-lg px-[1%]">
-        <h2 class="text-2xl">التفاصيل</h2>
+        <h2 class="text-2xl">{{ $t("Details") }}</h2>
         <p  style="line-height: 34px;" class="text-lg text-[#7C7B7B]" >{{ assets?.description }}</p>
 
       </div>
       <div class="grid grid-cols-1 gap-2">
          <div class="shadow-lg">
-          <h2 class="text-2xl py-2 bg-[#AA1E22] text-white text-center rounded-md">السعر الإفتتاحى للمزاد</h2>
+          <h2 class="text-2xl py-2 bg-[#AA1E22] text-white text-center rounded-md">{{ $t("Opening_price_of_the_auction") }}</h2>
           <p class="text-2xl py-2 text-center text-[#AA1E22] font-bold">{{ assets?.opening_amount }} ر.س</p>
          </div>
          <div class="shadow-lg">
-          <h2 class="text-2xl py-2 bg-[#168F13] text-white text-center rounded-md">  مبلغ الدخول</h2>
+          <h2 class="text-2xl py-2 bg-[#168F13] text-white text-center rounded-md">{{ $t("The_amount_of_entry") }}</h2>
           <p class="text-2xl py-2 text-center text-[#168F13] font-bold">{{ assets?.entry_amount }} ر.س</p>
          </div>
       </div>
@@ -331,7 +330,7 @@
    <div v-if="assets != '' " class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px]">
       <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md  max-w-[1390px] m-auto " >
         <div    @click="toggle(5)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
-          <h3 class="text-3xl font-bold  " > الموقع</h3>
+          <h3 class="text-3xl font-bold  " > {{ $t("Location") }}</h3>
           <div class="my-auto">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
@@ -340,15 +339,15 @@
         </div>
           <div v-if="activeIndex === 5" class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 duration-2000">
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">المدينة</h4>
+            <h4 class="font-bold text-lg ">{{ $t("city") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{  assets?.location.city }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">الحي</h4>
+            <h4 class="font-bold text-lg ">{{ $t("neighborhood") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.location.area }}</p>
            </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">المساحة</h4>
+            <h4 class="font-bold text-lg ">{{ $t("The_area") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.total_area }}</p>
           </div>
           <div class="  md:col-span-2 lg:col-span-6">
@@ -372,7 +371,7 @@
    <div v-if="assets != '' " class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px]">
       <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md  max-w-[1390px] m-auto " >
         <div    @click="toggle(1)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
-          <h3 class="text-3xl font-bold  " > معلومات إضافية</h3>
+          <h3 class="text-3xl font-bold  " > {{ $t('Additional_information') }} </h3>
           <div class="my-auto">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
@@ -381,39 +380,39 @@
         </div>
           <div v-if="activeIndex === 1" class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 py-4 duration-2000">
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">المدينة</h4>
+            <h4 class="font-bold text-lg ">{{ $t("city") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{  assets?.location.city }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">الحي</h4>
+            <h4 class="font-bold text-lg ">{{ $t("neighborhood") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.location.area }}</p>
            </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg "> رقم الصك</h4>
+            <h4 class="font-bold text-lg ">  {{ $t("Instrument_number") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.deed_number }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">تاريخ الصك</h4>
+            <h4 class="font-bold text-lg ">{{ $t("History_of_the_instrument") }} </h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.deed_date }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">نوع المنتج</h4>
+            <h4 class="font-bold text-lg ">{{ $t("Product_type") }} </h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.asset_type }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">المساحة</h4>
+            <h4 class="font-bold text-lg ">{{ $t("The_area") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.total_area }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">الواجهة</h4>
+            <h4 class="font-bold text-lg ">{{ $t("interface") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg ">نوع الملكية</h4>
+            <h4 class="font-bold text-lg "> {{ $t("Type_of_ownership") }}</h4>
             <p class="text-[#7C7B7B] font-medium py-2"> {{ assets?.addional_info.ownership_type }}</p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
-            <h4 class="font-bold text-lg "> الخدمات العامة</h4>
+            <h4 class="font-bold text-lg ">  {{ $t("General_Services") }}</h4>
             <span v-for="serv in  assets?.addional_info.public_service " class="text-[#7C7B7B] font-medium py-2"> {{ serv }} ,</span>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
@@ -430,7 +429,7 @@
    <div v-if="assets != '' " class=" detail lg:px-[5%] px-[2%] m-auto  max-w-[1399px] ">
       <div class="bg-white shadow-lg my-[2%] p-[1%] rounded-md   " >
         <div    @click="toggle(3)" class="flex justify-between py-2 w-full " style="border-bottom: 1px solid #E8E8E8;">
-          <h3 class="text-3xl font-bold  " >الحدود و الأطوال</h3>
+          <h3 class="text-3xl font-bold  " > {{ $t("Boundaries_and_lengths") }} </h3>
           <div class="my-auto">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z" fill="#121212"/>
@@ -439,21 +438,21 @@
         </div>
           <div v-if="activeIndex === 3" class=" gap-3 py-4 duration-2000">
           <div   class="p-2 m-a flex">
-            <h4 class="font-bold text-lg lg:text-xl  "> شمالا  :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.north_boundary }} <span class="text-lg font-bold text-black">بطول : </span>  {{ assets?.boundaries_and_dimensions.north_boundary_length }}</p>
+            <h4 class="font-bold text-lg lg:text-xl  "> {{ $t("Northward") }}  :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.north_boundary }} <span class="text-lg font-bold text-black">{{ $t("Length") }} : </span>  {{ assets?.boundaries_and_dimensions.north_boundary_length }}</p>
           </div>
           <div   class="p-2 m-a flex">
-            <h4 class="font-bold text-xl ">شـرقـاً :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.south_boundary }}<span class="text-lg font-bold text-black"> بطول : </span>  {{ assets?.boundaries_and_dimensions.east_boundary_length }}
+            <h4 class="font-bold text-xl "> {{ $t("Eastbound") }}  :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.south_boundary }}<span class="text-lg font-bold text-black"> {{ $t("Length") }} : </span>  {{ assets?.boundaries_and_dimensions.east_boundary_length }}
             </p>
           </div>
           <div   class="p-2 m-a flex">
-            <h4 class="font-bold text-xl ">جنوباً :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.east_boundary }} <span class="text-lg font-bold text-black">بطول : </span>  {{ assets?.boundaries_and_dimensions.south_boundary_length }}</p>
+            <h4 class="font-bold text-xl "> {{ $t("Southbound") }}  :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.east_boundary }} <span class="text-lg font-bold text-black">{{ $t("Length") }} : </span>  {{ assets?.boundaries_and_dimensions.south_boundary_length }}</p>
           </div>
           <div   class="p-2 m-a flex">
-            <h4 class="font-bold text-xl ">غـربـاً :</h4>
-            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.west_boundary }} <span class="text-lg font-bold text-black">بطول : </span>  {{ assets?.boundaries_and_dimensions.east_boundary_length }}</p>
+            <h4 class="font-bold text-xl "> {{ $t("West") }}  :</h4>
+            <p class="text-[#7C7B7B] font-medium text-lg px-2 my-auto"> {{ assets?.boundaries_and_dimensions.west_boundary }} <span class="text-lg font-bold text-black">{{ $t("Length") }} : </span>  {{ assets?.boundaries_and_dimensions.east_boundary_length }}</p>
           </div>
 
 
