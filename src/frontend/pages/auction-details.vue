@@ -6,7 +6,7 @@
     <img class="w-full absolute h-full" src="../images/breadcrumb.png">
 
     <div class="z-50 text-white w-full m-auto w-[80%] ">
-      <H1 class="font-bold text-5xl text-white z-50">المزادات </H1>
+      <H1 class="font-bold text-5xl text-white z-50">{{ $t("auctions") }} </H1>
      <div class="flex py-8 ">
       <p class="text-2xl font-semibold ">{{ $t("home") }}</p>
       <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
