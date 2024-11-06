@@ -76,11 +76,21 @@ td{
 }
 
 
-:dir(rtl) .p-button {
+.p-button {
   clip-path: polygon(4% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
-:dir(ltr) .p-button {
-  clip-path: polygon(4% 0%, 100% 0%, 100% 100%, 0% 100%);
+[dir="ltr"] .p-button {
+  clip-path: polygon(0% 0%, 100% 0%, 96% 100%, 0% 100%) !important;
+}
+
+.fed {
+  border-radius: 0px !important;
+  clip-path: polygon(0% 0%, 100% 0%, 98% 100%, 0% 100%) !important;
+}
+
+/* Adjust for RTL */
+[dir="ltr"] .fed {
+  clip-path: polygon(2% 0%, 100% 0%, 100% 100%, 0% 100%) !important;
 }
 /*  */
 .p-multiselect .p-multiselect-label.p-placeholder{

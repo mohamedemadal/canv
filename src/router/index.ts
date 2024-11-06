@@ -8,6 +8,12 @@ import RouteViewComponent from '../layouts/RouterBypass.vue'
 import UIRoute from '../pages/admin/ui/route'
 
 const routes: Array<RouteRecordRaw> = [
+
+  {
+    name: 'test',
+    path: '/test',
+    component: () => import('../frontend/pages/test.vue'),
+  },
   {
     name: 'contact-us',
     path: '/contact-us',

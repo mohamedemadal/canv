@@ -10,7 +10,7 @@ axios.defaults.headers.common['Transfer-Encoding'] = 'chunked'
 if(localStorage.getItem('appLang')){
   axios.defaults.headers.common['local'] = localStorage.getItem('appLang')
 }else{
-  axios.defaults.headers.common['local'] ="ar"
+  axios.defaults.headers.common['local'] = "ar"
 }
 
 
