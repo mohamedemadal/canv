@@ -3,7 +3,7 @@ import { useStorage } from "@vueuse/core";
 import axios from "axios";
 export const useAppLangStore = defineStore("appLangStore", {
   state: () => ({
-    appLang: useStorage("appLang", "ar"),
+    appLang: useStorage("appLang", "en"),
     isRtl: useStorage("isRtl", true),
   }),
   getters: {
