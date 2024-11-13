@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 import axios from "axios";
+import i18n from "../plugins/i18n";
 export const useAppLangStore = defineStore("appLangStore", {
   state: () => ({
-    appLang: useStorage("appLang", "en"),
+    appLang: useStorage("appLang", "ar"),
     isRtl: useStorage("isRtl", true),
+
   }),
   getters: {
     getAppLang() {

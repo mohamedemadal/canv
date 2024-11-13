@@ -266,12 +266,17 @@ app.use(PrimeVue)
 
 app.mount('#app')
 let k= document.getElementsByClassName("switcher")
-console.log(localStorage.appLang)
-if( localStorage.appLang == 'ar')
 
-document.body.dir ="rtl"
-else
-document.body.dir ="ltr"
+if( localStorage.appLang == 'ar'){
+  i18n.global.locale.value="ar"
+  document.body.dir ="rtl"
+}
+
+else{
+  i18n.global.locale.value="en"
+  document.body.dir ="ltr"
+}
+
 app.directive('can', (el, binding, vnode) =>{
   // console.log(JSON.parse(localStorage.getItem('permissions')))
   if (! JSON.parse(localStorage.getItem('permissions'))
