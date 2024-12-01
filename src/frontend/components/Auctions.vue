@@ -155,7 +155,7 @@
            </div>
            <div class="flex ">
             <p class="text-xs font-bold"> {{ $t("auction_time") }}  :</p>
-            <p class="text-base px-1 text-center text-[#AA1E22] " > {{ auction_details?.start   }} {{auction_details?.start_time_period    }} </p>
+
             <p class="text-xs px-1" v-if=" auction.start_time > auction.end_time"> {{ auction.start_time - auction.end_time  }} {{ $t("hour") }}</p>
             <p class="text-xs px-1" v-if=" auction.start_time < auction.end_time"> {{ auction.end_time - auction.start_time   }} {{ $t("hour") }}</p>
            </div>
