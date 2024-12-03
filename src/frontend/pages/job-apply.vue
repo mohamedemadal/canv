@@ -55,7 +55,7 @@
          is="Calendar"
          class="bg-[#f7f5f5] w-full"
          v-model="job[fill.name]"
-         :minDate="maxDate"
+         :maxDate="maxDate"
                   :class="{ 'p-invalid': submitted && !job[fill.name] && fill.is_required_field}"
        />
      </div>

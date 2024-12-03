@@ -55,7 +55,10 @@
        </div>
        <div>
         <p class="font-bold text-xl" >{{ $t("job_description") }} :</p>
-        <p class="text-[#AEAEAE] text-lg leading-8" > {{ (job?.description)?.slice(0,460) }} ...</p>
+        <p class="text-[#AEAEAE] text-lg leading-8" v-html="formattedDescription"></p>
+        <span v-if="job?.description?.length > volume" @click="increasVolume" class="font-bold text-[#AA1E22]">{{ $t("read_more") }}</span>
+
+
        </div>
     </div>
     <div class="text-center py-6">
@@ -68,31 +71,48 @@
     <Footer></Footer>
 </template>
 <script setup>
-  import Nave from '../components/Nave.vue'
-  import Footer from '../components/Footer.vue'
-  import { ref, onMounted } from 'vue';
-  import axios from "axios";
+import Nave from '../components/Nave.vue';
+import Footer from '../components/Footer.vue';
+import { ref, onMounted, computed } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
-  import {useRouter} from "vue-router";
+const router = useRouter();
+const job = ref({});
+const volume=ref(400)
+// Navigate to the job application form
+const apply = (id, job_id) => {
+  router.push({ name: 'job-apply', params: { id: id, job_id: job_id } });
+};
 
-const router = useRouter()
-  const job=ref({})
+// Fetch job details
+const fetchdata = () => {
+  axios
+    .post('api/get_posted_job_details', {
+      job_id: router.currentRoute.value.params.id,
+      lang: localStorage.getItem('appLang'),
+    })
+    .then((res) => {
+      job.value = res.data.result.data;
+    });
+};
 
-const apply =(id,job_id)=>{
-  router.push({name:'job-apply',params:{'id':id,'job_id':job_id} })
+// Compute formatted description
+const formattedDescription = computed(() => {
+  return job.value?.description
+    ?.replace(/\n/g, '<br>') // Replace line breaks with spaces
+   // Remove hyphens and spaces after them
+    .trim() // Trim leading/trailing spaces
+    .slice(0, volume.value); // Limit to 460 characters
+});
+const increasVolume=()=>{
+  if(job.value?.description.length > volume.value){
+    volume.value=volume.value+100
+  }
 }
-  const fetchdata=()=>{
-       axios.post(`api/get_posted_job_details`,{
-        job_id:router.currentRoute.value.params.id,
-        lang:localStorage.getItem('appLang'),
-        })
-        .then((res) => {
-          job.value=res.data.result.data
-        })
 
-        }
-        onMounted(() => {
-          fetchdata()
-
-        });
+onMounted(() => {
+  fetchdata();
+});
 </script>
+
