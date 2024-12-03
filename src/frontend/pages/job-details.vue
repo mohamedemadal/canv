@@ -107,7 +107,7 @@ const formattedDescription = computed(() => {
 });
 const increasVolume=()=>{
   if(job.value?.description.length > volume.value){
-    volume.value=volume.value+100
+    volume.value=volume.value+150
   }
 }
 
