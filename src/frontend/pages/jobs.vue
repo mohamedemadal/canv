@@ -39,17 +39,17 @@
     <div  class=  " px-[2%] py-[3%] grid md:grid-cols-3 grid-cols-1 lg:grid-cols-4 gap-4 sh max-w-[1390px] m-auto">
       <div  style="transition: .7s;" v-for="job  in jobs" class="bg-white py-[6%] px-[6%] rounded-md shadow-xl  hover:scale-[1.03]">
         <h3 class="text-2xl font-bold  "  style="text-wrap: nowrap; overflow: hidden;"> {{ (job?.name).split(' ').slice(0, 5).join(' ')}}</h3>
-        <div class="flex justify-between pt-6">
-          <div class="flex" >
+        <div class=" justify-between pt-4">
+          <div class="flex py-3" >
             <span class="font-bold " >{{ $t("location") }} :</span>
             <p>{{ job?.shift_place }}</p>
           </div>
           <div class="flex" >
-            <span class="font-bold " >{{ $t("Working ") }} :</span>
+            <span class="font-bold " >{{ $t("Working") }} :</span>
             <p>{{ job?.shift_type }}</p>
           </div>
         </div>
-        <h5  class="text-[#AEAEAE] py-6 leading-6  min-h-[145px]">{{ (job?.description)?.trim().slice(0,140) }} ...</h5>
+        <h5  class="text-[#AEAEAE] pb-6 pt-4 leading-6  min-h-[145px]">{{ (job?.description)?.trim().slice(0,140) }} ...</h5>
         <div>
            <Button  style=" background-color: #AA1E22 "  @click="details(job?.job_id)" label=" التفاصيل" class="my-2 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
         </div>

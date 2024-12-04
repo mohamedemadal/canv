@@ -123,6 +123,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Nave from '../components/Nave.vue'
+import moment from 'moment';
 const job_name=ref('')
 const maxDate=new Date()
 const fields = ref([]);
@@ -189,6 +190,8 @@ const handleFileUpload = (event) => {
 const submitForm=()=>{
   submitted.value=true
  fields_values.value=[]
+ if(job.value.birthdate)
+ job.value.birthdate = moment(job.value.birthdate).format("MM/DD/YYYY");
  Object.entries(job.value).forEach(([key, value]) => {
    const field = fields.value.find(field => field.name == key);
    if (field?.id) {
