@@ -398,7 +398,7 @@
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg ">{{ $t("interface") }}</h4>
-            <p class="text-[#7C7B7B] font-medium py-2">شبكة عامة</p>
+            <p class="text-[#7C7B7B] font-medium py-2">{{ assets?.asset_land_info.asset_facade }} </p>
           </div>
           <div style="border-left: 1px solid #E8E8E8;" class="px-2">
             <h4 class="font-bold text-lg "> {{ $t("Type_of_ownership") }}</h4>
