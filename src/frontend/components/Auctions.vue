@@ -1,4 +1,5 @@
 <template>
+
     <div class="bg-slate-50 auctions">
   <div class=  " px-[2%] py-[3%] m-auto  max-w-[1350px]">
       <div class=" ">
@@ -19,7 +20,12 @@
        </div>
           <a href="/auctions" class="text-xl lg:text-2xl lg:px-10 font-bold text-[#AA1E22]">{{ $t("Watch_more") }} </a>
         </div>
-
+        <div class="bg-slate-50 auctions" v-if="allauctions.length<=0">
+          <div class=  " px-[2%] py-[3%] m-auto  max-w-[1295px] h-[40vh] te  flex text-center items-center">
+            <h2 class="text-3xl text-[#BC1E1E] font-bold text-center m-auto">{{ $t(" نأسف لعدم وجود مزادات  في الوقت الحالي") }}
+            </h2>
+          </div>
+        </div>
         <div v-if="allauctions.length >= 1" class=" mt-3">
 
           <div class="w-full relative ">

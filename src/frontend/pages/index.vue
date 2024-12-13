@@ -2,9 +2,9 @@
   <!-- nave -->
   <Nave></Nave>
   <!-- slider -->
-
+<Header></Header>
   <!-- swiper -->
-  <div  class=" hidden lg:block w-full md:h-[40vh] h-[60vh] lg:h-full isolate  bg-[#060B15] ">
+  <div  class=" hidden w-full md:h-[40vh] h-[60vh] lg:h-full isolate  bg-[#060B15] ">
 
 
     <swiper
@@ -276,6 +276,7 @@ import Auctions from '../components/Auctions.vue'
 import Customer from '../components/Customer.vue'
 import Rentals from '../components/Rentals.vue'
 import Property from '../components/Complexes.vue'
+import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import img1 from "../images/header.png";
 import img2 from "../images/back.png";
