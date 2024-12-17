@@ -105,7 +105,7 @@
                type="file"
                @change="handleFileUpload"
                class="upload-input hidden"
-               accept=".pdf,.doc,.docx"
+               accept=".pdf"
                :class="{ 'p-invalid': submitted && !job[fill.name]}"
              />
            </label>

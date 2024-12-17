@@ -7,7 +7,7 @@
 
 
 
-
+    <!-- <Button icon="pi pi-arrow-right" @click="dashboard = true" /> -->
     <p class="my-auto text-center py-1 my-1 lg:py-0 lg:hidden">
           <router-link :to="{ name: 'home' }" class="text-lg font-extrabold lg:mx-6 "  >
             <svg class="mx-6" width="81" height="41" viewBox="0 0 81 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,6 +129,13 @@
         </Sidebar>
 
     </div>
+
+    <div class="card flex justify-content-center">
+        <Sidebar v-model:visible="dashboard" header="Sidebar">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </Sidebar>
+
+    </div>
 </template>
 <script setup>
 
@@ -138,6 +145,7 @@ const scrollContainer = ref(null);
 const content = ref(null);
 const staticDiv = ref(null);
 const visible = ref(false);
+const dashboard = ref(false);
 let observer;
 const show=ref(true)
 const opennave=()=>{
