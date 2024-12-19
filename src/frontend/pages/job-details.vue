@@ -49,14 +49,14 @@
         </div>
         <div class="flex py-2">
           <p class="text-xl font-bold text-black" >{{ $t("required_number") }}   : </p>
-          <p  class="text-xl  font-semibold text-[#7C7B7B]" >{{  job?.applied_number }}</p>
+          <p  class="text-xl  font-semibold text-[#7C7B7B]" >{{  job?.postions_number }}</p>
         </div>
 
        </div>
        <div>
         <p class="font-bold text-xl" >{{ $t("job_description") }} :</p>
         <p class="text-[#AEAEAE] text-lg leading-8" v-html="formattedDescription"></p>
-        <span v-if="job?.description?.length > volume" @click="increasVolume" class="font-bold text-[#AA1E22]">{{ $t("read_more") }}</span>
+        <span v-if="job?.description?.length > volume" @click="increasVolume" class="font-bold text-[#AA1E22] cursor-pointer">{{ $t("read_more") }}</span>
 
 
        </div>

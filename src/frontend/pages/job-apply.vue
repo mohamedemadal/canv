@@ -143,6 +143,8 @@ const fetchdata = () => {
  axios.post(`api/get_job_apply_form_details`, {
    lang: localStorage.getItem('appLang'),
    form_id: router.currentRoute.value.params.id,
+   job_id: router.currentRoute.value.params.job_id,
+
  })
  .then((res) => {
    // Assign the form fields to `fields`
@@ -251,7 +253,6 @@ const getNatail=()=>{
  .then((res) => {
   countries.value=res.data.result.data
   console.log( countries.value)
-  fetchdata()
   getJobName()
  });
 }
