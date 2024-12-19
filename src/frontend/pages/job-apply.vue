@@ -30,7 +30,7 @@
  <div class=  "  m-auto shadow-lg animate__animated animate__backInRight animate__delay-.8s    max-w-[1280px] p-[3%]">
    <p class="text-3xl font-bold text-center " >  {{ $t("Apply_for_job") }} {{ job_name.name }}  </p>
  <form @submit.prevent="submitForm" class="grid lg:grid-cols-2 gap-4 py-[2%]">
-   <div v-for="(fill, index) in fields" :key="index">
+   <div v-for="(fill, index) in sortedFormFields" :key="index" >
      <div v-if="fill.field_type === 'text'">
        <div class="flex">
          <p class="py-2 font-bold text-[#303843]">{{ fill.label_on_form }}</p>
@@ -120,7 +120,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted ,computed} from 'vue';
 import axios from 'axios';
 import Nave from '../components/Nave.vue'
 import moment from 'moment';
@@ -176,7 +176,9 @@ const fetchdata = () => {
 console.log(selection.value)
 };
 
-
+const sortedFormFields = computed(() => {
+      return [...fields.value].sort((a, b) => a.view_num - b.view_num);
+    });
 
 const handleFileUpload = (event) => {
 
