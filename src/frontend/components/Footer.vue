@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#303843] px-4">
-    <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6  max-w-[1290px] m-auto  px-[1%] py-[3%]">
+    <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6  max-w-[1290px] m-auto  px-[1%] pt-[3%]">
       <div>
         <svg width="184" height="93" viewBox="0 0 184 93" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_2001_2013)">
@@ -86,6 +86,10 @@
 
       </div>
     </div>
+    <div class="text-center pb-[2%]">
+        <a href="https://canv.sa/terms-conditions" target="_blank" class="text-white"> {{ $t("Terms_and_Conditions") }}</a>
+      </div>
+
   </div>
 </template>
 <script setup>

@@ -92,7 +92,7 @@
       </Button>
 
       </a>
-      <!-- <Button class="button-with-triangle" icon="pi pi-arrow-right" @click="dashboard = true"  /> -->
+       <Button class="button-with-triangle" icon="pi pi-arrow-right" @click="dashboard = true"  />
     </div>
 
   </div>
@@ -132,7 +132,8 @@
 
     <div class="card flex justify-content-center">
         <Sidebar v-model:visible="dashboard" header="Sidebar">
-          <svg width="76" height="39" viewBox="0 0 76 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div >
+              <svg class="m-auto mb-4" width="76" height="39" viewBox="0 0 76 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_907_16247)">
             <path d="M9.67975 19.703C7.56687 19.703 5.99117 19.0774 4.99242 17.8383C3.75494 16.3068 3.47242 13.8936 4.15682 10.6761V10.6639L4.1608 10.6518C4.2364 10.1602 4.7696 7.27988 5.10384 5.71582H8.58153C8.40248 6.6827 8.08813 8.32395 7.62656 10.3918C7.51515 10.8914 7.43955 11.2368 7.42761 11.2936C6.88646 13.8327 7.34405 14.828 7.86133 15.4699C8.29106 16.0021 9.02719 16.2743 10.0458 16.2743H19.9059L19.7309 15.6933C19.5836 15.1977 19.4881 14.6736 19.4483 14.1293C19.4086 13.5727 19.4125 12.9958 19.4603 12.4108C19.4961 11.9721 19.5717 11.5374 19.6553 11.123H19.6712L19.7706 10.6639C19.9935 9.61176 20.6659 6.40238 20.7535 6.05707L20.7773 5.96363C20.8132 5.82145 20.9365 5.72801 21.0877 5.72801H29.8576C30.8762 5.72801 31.6322 6.02457 32.1057 6.60957C32.3206 6.87769 32.6429 7.50738 32.3882 8.71801L32.245 9.39238C31.9585 10.7249 31.7635 11.7852 31.6083 12.6343C31.4969 13.2436 31.4014 13.7677 31.3059 14.2064C31.1746 14.8118 31.0672 15.2911 30.9757 15.7258L30.8563 16.2743H37.2626C37.7441 16.2743 38.1658 15.9777 38.2534 15.5796L40.219 5.72801H43.645L41.556 16.2133C41.2416 17.6921 40.028 19.3821 37.573 19.6705L37.3223 19.6989L37.0716 19.7111H9.67975V19.703ZM23.4314 9.56301C23.32 10.083 23.1688 10.7858 23.0454 11.3546L23.0295 11.4318C23.0215 11.4683 23.0136 11.4968 23.0016 11.5211L22.9817 11.5658L22.9738 11.6146C22.9221 11.8908 22.8942 12.1183 22.8783 12.3377C22.8465 12.7846 22.8425 13.2111 22.8703 13.6093C22.926 14.3933 23.1887 15.023 23.6701 15.5349C24.2391 16.1402 25.4368 16.2702 26.3401 16.2702H27.3826L27.4582 15.9168C27.8999 13.8571 28.2819 12.098 28.5365 10.9321C28.5365 10.9321 28.7275 10.0586 28.7912 9.75395L28.9105 9.20551H23.507L23.4314 9.56301Z" fill="#2F3843"/>
             <path d="M40.5508 3.78277L41.2949 0.0615234H44.7169L43.9767 3.78277H40.5508Z" fill="#AA1F23"/>
@@ -149,8 +150,13 @@
             </clipPath>
             </defs>
             </svg>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div>
+              <img src="../images/about.png" style="width: 100px; height: 100px;" class="rounded-full m-auto" >
+            </div>
+            <div>
+              <a href="">ssssss</a>
+            </div>
         </Sidebar>
 
     </div>
@@ -220,7 +226,5 @@ border-radius: 5px !important;
   border-right: 0px solid transparent;
   border-bottom: 10px solid #fdfdfd; /* Triangle color matching the button */
 }
-.p-sidebar .p-sidebar-header .p-sidebar-close, .p-sidebar .p-sidebar-header .p-sidebar-icon{
-  visibility: hidden;
-}
+
 </style>

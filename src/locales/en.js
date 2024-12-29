@@ -115,5 +115,6 @@ full_name: "Full Name",
   The_area:"The area",
   The_amount_of_entry:"The amount of entry",
   Opening_price_of_the_auction:"Opening price of the auction",
-  Apply_for_job:"Apply for a job"
+  Apply_for_job:"Apply for a job",
+  Terms_and_Conditions:"Terms and Conditions"
 };
