@@ -86,8 +86,16 @@
 
       </div>
     </div>
-    <div class="text-center pb-[2%]">
-        <a href="https://canv.sa/terms-conditions" target="_blank" class="text-white"> {{ $t("Terms_and_Conditions") }}</a>
+      <div class="text-center mt-2" style="border-top: 2px solid white;">
+        <div class="p-[1%] grid grid-cols-3">
+        <div>
+          <a href="terms-conditions"  class="text-white"> {{ $t("Terms_and_Conditions") }}</a>
+          <a href="terms-conditions"  class="text-white px-3"> {{ $t("البيانات") }}</a>
+        </div>
+        <div>
+          <a href="terms-conditions"  class="text-white px-3"> {{ $t("© 2024 CANV. All rights reserved.") }}</a>
+        </div>
+        </div>
       </div>
 
   </div>
