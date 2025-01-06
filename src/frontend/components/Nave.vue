@@ -92,7 +92,7 @@
       </Button>
 
       </a>
-       <Button class="button-with-triangle" icon="pi pi-arrow-right" @click="dashboard = true"  />
+       <!-- <Button class="button-with-triangle" icon="pi pi-arrow-right" @click="dashboard = true"  /> -->
     </div>
 
   </div>
