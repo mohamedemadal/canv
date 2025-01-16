@@ -17,9 +17,9 @@ if(localStorage.getItem('appLang')){
 
 axios.interceptors.request.use((config) => {
   try {
-    config.headers.Authorization = `Bearer $pbkdf2-sha512$25000$sDYGoBQCwDgnhFBKSem9Fw$sapl5rTjv3ONcISw199KDAP4VuCRoaT0SZgxFk3jZJIoLEDgXSgsj7tK3c1g.1QgLPoVPm.I6RpRyWQVIBh4jg`
+    config.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('token'))}`
   } catch (error) {
-    config.headers.Authorization = `Bearer $pbkdf2-sha512$25000$sDYGoBQCwDgnhFBKSem9Fw$sapl5rTjv3ONcISw199KDAP4VuCRoaT0SZgxFk3jZJIoLEDgXSgsj7tK3c1g.1QgLPoVPm.I6RpRyWQVIBh4jg`
+    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
   }
   config.headers.Accept = 'application/json'
   // config.headers["Content-Type"] = "application/json";

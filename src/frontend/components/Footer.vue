@@ -74,7 +74,7 @@
 
       </div>
       <div>
-        <Button style=" background-color: #AA1E22 !important;"  :label='$t("Branches")' class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
+        <Button style=" background-color: #AA1E22 !important;"  :label='$t("التواصل")' class="w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
         <div class="">
           <h5 class="text-base  pt-2 font-semibold text-[#ffff]"> {{ $t("Mobile_number") }}</h5>
           <p class="text-sm py-2 font-normal text-[#ffff]"> {{ company_details?.phone }}</p>
@@ -89,11 +89,13 @@
       <div class="text-center mt-2" style="border-top: 2px solid white;">
         <div class="p-[1%] grid grid-cols-3">
         <div>
-          <a href="terms-conditions"  class="text-white"> {{ $t("Terms_and_Conditions") }}</a>
-          <a href="terms-conditions"  class="text-white px-3"> {{ $t("البيانات") }}</a>
+          <router-link :to="{ name: 'terms-conditions' }"  class="text-white"> {{ $t("Terms_and_Conditions") }}</router-link>
+          <router-link :to="{ name: 'terms-conditions' }"  class="text-white"> {{ $t("البيانات") }}</router-link>
+
         </div>
         <div>
-          <a href="terms-conditions"  class="text-white px-3"> {{ $t("© 2024 CANV. All rights reserved.") }}</a>
+          <router-link :to="{ name: 'terms-conditions' }"  class="text-white"> {{ $t("© 2024 CANV. All rights reserved.") }}</router-link>
+
         </div>
         </div>
       </div>

@@ -35,6 +35,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../frontend/pages/index.vue'),
   },
   {
+    name: 'profile',
+    path: '/profile',
+    component: () => import('../frontend/pages/profile.vue'),
+  },
+  {
     name: 'about-us',
     path: '/about',
     component: () => import('../frontend/pages/about-us.vue'),
@@ -43,6 +48,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'auctions',
     path: '/auctions',
     component: () => import('../frontend/pages/auctions.vue'),
+  },
+  // ادارؤة الاملاك
+  {
+    name: 'Propert-management',
+    path: '/Propert-management',
+    component: () => import('../frontend/pages/Propert-management.vue'),
   },
   {
     name: 'auction-details',

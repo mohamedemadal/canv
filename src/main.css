@@ -5,6 +5,9 @@
   @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
   }
+  body{
+    background-color: rgb(251, 249, 249) !important;
+  }
 
   Button{
     transform: scale(.9) !important;
@@ -74,7 +77,9 @@ td{
 
 
 }
-
+.p-sidebar{
+  transition: transform 0s !important;
+}
 
 .p-button {
   clip-path: polygon(4% 0%, 100% 0%, 100% 100%, 0% 100%);

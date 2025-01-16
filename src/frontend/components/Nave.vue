@@ -83,7 +83,7 @@
     </div>
     <div class="hidden lg:block">
       <span><LocaleSelect id="local-switcher"></LocaleSelect></span>
-      <a href="/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
+      <a v-if="showLogin=='false'" href="/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
 
       <Button
       style="background-color: #AA1E22 !important;"
@@ -92,7 +92,8 @@
       </Button>
 
       </a>
-       <!-- <Button class="button-with-triangle" icon="pi pi-arrow-right" @click="dashboard = true"  /> -->
+
+       <Button style="background-color: white; color: black; border-color: black !important; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important;" v-if="showLogin=='true'" class="button-with-triangle" icon="pi pi-angle-double-right" @click="dashboard = true"  />
     </div>
 
   </div>
@@ -117,7 +118,7 @@
         </li>
         <div class="text-center w-full mt-1"> <LocaleSelect id="local-switcher"></LocaleSelect></div>
 
-        <a href="/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
+        <a v-if="showLogin=='false'" href="/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
           <Button
           style="background-color: #AA1E22 !important;"
           :label='$t("login")'
@@ -152,10 +153,35 @@
             </svg>
             </div>
             <div>
-              <img src="../images/about.png" style="width: 100px; height: 100px;" class="rounded-full m-auto" >
+              <img :src="profil" style="width: 100px; height: 100px;" class="rounded-full m-auto" >
             </div>
-            <div>
-              <a href="">ssssss</a>
+            <div class="w-[85%] mx-auto py-[5%]">
+               <div class="flex justify-between pb-3" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-xl text-black"> {{ user_name }}</a>
+                <i class="pi pi-chevron-left font-bold my-auto" ></i>
+               </div>
+               <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-lg text-[#2F3843]"> لوحه تحكم المالك</a>
+               </div>
+
+               <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-lg text-[#2F3843]">   لوحه تحكم البائع</a>
+               </div>
+               <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-lg text-[#2F3843]"> لوحه تحكم الوسيط</a>
+               </div>
+               <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-lg text-[#2F3843]"> تقديم علي مزاد</a>
+               </div>
+               <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-lg text-[#2F3843]"> تقديم علي ملك</a>
+               </div>
+               <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-lg text-[#2F3843]"> تقديم علي ملك كوسيط</a>
+               </div>
+               <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+                <a class="font-bold text-lg text-[#2F3843]"> تقديم كبائع</a>
+               </div>
             </div>
         </Sidebar>
 
@@ -163,13 +189,16 @@
 </template>
 <script setup>
 
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount,computed } from 'vue';
   import LocaleSelect from '../../components/LocaleSelect.vue'
 const scrollContainer = ref(null);
 const content = ref(null);
 const staticDiv = ref(null);
 const visible = ref(false);
+const user_name=ref(localStorage.getItem('user_name'))
+const profil=ref(localStorage.getItem('profil'))
 const dashboard = ref(false);
+const authenticated = ref(localStorage.getItem('authenticated'));
 let observer;
 const show=ref(true)
 const opennave=()=>{
@@ -183,6 +212,9 @@ const handleScroll = () => {
   isFixed.value = window.scrollY > 100;
 };
 
+const showLogin = computed(() => {
+      return authenticated.value;
+    });
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
 });
@@ -194,6 +226,7 @@ onBeforeUnmount(() => {
 
 
 onBeforeUnmount(() => {
+
   if (observer) {
     observer.disconnect();
   }

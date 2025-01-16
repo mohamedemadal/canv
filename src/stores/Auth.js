@@ -9,21 +9,15 @@ export const error = ref('')
 
 export const useAuthStore = defineStore('Auth', {
   state: () => ({
-    authUser: useStorage('authUser', {}),
+    user_name: useStorage('user_name', ''),
+    profil: useStorage('profil', ''),
+    user_id: useStorage('user_id', ''),
     authenticated: useStorage('authenticated', false),
-    userPermissions: useStorage('userPermissions', []),
-    authErrors: [],
-    role: '',
     token: useStorage('token', null),
-    msg: '',
-    loading: ref(false),
     router: useRouter(),
   }),
   getters: {
-    user: (state) => state.authUser,
-    permissions: (state) => state.userPermissions,
-    errors: (state) => state.authErrors,
-    successMsg: (state) => state.msg,
+
   },
   actions: {
     async getUser() {
@@ -33,7 +27,7 @@ export const useAuthStore = defineStore('Auth', {
     },
     async handleLogin(data) {
       this.resetAuthStore();
-      load.value = true;
+
 
       try {
         const response = await axios.post('/api/canv/user_login', {
@@ -44,21 +38,18 @@ export const useAuthStore = defineStore('Auth', {
         });
 
         if (response?.data?.session_id) {
-          // Send session ID to the canv.sa domain to set the cookie
-          await axios.post('https://canv.sa/api/set_session_cookie', {
-            session_id: response.data.session_id
-          }, {
-            withCredentials: true // Make sure this is set to send cookies to the correct domain
-          });
-
-          load.value = false;
-
-          // Redirect or take further actions
+          this.authenticated = true
+          this.token=response.data.data.user_token
+          this.user_name=response.data.data.user_name
+          this.user_id=response.data.data.user_id
+          this.profil=response.data.data.profile
+          this.router.push({ name: 'profile' })
         } else {
-          error.value = "Email or password doesn't match our records";
-          load.value = false;
+
+          alert("Email or password doesn't match our records")
         }
       } catch (error) {
+        alert("Email or password doesn't match our records")
         console.error('Login error:', error);
         error.value = "An error occurred during login";
         load.value = false;
@@ -127,8 +118,8 @@ export const useAuthStore = defineStore('Auth', {
     resetAuthStore() {
       this.authUser = null
       this.token = null
+      this.profil=null
       this.authenticated = false
-      this.userPermissions = null
       this.authErrors = []
       this.msg = ''
       this.loading = false

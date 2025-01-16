@@ -113,5 +113,6 @@ opportunity_analyst: "محلل فرص",
    The_amount_of_entry:"مبلغ الدخول",
    Opening_price_of_the_auction :"السعر الإفتتاحى للمزاد",
    Apply_for_job:"تقديم على وظيفة",
-   Terms_and_Conditions:"الشروط و الأحكام"
+   Terms_and_Conditions:"الشروط و الأحكام",
+   Propert_management:"إدارة الأملاك"
 };
