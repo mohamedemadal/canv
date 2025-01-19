@@ -60,12 +60,12 @@
          <h3 class="text-center text-3xl lg:text-5xl pb-[5%]"> {{ $t("About_CANF") }}</h3>
        </div>
        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 p-4">
-        <div>
+        <div class="hidden">
           <img src="../images/about.png" class="w-full h-full">
         </div>
-        <div class="p-4">
+        <div class="p-4 lg:col-span-2">
          <h4 class="text-3xl lg:text-4xl font-bold">{{ $t("why_choose_canv") }}</h4>
-         <p style="line-height: initial; text-align: justify;" class="text-xl lg:text-2xl font-medium text-[#AEAEAE]">{{ about_us?.about_us?.slice(0,190) }} ...</p>
+         <p style="line-height: initial; text-align: justify;" class="text-xl lg:text-2xl font-medium text-[#AEAEAE]">{{ about_us?.about_us?.slice(0,290) }} ...</p>
           <a href="/about">
            <Button style=" background-color: #AA1E22 !important;"  :label='$t("read_more")' class="mt-3 w-[200px] bg focus:ring-0 text-[#AA1E22]"/>
           </a>

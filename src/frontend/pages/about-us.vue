@@ -45,10 +45,10 @@
            <h3 class="text-center text-5xl pb-[5%]">{{ $t("About_CANF") }} </h3>
          </div>
          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 p-4">
-          <div>
+          <div class="hidden">
             <img src="../images/about.png" class="w-full h-full">
           </div>
-          <div class="p-4">
+          <div class="p-4 col-span-2">
            <h4 class="text-4xl font-bold">{{ $t("why_choose_canv") }}</h4>
            <p style="line-height: initial;text-align: justify;" class="text-2xl font-medium text-[#AEAEAE]"> {{ about_us?.about_us }} </p>
 
