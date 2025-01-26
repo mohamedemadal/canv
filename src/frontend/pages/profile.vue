@@ -87,9 +87,11 @@
                   <span v-if="!profile.card_code" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
+
                   <InputText   required class="bg-[#303843] w-full " v-model="profile.card_code" :placeholder='$t("رقم الكارت")'  />
                 </div>
               </div>
+
               <div class=" flex-column gap-2 py-1 hidden">
                   <label class="w-full " for="username">{{ $t('personal_image') }}</label>
 

@@ -88,13 +88,14 @@
     </div>
       <div class="text-center mt-2" style="border-top: 2px solid white;">
         <div class="p-[1%] grid grid-cols-3">
-        <div>
-          <router-link :to="{ name: 'terms-conditions' }"  class="text-white"> {{ $t("Terms_and_Conditions") }}</router-link>
-          <router-link :to="{ name: 'terms-conditions' }"  class="text-white"> {{ $t("البيانات") }}</router-link>
+        <div class="flex m-auto">
+          <div><a  href="/terms-conditions"  class="text-white"> {{ $t("Terms_and_Conditions") }}</a></div>
+          <div class="mx-3"><a  href="/terms-conditions"  class="text-white"> {{ $t("البيانات") }}</a></div>
+
 
         </div>
         <div>
-          <router-link :to="{ name: 'terms-conditions' }"  class="text-white"> {{ $t("© 2024 CANV. All rights reserved.") }}</router-link>
+          <p  href="/terms-conditions"  class="text-white"> {{ $t("© 2024 CANV. All rights reserved.") }}</p>
 
         </div>
         </div>

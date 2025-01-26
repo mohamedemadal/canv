@@ -10,9 +10,10 @@
       </div>
 
      <div class=" grid lg:grid-cols-3 w-full lg:w-fit grid-cols-2 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
-      <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="  المزادات الحالية" class="mt-3 bg-[#AA1E22]   "/>
-      <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" المزادات القادمة" class="mt-3 bg-[#AA1E22]   "/>
-      <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="المزادات المنتهية " class="mt-3 bg-[#AA1E22]   "/>
+      <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="  القادمة" class="mt-3 bg-[#AA1E22]   "/>
+
+      <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label="   الحالية" class="mt-3 bg-[#AA1E22]   "/>
+      <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   label=" المنتهية " class="mt-3 bg-[#AA1E22]   "/>
      </div>
       <div v-if="allauctions.length >= 1" class=" mt-3">
 

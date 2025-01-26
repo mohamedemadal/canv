@@ -1,63 +1,66 @@
 <template>
+  <Nave></Nave>
+  <div class="bg-white auction">
+  <!-- banner -->
+  <div  class="banner flex items-center h-[35vh] lg:h-[55vh] relative ">
+    <div class="absolute bg-black opacity-40 w-full h-full z-50"></div>
+    <img class="w-full absolute h-full" src="../images/breadcrumb.png">
 
-  <div class="bg-slate-50 rents">
-<div class=  " px-[2%] py-[3%] m-auto  max-w-[1350px]">
+    <div class="z-50 text-white w-full m-auto w-[80%] ">
+      <H1 class="font-bold text-5xl text-white z-50"> {{ $t("المجمعات") }}</H1>
+     <div class="flex py-8 ">
+      <p class="text-2xl font-semibold ">{{ $t("home") }}</p>
+      <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <p class="text-2xl font-semibold ">{{ $t("المجمعات") }} </p>
+     </div>
+    </div>
+   </div>
 
 
-      <div class="flex justify-between py-1">
-        <h2 class="text-3xl lg:text-4xl  my-auto font-bold">{{ $t("المجمعات") }}</h2>
-        <a href="/complexes" class="text-xl lg:text-2xl lg:px-10 font-bold text-[#32A7B0]">{{ $t("Watch_more") }} </a>
+
+   <div class=  "filter px-[1%] py-[3%] m-auto  max-w-[1290px]">
+    <div class="grid lg:grid-cols-3 grid-cols-1 bg-white shadow-lg w-full gap-4 px-[3%] py-[2%]">
+      <div class=" py-2 relative sh">
+
+          <div class="relative ">
+            <InputText v-model="filter.name"  required class="bg-[#f7f5f5] w-full shadow"  :placeholder='$t("إسم المجمع")' />
+            <span class="pi pi-search absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
+          </div>
+     </div>
+     <div class=" py-1 relative my-auto ">
+      <div class="relative ">
+        <Dropdown  style="height: 100% !important;" filter v-model="filter.city_id_filter"  option-value="id" :options="cityes" optionLabel="name" :placeholder='$t("select_city")' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+      </div>
+    </div>
+    <div class="flex items-center text-center">
+      <Button @click="fetchdata" style="background-color:#65BDC4 ;"   :label='$t("search")' class="mt-3 bg-[#65BDC4] w-[50%]  m-auto "/>
+
+    </div>
+
+    </div>
+  </div>
+   <!-- auctions -->
+  <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1290px]">
+      <div class="flex justify-between">
+        <h2 class="text-4xl  font-bold">{{ $t("المجمعات") }}</h2>
 
       </div>
 
-      <div class="bg-slate-50 auctions hidden" v-if="allauctions.length<=0">
-        <div class=  " px-[2%] py-[3%] m-auto  max-w-[1295px] h-[40vh] te  flex text-center items-center">
-          <h2 class="text-3xl text-[#BC1E1E] font-bold text-center m-auto">{{ $t(" نأسف لعدم وجود المجمعات  في الوقت الحالي") }}
-          </h2>
-        </div>
-      </div>
-      <div  class=" mt-3">
+      <div class=" grid lg:grid-cols-4 w-full lg:w-fit grid-cols-2 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
+      <Button @click="getauction('all')"  :style=" active == 'all' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("كل المجمعات")' class="mt-3 bg-['#65BDC4']  my-auto "/>
+      <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"  :label='$t("المجمعات الحالية")' class="mt-3 bg-['#65BDC4']   "/>
+      <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("المجمعات القادمة")' class="mt-3 bg-['#65BDC4']   "/>
+      <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("المجمعات المنتهية")' class="mt-3 bg-['#65BDC4']   "/>
+     </div>
 
-        <div class="w-full relative ">
-          <div class="swiper-button-next " ></div>
-          <div class="swiper-button-prev "></div>
-          <div class="w-full m-auto lg:w-[90%]">
-            <swiper
-    ref="swiperRef"
-    :modules="[Pagination, Navigation, Autoplay]"
-    @slideChange="onSlideChange"
-    @swiper="onSwiper"
-
-    :navigation="navigation"
-    :pagination="{ clickable: true }"
-    :scrollbar="{ draggable: true }"
-    :autoplay="{
-      delay: 3000,
-      disableOnInteraction: false,
-    }"
-    :breakpoints="{
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-      480: {
-        slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 10,
-      },
-      1024:{
-        slidesPerView: 3,
-        spaceBetween: 10,
-      }
-    }"
-  >
-    <swiper-slide v-for="(rent, index) in allauctions" :key="index">
-      <div  style="transition: .7s;" class="text-center  text-4xl bg-white rounded-lg w-full shadow-lg hover:scale-[1.01]">
+     <div class="grid  grid-cols-1 lg:grid-cols-3 gap-3 mt-3">
+      <div v-for="rent in allauctions" style="transition: .7s;" class="text-center  text-4xl bg-white rounded-lg w-full shadow-lg hover:scale-[1.01]">
         <!-- <div class="absolute w-full h-full bg-white opacity-20"></div> -->
-        <div class="h-full">
+        <div class="">
            <div class="" >
             <div class="w-full h-44" :style="{ backgroundImage: `url(${rent?.image})` }" style="background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
            </div>
@@ -136,40 +139,46 @@
 
         <div>
           <!-- @click="details(auction.auction_id)" -->
-           <Button   @click="details(auction.auction_id)" style=" background-color: #32A7B0 !important;padding: 0px !important;margin-bottom: 2% !important;"  label="إقرأ المزيد" class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
+           <Button   @click="details(rent.id)" style=" background-color: #32A7B0 !important;padding: 0px !important;margin-bottom: 2% !important;"  label=" التفاصيل" class="mt-3 w-[90%]  focus:ring-0 text-[#AA1E22]"/>
         </div>
       </div>
-      <!-- Doctor -->
-    </swiper-slide>
 
+     </div>
+     <div>
+      <Paginator v-if="allauctions.length >= 1"  v-model:first="current_page" :rows="1" :totalRecords="total_pages"
+        :template="{
 
-
-
-        </swiper>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
+        default: 'FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink  JumpToPageDropdown'
+    }"
+        ></Paginator>
+     </div>
   </div>
+
 </div>
+<Footer></Footer>
 </template>
 <script setup>
 import Nave from '../components/Nave.vue';
+import Footer from '../components/Footer.vue'
 import {useRouter} from "vue-router";
 
 const router = useRouter()
 // import img1 from "../images/riyadh-saudi-arabia-gretopia_5 1.png";
-import { ref, reactive, onMounted,computed } from 'vue';
+import { ref, reactive, onMounted,computed,watch} from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import axios from "axios";
-const allauctions=ref({})
-const active=ref('comming')
-const swiperRef = ref(null);
 const currentDate = ref(new Date());
+const allauctions=ref({})
+const total_pages=ref(2)
+const current_page=ref(0)
+const active=ref('all')
+const swiperRef = ref(null);
+const cityes=ref('')
+const filter=ref({})
 const state = reactive({
 currentSlide: 0,
 totalSlides: 0,
@@ -184,51 +193,55 @@ const navigation = {
 nextEl: '.swiper-button-next',
 prevEl: '.swiper-button-prev',
 };
+
+
 const currentMinutes = computed(() => {
-return currentDate.value.toLocaleTimeString([], { minute: '2-digit', hour12: false }).split(':')[0];
+  return currentDate.value.toLocaleTimeString([], { minute: '2-digit', hour12: false }).split(':')[0];
 });
 const currentHour = computed(() => {
-// Create a new Date object based on currentDate
-const date = new Date(currentDate.value);
+  // Create a new Date object based on currentDate
+  const date = new Date(currentDate.value);
 
-// Add one hour to the current hour
-date.setHours(date.getHours() + 1);
+  // Add one hour to the current hour
+  date.setHours(date.getHours() + 1);
 
-// Return the updated hour
-return date.toLocaleTimeString([], { hour: '2-digit', hour12: false });
+  // Return the updated hour
+  return date.toLocaleTimeString([], { hour: '2-digit', hour12: false });
 });
 const currentSeconds = computed(() => {
-return currentDate.value.toLocaleTimeString([], { second: '2-digit', hour12: false }).split(':')[0];
+  return currentDate.value.toLocaleTimeString([], { second: '2-digit', hour12: false }).split(':')[0];
 });
 const formattedDate = computed(() => {
-const year = currentDate.value.getFullYear();
-const month = String(currentDate.value.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-const day = String(currentDate.value.getDate()).padStart(2, '0');
+  const year = currentDate.value.getFullYear();
+  const month = String(currentDate.value.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const day = String(currentDate.value.getDate()).padStart(2, '0');
 
-return `${year}-${month}-${day}`;
+  return `${year}-${month}-${day}`;
 });
 // Function to update the current date
 const updateTime = () => {
-currentDate.value = new Date();
+  currentDate.value = new Date();
 };
 const details=(id)=>{
-router.push({name:'auction-details',params:{'id':id} })
+  router.push({name:'complexe-details',params:{'id':id} })
 }
 const getauction=(e)=>{
-
-active.value=String(e)
-allauctions.value={}
+  total_pages.value =2
+  current_page.value=0
+  active.value=String(e)
+    console.log( e)
 
 axios
-.post('api/get_buildings',{
-  auctions_filter:e,
-  page:"1",
-  page_scope:"7",
-  lang:localStorage.getItem('appLang'),
-})
-.then((res) => {
-
-  allauctions.value = res.data.result.data.data.map(event => ({
+  .post('api/get_buildings',{
+    auctions_filter:e,
+    page:"1",
+    page_scope:"9",
+    lang:localStorage.getItem('appLang'),
+  })
+  .then((res) => {
+    console.log(res.data.result.data)
+    allauctions.value=ref({})
+    allauctions.value = res.data.result.data.data.map(event => ({
              "name": event.name,
              "id": event.id,
              "image":event.images,
@@ -239,28 +252,35 @@ axios
               "area":event.location_details.area.name,
               "location_url":event.location_details.location_url
           }));
-        console.log( allauctions.value)
+          console.log( allauctions.value)
 
 
 
-})
+  })
 
 }
+watch(current_page, (newPage, oldPage) => {
 
-const fetchdata=()=>{
-axios
-.post('api/get_buildings',{
-  auctions_filter:"comming",
-  page:"1",
-  page_scope:"7",
-  lang:localStorage.getItem('appLang'),
-})
-.then((res) => {
-  console.log(res.data.result.data)
+  if (allauctions.value.length >= 9){
+    axios
+  .post('api/get_buildings',{
+    auctions_filter:active.value,
+    city_id_filter:filter.value.city_id_filter,
+    page:newPage+1,
+    page_scope:"9",
+    lang:localStorage.getItem('appLang'),
+  })
+  .then((res) => {
+    console.log(res.data.result.data)
+    if(res.data.result.data.length = 9 ){
+      total_pages.value ++
+    }
 
-   allauctions.value = res.data.result.data.data.map(event => ({
-             "name": event.name,
-             "image":event.images,
+    allauctions.value=ref({})
+    allauctions.value = res.data.result.data.data.map(event => ({
+      "name": event.name,
+      "id": event.id,
+      "image":event.images,
               "commercial_units_number":event.commercial_units_number,
               "description":event.description,
               "residential_units_number":event.residential_units_number,
@@ -268,53 +288,123 @@ axios
               "area":event.location_details.area.name,
               "location_url":event.location_details.location_url
           }));
-        console.log( allauctions.value)
 
 
 
-})
+
+  })
+  }
+
+      // Add any additional logic you need here, like fetching new data
+    });
+const fetchdata=()=>{
+axios
+  .post('api/get_buildings',{
+    city_id_filter:filter.value.city_id_filter,
+    name_like_filter:filter.value.name,
+    page:1,
+    page_scope:9,
+    lang:localStorage.getItem('appLang'),
+  })
+  .then((res) => {
+    console.log(res.data.result.data)
+
+      allauctions.value = res.data.result.data.data.map(event => ({
+              "name": event.name ,
+              "id": event.id,
+              "image":event.images,
+              "commercial_units_number":event.commercial_units_number,
+              "description":event.description,
+              "residential_units_number":event.residential_units_number,
+              "units_number":event.units_number,
+              "area":event.location_details.area.name,
+              "location_url":event.location_details.location_url
+          }));
+          console.log( allauctions.value)
+
+
+
+  })
+  axios.post('api/get_ksa_cities',{
+    lang:localStorage.getItem('appLang'),
+        })
+        .then((res) => {
+          cityes.value=res.data.result.data
+        })
 }
 
 
 onMounted(() => {
-updateTime();
-fetchdata()
+  updateTime();
+  fetchdata()
 
-setInterval(() => {
-    currentDate.value = new Date();
-  }, 100);
+  setInterval(() => {
+      currentDate.value = new Date();
+    }, 100);
 
 });
-
 </script>
 <style>
-.rents .swiper-pagination-bullet {
-background-color: #32A7B0 !important;
+.auction .swiper-pagination-bullet {
+background-color: white;
+color: red !important;
 z-index: 60;
+}
+.auction .swiper-pagination-bullet span {
+
+color: red !important;
+
 }
 
 
 .swiper-button-next,
 .swiper-button-prev {
-color: #32A7B0;
+color: #007bff;
 }
-.rents  .swiper-button-prev{
-background-color: #32A7B0 !important;
-border-radius: 50% !important ;
+.swiper-button-prev{
+background-color: red !important;
+border-radius: 9% !important ;
 transform: scale(.7) !important;
 color:  white !important;
 width: 50px !important ;
 height: 50px !important ;
 }
-.rents .swiper-button-next{
-background-color: #32A7B0 !important;
-border-radius: 50% !important ;
+.swiper-button-next{
+background-color: red !important;
+border-radius: 9% !important ;
 transform: scale(.7) !important;
 color:  white !important;
 width: 50px !important ;
 height: 50px !important ;
 }
+.auction .swiper-pagination{
+position: relative ;
+margin-top: 1%
+}
 
-
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight{
+  background-color: white !important;
+  border: 1px solid #AA1E22;
+  color: black;
+}
+.p-paginator .p-paginator-pages .p-paginator-page{
+  background-color: #CCCCCC !important;
+  border: 1px solid black;
+  color: black !important
+}
+.p-paginator .p-dropdown{
+  visibility: hidden !important;
+}
+.p-paginator .p-paginator-last ,.p-paginator .p-paginator-first{
+  visibility: hidden !important;
+}
+.p-paginator .p-icon {
+  transform: rotate(180deg) !important;
+    width: 2rem;
+    height: 3rem;
+}
+ .filter .p-inputtext:enabled{
+  height: 42px !important;
+ }
 </style>
 

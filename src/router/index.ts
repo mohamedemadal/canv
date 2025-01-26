@@ -71,6 +71,31 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../frontend/pages/jobs.vue'),
   },
   {
+    name: 'rents',
+    path: '/rents',
+    component: () => import('../frontend/pages/rents.vue'),
+  },
+  {
+    name: 'complexes',
+    path: '/complexes',
+    component: () => import('../frontend/pages/complexes.vue'),
+  },
+  {
+    name: 'owners-management',
+    path: '/owners-management',
+    component: () => import('../frontend/pages/Owner/Owners-management.vue'),
+  },
+  {
+    name: 'complexe-details',
+    path: '/complexe-details/:id',
+    component: () => import('../frontend/pages/Complexe-details.vue'),
+  },
+  {
+    name: 'rent-details',
+    path: '/rent-details/:id',
+    component: () => import('../frontend/pages/rent-details.vue'),
+  },
+  {
     name: 'jobs-details',
     path: '/jobs-details/:id',
     component: () => import('../frontend/pages/job-details.vue'),
