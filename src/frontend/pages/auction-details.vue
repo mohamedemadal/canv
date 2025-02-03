@@ -558,6 +558,7 @@ axios
 
 
     auction_details.value.name=res.data.result.data.name,
+    auction_details.value.description=res.data.result.data.description,
     auction_details.value.start=res.data.result.data.start_time,
     auction_details.value.start_time_period=res.data.result.data.start_time_period,
     auction_details.value.auction_logo=res.data.result.data.auction_logo,

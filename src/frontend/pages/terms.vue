@@ -20,17 +20,19 @@
     </div>
    </div>
    <div class="bg-white">
+    <div class="bg-white max-w-[1280px] m-auto">
     <div class=" auctions ">
-        <div class="animate__animated animate__backInRight animate__delay-1s pt-[3%] m-auto  max-w-[1280px]">
+        <div class="animate__animated animate__backInRight animate__delay-1s pt-[3%] px-2 m-auto  ">
           <p class="py-[3%] text-3xl">{{ terms.name }}</p>
           <div v-html="terms.terms"  ></div>
         </div>
    </div>
    <div class="auctions ">
-        <div class="animate__animated animate__backInRight animate__delay-1s pb-[3%] m-auto  max-w-[1280px]">
+        <div class="animate__animated animate__backInRight animate__delay-1s pb-[3%] px-2 m-auto  ">
           <p class="py-[3%] text-3xl">{{ conditions.name }}</p>
           <div v-html="conditions?.conditions"  ></div>
         </div>
+   </div>
    </div>
    </div>
 
