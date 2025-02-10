@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = "https://canv-back.visualinnovate.me/"
+axios.defaults.baseURL = "https://canv-back.visualinnovate.me"
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['Content-Length'] = '42334'

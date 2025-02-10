@@ -1,5 +1,5 @@
 <template>
-  <div  class="full-screen relative" :style="{ backgroundImage: `url(${image})` }">
+  <div  class="full-screen relative bg-no-repeat bg-cover" :style="{ backgroundImage: `url(${image})` }">
     <div style="background: linear-gradient(to right, #624336 , rgb(0, 0, 0));" class="absolute z-40 w-full h-full  opacity-40"></div>
     <h1 class="z-50 text-white  text-5xl font-bold tracking-wider	" >{{ displayText }}</h1>
   </div>
