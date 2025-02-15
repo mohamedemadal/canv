@@ -30,9 +30,8 @@
         </div>
         <h3 class="font-bold text-lg text-center py-2">{{ $t("Branches") }}</h3>
         <div v-for="branch in branches"  class=" py-1 flex">
-          <p class="font-bold text-base p-1  " style="text-wrap: nowrap;">{{ branch?.name }} : </p>
-          <a :href="branch?.location_url" target="_blank" class="py-1 text-base text-center	my-auto">  {{ branch?.address.city +' - '+branch?.address.street }} </a>
-
+          <svg width="24px" height="24px" class="my-auto mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="10" r="3" stroke="#AA1E22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle> <path d="M19 9.75C19 15.375 12 21 12 21C12 21 5 15.375 5 9.75C5 6.02208 8.13401 3 12 3C15.866 3 19 6.02208 19 9.75Z" stroke="#AA1E22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+          <a :href="branch?.location_url" target="_blank" class="py-1 text-base text-center	my-auto underline">  {{ branch?.address.city +' - '+branch?.address.street }} </a>
         </div>
 
        </div>
@@ -109,7 +108,25 @@
    <div class="bg-slate-50 auctions ">
     <div class="px-[2%] py-[3%] pb-[5%] m-auto  max-w-[1280px] grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div class="shadow-lg rounded-md">
-      <iframe class="w-full h-[400px] lg:h-full " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743143.361816603!2d45.972632551724224!3d23.62536037833407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e7b33fe7952a41%3A0x5960504bc21ab69b!2z2KfZhNiz2LnZiNiv2YrYqQ!5e0!3m2!1sar!2seg!4v1724826990767!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <GoogleMap
+        api-key="AIzaSyDZnJeq94aaneiA3QWUZdWYV9uKDEjxjas"
+        :center="center"
+        :zoom="6"
+        style="width: 100%; height: 100%"
+        @click="handleMapClick"
+      >
+        <Marker
+          v-for="(branch, index) in branches"
+          :key="index"
+          :options="{
+            position: {
+              lat: parseFloat(branch.latitude),
+              lng: parseFloat(branch.longitude),
+            },
+            title: branch.name,
+          }"
+        />
+      </GoogleMap>
      </div>
 
      <form  @submit.prevent="contact_us" class="bg-white py-6 px-10 shadow-lg rounded-lg">
@@ -182,8 +199,6 @@
 
                 </div>
 
-
-
           </form>
 
 
@@ -199,20 +214,48 @@
 <script setup>
   import Nave from '../components/Nave.vue'
   import Footer from '../components/Footer.vue'
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted,computed } from 'vue';
+  import {GoogleMap, Marker, Circle } from "vue3-google-map";
   import axios from "axios";
+  const mapLink=ref('https:\/\/maps.app.goo.gl\/YgsprXBNfL1yqUiK7')
   const contact=ref({})
   const departments=ref('')
   const company_details=ref('')
   const branches=ref('')
   import {useToast} from 'primevue/usetoast'
   const toast = useToast()
+  const center =ref({ lat: 26.3326021, lng: 43.98553680000001 })
+  const location = ref(
+    {name: '', latitude: 31.984983325941823, longitude: 35.900908045672196, distance: 1000}
+)
+
+  function handleMapClick(event) {
+  const clickedLatLng = event.latLng; // LatLng object representing the clicked coordinates
+  const lat = clickedLatLng.lat();
+  const lng = clickedLatLng.lng();
+
+  console.log('Clicked coordinates:', lat, lng);
+  // Do something with the latitude and longitude values
+}
   const contact_us=()=>{
     axios.post('api/contact_us',contact.value)
         .then((res) => {
           toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
         })
   }
+
+  const circle = computed(() => {
+  console.log(location.value.distance)
+  return {
+    center: {lat: location.value.latitude, lng: location.value.longitude},
+    radius: parseInt(location.value.distance),
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.35
+  }
+});
   const fetchdata=()=>{
        axios.post('api/get_our_branchs',{
         lang:localStorage.getItem('appLang'),

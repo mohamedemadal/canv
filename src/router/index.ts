@@ -40,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../frontend/pages/profile.vue'),
   },
   {
+    name: 'verfiy_login',
+    path: '/verfiy_login',
+    component: () => import('../frontend/pages/verify-login.vue'),
+  },
+  {
     name: 'about-us',
     path: '/about',
     component: () => import('../frontend/pages/about-us.vue'),

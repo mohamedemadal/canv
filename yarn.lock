@@ -135,21 +135,6 @@
   resolved "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.1.1.tgz"
   integrity sha512-J/3yg2AIXc9wznaVqpHVX3Wa5jwKovVF0AMYSnbmcXTiL3PpRPfF58pzWucCwEiCJBp+hCNRLWClTomD8SseKg==
 
-"@googlemaps/js-api-loader@^1.16.2":
-  version "1.16.2"
-  resolved "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.16.2.tgz"
-  integrity sha512-psGw5u0QM6humao48Hn4lrChOM2/rA43ZCm3tKK9qQsEj1/VzqkCqnvGfEOshDbBQflydfaRovbKwZMF4AyqbA==
-  dependencies:
-    fast-deep-equal "^3.1.3"
-
-"@googlemaps/markerclusterer@^2.4.0":
-  version "2.5.1"
-  resolved "https://registry.npmjs.org/@googlemaps/markerclusterer/-/markerclusterer-2.5.1.tgz"
-  integrity sha512-TLASLyWPoJiTdbuPtqIzQS8t/+JIvd+whoNkeSxWpP2eIoTscgsWt72Is3Cu5I68GuX3qn+oUSxqagFYc1O+wg==
-  dependencies:
-    fast-deep-equal "^3.1.3"
-    supercluster "^8.0.1"
-
 "@gtm-support/core@^2.0.0":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@gtm-support/core/-/core-2.0.0.tgz"
@@ -3030,11 +3015,6 @@ kdbush@^3.0.0:
   resolved "https://registry.npmjs.org/kdbush/-/kdbush-3.0.0.tgz"
   integrity sha512-hRkd6/XW4HTsA9vjVpY9tuXJYLSlelnkTmVFu4M9/7MIYQtFcHpbugAU7UbOfjOiVSVYl2fqgBuJ32JUmRo5Ew==
 
-kdbush@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.npmjs.org/kdbush/-/kdbush-4.0.2.tgz"
-  integrity sha512-WbCVYJ27Sz8zi9Q7Q0xHC+05iwkm3Znipc2XTlrnJbsHMYktW4hPhXUE8Ys1engBrvffoSCqbil1JQAa7clRpA==
-
 leaflet-map@^0.2.1:
   version "0.2.1"
   resolved "https://registry.npmjs.org/leaflet-map/-/leaflet-map-0.2.1.tgz"
@@ -4205,13 +4185,6 @@ supercluster@^7.1.4:
   dependencies:
     kdbush "^3.0.0"
 
-supercluster@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.npmjs.org/supercluster/-/supercluster-8.0.1.tgz"
-  integrity sha512-IiOea5kJ9iqzD2t7QJq/cREyLHTtSmUT6gQsweojg9WH2sYJqZK9SswTu6jrscO6D1G5v5vYZ9ru/eq85lXeZQ==
-  dependencies:
-    kdbush "^4.0.2"
-
 supports-color@^7.1.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz"
@@ -4576,7 +4549,7 @@ vue@^2.0.5:
     "@vue/compiler-sfc" "2.7.15"
     csstype "^3.1.0"
 
-"vue@^2.6.14 || ^3.2.0", vue@^3, vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.0.4, vue@^3.2.0, vue@^3.2.25, vue@^3.2.26, "vue@>= 3", vue@>=1.x.x, "vue@>=3 < 4", vue@3.2.26:
+"vue@^2.6.14 || ^3.2.0", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.0.4, vue@^3.2.0, vue@^3.2.25, vue@^3.2.26, "vue@>= 3", vue@>=1.x.x, "vue@>=3 < 4", vue@3.2.26:
   version "3.2.26"
   resolved "https://registry.npmjs.org/vue/-/vue-3.2.26.tgz"
   integrity sha512-KD4lULmskL5cCsEkfhERVRIOEDrfEL9CwAsLYpzptOGjaGFNWo3BQ9g8MAb7RaIO71rmVOziZ/uEN/rHwcUIhg==
@@ -4586,15 +4559,6 @@ vue@^2.0.5:
     "@vue/runtime-dom" "3.2.26"
     "@vue/server-renderer" "3.2.26"
     "@vue/shared" "3.2.26"
-
-vue3-google-map@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/vue3-google-map/-/vue3-google-map-0.18.0.tgz"
-  integrity sha512-dhDlXK5XxKxH3Mj6n6C7y99M5LRwPDHlgGWgfLkmzVMpwlxBhaSxDhSTaduAFUjeHVusEfYdPxJSSP7yPJr8sg==
-  dependencies:
-    "@googlemaps/js-api-loader" "^1.16.2"
-    "@googlemaps/markerclusterer" "^2.4.0"
-    fast-deep-equal "^3.1.3"
 
 vuestic-ui@^1.7.3:
   version "1.7.3"

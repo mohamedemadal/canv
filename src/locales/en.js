@@ -72,7 +72,7 @@ export default {
 home:"home",
 auctions:"auctions",
 login:"login",
-
+contact_data:"Contact data",
 full_name: "Full Name",
   email_address: "Your Email Address",
   mobile_number: "Mobile Number",
