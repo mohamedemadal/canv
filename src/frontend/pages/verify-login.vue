@@ -15,10 +15,10 @@
                 <div class="flex justify-center my-4  gap-2 flex-wrap">
                 <input
                 placeholder="-"
-                  v-for="(digit, index) in otp"
+                  v-for="(digit, index) in parent.otp"
                   :key="index"
                   ref="otpInputs"
-                  v-model="otp[index]"
+                  v-model="parent.otp[index]"
                   type="text"
                   maxlength="1"
                   class="w-10 h-14 text-center text-lg font-bold border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
@@ -30,7 +30,7 @@
               <a class="flex  " >
 
                 <Button
-
+                @click="useAuthStore.handleLogin(parent)"
                 style="background-color: #AA1E22 !important;"
                 label="تسجيل الدخول"
                 class="mt-3 h-full relative mb- pl-4 lg:w-[70%] mx-auto  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
@@ -68,35 +68,49 @@
 </template>
 
 <script>
+import { useAuthStore } from "../../stores/Auth.js";
+import axios from 'axios';
+
 export default {
   data() {
     return {
-      otp: ["", "", "", ""], // جعل جميع الخانات فارغة بشكل افتراضي
+      useAuthStore: useAuthStore(),
+      parent:{
+        otp: ["", "", "", ""],
+        user_id:'',
+        request_id:''
+      },
+
     };
   },
+
   methods: {
     handleInput(index, event) {
       const value = event.target.value;
 
       if (value.match(/^[0-9]$/)) {
-        this.otp[index] = value;
+        this.parent.otp[index] = value;
 
-        if (index < this.otp.length - 1) {
+        if (index < this.parent.otp.length - 1) {
           this.$nextTick(() => {
             this.$refs.otpInputs[index + 1].focus();
           });
         }
       } else {
-        this.otp[index] = "";
+        this.parent.otp[index] = "";
       }
     },
     handleBackspace(index, event) {
-      if (!this.otp[index] && index > 0) {
+      if (!this.parent.otp[index] && index > 0) {
         this.$nextTick(() => {
           this.$refs.otpInputs[index - 1].focus();
         });
       }
     },
   },
+  mounted() {
+     this.parent.user_id=this.$route.params.user_id
+     this.parent.request_id=this.$route.params.request_id
+    }
 };
 </script>

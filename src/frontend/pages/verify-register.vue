@@ -1,32 +1,36 @@
 <template>
-
   <div class="  h-screen flex items-center">
       <form   class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8 animate__animated animate__backInRight animate__delay-.5s rounded-lg  overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
 
 
-          <div class="bg-white py-8 px-10 shadow-lg rounded-lg">
-            <h2 class="font-bold text-3xl text-[#AA1E22] py-3" >سجل حساب جديد</h2>
-            <p class="pb-1" style="line-height:29px">أهلا بك فى منصة إيوا للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p>
+          <div class="bg-white py-6 px-10 shadow-lg rounded-lg">
+            <h2 class="font-bold text-3xl text-[#AA1E22] py-3" > ادخل رمز ال OTP </h2>
+            <p class="pb-1" style="line-height:29px"> أهلا بك فى منصة إيوا للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p>
             <p class="pb-1 w-full text-center text-[#AA1E22] font-bold " style="line-height:29px">{{ errore }}</p>
 
-            <div class=" py-2 relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#AA1E22]" for="username"> {{ $t("mobile_number") }}</p>
-                  <span v-if="!parent.phone_number" class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-                  <InputText  required class="bg-[#f7f5f5] w-full " v-model="parent.phone_number" :placeholder='$t("mobile_number")' />
-                </div>
 
+
+
+              <div class=" py-2 relative ">
+                <div class="flex justify-center my-4  gap-2 flex-wrap">
+                <input
+                placeholder="-"
+                  v-for="(digit, index) in parent.otp"
+                  :key="index"
+                  ref="otpInputs"
+                  v-model="parent.otp[index]"
+                  type="text"
+                  maxlength="1"
+                  class="w-10 h-14 text-center text-lg font-bold border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  @input="handleInput(index, $event)"
+                  @keydown.backspace="handleBackspace(index, $event)"
+                />
               </div>
-
-
-
+              </div>
               <a class="flex  " >
 
                 <Button
-                :loading="loading"
-                @click="login"
+                @click="handelRegister"
                 style="background-color: #AA1E22 !important;"
                 label="تسجيل الدخول"
                 class="mt-3 h-full relative mb- pl-4 lg:w-[70%] mx-auto  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
@@ -61,32 +65,68 @@
           </div>
       </form>
   </div>
+</template>
 
-  </template>
-<script setup>
-import { ref, reactive, onMounted,computed } from 'vue';
-const parent=ref({
-  phone_number:''
-})
-import {useRouter} from "vue-router";
-
-const router = useRouter()
-import { useAuthStore ,load ,error} from '../../stores/Auth'
+<script>
+import { useAuthStore } from "../../stores/Auth.js";
 import axios from 'axios';
-const authStore = useAuthStore();
-const loading =load
-const errore=error
-const login=()=>{
-  axios.post("api/canv/user_phone_login",{
-    phone_number:parent.value.phone_number,
-    lang: localStorage.getItem('appLang'),
-  }).then((res)=>{
-    if(res.data.result.data.user_id){
-      router.push({name:'verfiy_login',params:{'user_id':res.data.result.data.user_id,'request_id':res.data.result.data.request_id} })
+
+export default {
+  data() {
+    return {
+      useAuthStore: useAuthStore(),
+      parent:{
+        otp: ["", "", "", ""],
+        user_id:'',
+        request_id:''
+      },
+
+    };
+  },
+
+  methods: {
+        handelRegister(){
+          this.parent.otp=(this.parent.otp).join("")
+          axios.post('api/user_registration_verfication',{
+            lang: localStorage.getItem('appLang'),
+            verfy_with:"sms",
+            request_id:this.$route.params.request_id,
+            verfication_code:this.parent.otp
+          }).then((res)=>{
+            if(res.data.result.data.verfid){
+              this.$router.push({name:'login' })
+            }else{
+
+            }
+          })
+        },
+
+    handleInput(index, event) {
+      const value = event.target.value;
+
+      if (value.match(/^[0-9]$/)) {
+        this.parent.otp[index] = value;
+
+        if (index < this.parent.otp.length - 1) {
+          this.$nextTick(() => {
+            this.$refs.otpInputs[index + 1].focus();
+          });
+        }
+      } else {
+        this.parent.otp[index] = "";
+      }
+    },
+    handleBackspace(index, event) {
+      if (!this.parent.otp[index] && index > 0) {
+        this.$nextTick(() => {
+          this.$refs.otpInputs[index - 1].focus();
+        });
+      }
+    },
+  },
+  mounted() {
+     this.parent.user_id=this.$route.params.user_id
+     this.parent.request_id=this.$route.params.request_id
     }
-
-  }).catch((err)=>{
-
-  })
 };
 </script>

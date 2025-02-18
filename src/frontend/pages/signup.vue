@@ -1,53 +1,39 @@
 <template>
 
   <div class="  h-screen flex items-center">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8 animate__animated animate__backInRight animate__delay-.5s rounded-lg  overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
+      <form   class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8 animate__animated animate__backInRight animate__delay-.5s rounded-lg  overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
 
 
-          <div class="bg-white py-6 px-10 shadow-lg rounded-lg">
+          <div class="bg-white py-8 px-10 shadow-lg rounded-lg">
             <h2 class="font-bold text-3xl text-[#AA1E22] py-3" >سجل حساب جديد</h2>
             <p class="pb-1" style="line-height:29px">أهلا بك فى منصة إيوا للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p>
+            <p class="pb-1 w-full text-center text-[#AA1E22] font-bold " style="line-height:29px">{{ errore }}</p>
+
             <div class=" py-2 relative ">
                   <div class="flex ">
-                  <p class="py-2 font-bold text-[#AA1E22]" for="username">الاسم كامل</p>
-                  <span class="my-auto text-[#AA1E22] px-1">*</span>
+                  <p class="py-2 font-bold text-[#AA1E22]" for="username"> {{ $t("mobile_number") }}</p>
+                  <span v-if="!parent.phone_number" class="my-auto text-[#AA1E22] px-1">*</span>
                 </div>
                 <div class="relative ">
-                  <InputText  required class="bg-[#f7f5f5] w-full " v-model="parent.name" placeholder="أكتب الإسم الكامل" />
-                  <span class="pi pi-user absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
+                  <InputText  required class="bg-[#f7f5f5] w-full " v-model="parent.phone_number" :placeholder='$t("mobile_number")' />
                 </div>
 
               </div>
 
-              <div class=" py-2 relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#AA1E22]" for="username"> رقم الجوال</p>
-                  <span class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-                  <InputNumber  :useGrouping="false"  required class="bg-[#f7f5f5] w-full " v-model="parent.phone" placeholder="أكتب رقم الجوال " />
-                  <span class="pi pi-phone absolute top-[50%] left-[5%] transform -translate-y-[50%] z-50"></span>
-                </div>
-              </div>
-              <div class=" py-2 relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#AA1E22]" for="username">  كلمة المرور</p>
-                  <span class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-                  <Password  v-model="parent.pass" toggleMask   placeholder="  أكتب كلمة المرور "/>
-                </div>
-              </div>
-              <a href="/" class="flex  " >
+
+
+              <a class="flex  " >
 
                 <Button
+                :loading="loading"
+                @click="login"
                 style="background-color: #AA1E22 !important;"
-                label="تسجيل الدخول"
+                label=" أنشاء حساب"
                 class="mt-3 h-full relative mb- pl-4 lg:w-[70%] mx-auto  lg:mb-0 bg focus:ring-0 text-[#AA1E22] button-with-triangle">
                 </Button>
 
                 </a>
-                <p class="m-auto text-center pt-2 text-base">   هل لديك حساب بالفعل ؟ <a href="/login" class="text-[#AA1E22] font-bold text-base"> تسجيل دخول</a></p>
+                <p class="m-auto text-center pt-2 text-base">  لديك حساب بالفعل ؟<a href="/login" class="text-[#AA1E22] font-bold text-base"> تسجيل الدخول</a></p>
 
 
 
@@ -73,11 +59,40 @@
                   </svg>
 
           </div>
-      </div>
+      </form>
+      <Toast/>
   </div>
 
   </template>
 <script setup>
 import { ref, reactive, onMounted,computed } from 'vue';
-const parent=ref({})
+import {useToast} from 'primevue/usetoast'
+const toast = useToast()
+const parent=ref({
+  phone_number:''
+})
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+import { useAuthStore ,load ,error} from '../../stores/Auth'
+import axios from 'axios';
+const authStore = useAuthStore();
+const loading =load
+const errore=error
+const login=()=>{
+  axios.post("api/canv/user_registration",{
+    phone_number:parent.value.phone_number,
+    lang: localStorage.getItem('appLang'),
+  }).then((res)=>{
+    if(res.data.result.data.request_id){
+      router.push({name:'verify-register',params:{'request_id':res.data.result.data.request_id} })
+    }else{
+      // alert(res.data.result.message)
+      toast.add({ severity: 'error', summary:"error", detail:(res.data.result.message).slice(0,80), life: 3000 });
+    }
+
+  }).catch((err)=>{
+
+  })
+};
 </script>

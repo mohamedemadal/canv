@@ -27,22 +27,23 @@ export const useAuthStore = defineStore('Auth', {
     },
     async handleLogin(data) {
       this.resetAuthStore();
-
+    const code=(data.otp).join("")
 
       try {
-        const response = await axios.post('/api/canv/user_login', {
-          login: data.login,
+        const response = await axios.post('/api/user_login_verfication', {
+          verfy_with:"sms",
+          user_id:data.user_id,
+          request_id:data.request_id,
+          verfication_code:code,
           lang: localStorage.getItem('appLang'),
-          password: data.password,
-          db: "live"
         });
-
-        if (response?.data?.session_id) {
+        console.log(response?.data?.result?.data.verfid)
+        if (response?.data?.result?.data.verfid) {
           this.authenticated = true
-          this.token=response.data.data.user_token
-          this.user_name=response.data.data.user_name
-          this.user_id=response.data.data.user_id
-          this.profil=response.data.data.profile
+          this.token=response?.data?.result?.data.user_data.user_token
+          this.user_name=response?.data?.result?.data.user_data.user_name
+          this.user_id=response?.data?.result?.data.user_data.user_id
+          this.profil=response?.data?.result?.data.user_data.profile
           this.router.push({ name: 'profile' })
         } else {
 

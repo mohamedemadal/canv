@@ -23,11 +23,14 @@ const routes: Array<RouteRecordRaw> = [
     name: 'login',
     path: '/login',
     component: () => import('../frontend/pages/login.vue'),
+    beforeEnter:auth
   },
   {
     name: 'signup',
     path: '/signup',
+
     component: () => import('../frontend/pages/signup.vue'),
+    beforeEnter:auth,
   },
   {
     name: 'home',
@@ -41,7 +44,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     name: 'verfiy_login',
-    path: '/verfiy_login',
+    path: '/verfiy_login/:request_id/:user_id',
     component: () => import('../frontend/pages/verify-login.vue'),
   },
   {
@@ -49,6 +52,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/about',
     component: () => import('../frontend/pages/about-us.vue'),
   },
+  {
+    name: 'verify-register',
+    path: '/verify-register/:request_id',
+    component: () => import('../frontend/pages/verify-register.vue'),
+  },
+
   {
     name: 'auctions',
     path: '/auctions',
@@ -219,28 +228,27 @@ const routes: Array<RouteRecordRaw> = [
   },
 ]
 
+function auth(to: any, from: any, next: any) {
+  if (!localStorage.getItem('authenticated')) {
+    console.log("User not authenticated, redirecting to login");
+    return next({ name: 'home' });
+  }
+  next();
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     }
-    // For some reason using documentation example doesn't scroll on page navigation.
     if (to.hash) {
-      return { el: to.hash, behavior: 'smooth' }
+      return { el: to.hash, behavior: 'smooth' };
     } else {
-      document.querySelector('.app-layout__page')?.scrollTo(0, 0)
+      document.querySelector('.app-layout__page')?.scrollTo(0, 0);
     }
   },
   routes,
-})
+});
 
-function auth(to: any, from: any, next: any) {
-  if (!localStorage.getItem('token')) {
-    return next({ name: 'login' })
-  }
-
-  next()
-}
-
-export default router
+export default router;
