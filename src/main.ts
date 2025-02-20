@@ -277,6 +277,8 @@ else{
   document.body.dir ="ltr"
 }
 
+
+
 app.directive('can', (el, binding, vnode) =>{
   // console.log(JSON.parse(localStorage.getItem('permissions')))
   if (! JSON.parse(localStorage.getItem('permissions'))
@@ -286,3 +288,5 @@ app.directive('can', (el, binding, vnode) =>{
   }
 
 })
+
+

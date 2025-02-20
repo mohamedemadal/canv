@@ -87,7 +87,9 @@
     </div>
     <div class="hidden lg:block">
       <span><LocaleSelect id="local-switcher"></LocaleSelect></span>
-      <a v-if="showLogin=='false'" href="/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
+
+
+      <a v-if="showLogin== false" href="/login" class="  items-center space-x-3 rtl:space-x-reverse hidden lg:block" style="display: inline;">
 
       <Button
       style="background-color: #AA1E22 !important;"
@@ -97,7 +99,7 @@
 
       </a>
 
-       <Button style="background-color: white; color: black; border-color: black !important; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important;" v-if="showLogin=='true'" class="button-with-triangle" icon="pi pi-angle-double-right" @click="dashboard = true"  />
+       <Button style="background-color: white; color: black; border-color: black !important; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important;" v-if="showLogin==true" class="button-with-triangle" icon="pi pi-angle-double-right" @click="dashboard = true"  />
     </div>
 
   </div>
@@ -128,7 +130,7 @@
         </li>
         <div class="text-center w-full mt-1"> <LocaleSelect id="local-switcher"></LocaleSelect></div>
 
-        <a v-if="showLogin=='false'" href="/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
+        <a v-if="showLogin==false" href="/login" class="flex m-auto  items-center space-x-3 rtl:space-x-reverse">
           <Button
           style="background-color: #AA1E22 !important;"
           :label='$t("login")'
@@ -208,7 +210,7 @@ const visible = ref(false);
 const user_name=ref(localStorage.getItem('user_name'))
 const profil=ref(localStorage.getItem('profil'))
 const dashboard = ref(false);
-const authenticated = ref(localStorage.getItem('authenticated'));
+const authenticated = ref(localStorage.getItem('authenticated')==null);
 let observer;
 const show=ref(true)
 const opennave=()=>{
@@ -222,10 +224,15 @@ const handleScroll = () => {
   isFixed.value = window.scrollY > 100;
 };
 
-const showLogin = computed(() => {
-      return authenticated.value;
-    });
+const showLogin =ref(false)
+
 onMounted(() => {
+
+  if(localStorage.getItem('authenticated') == null ||localStorage.getItem('authenticated') == 'false' ){
+    showLogin.value =  false;
+  }else{
+    showLogin.value =  true ;
+  }
   window.addEventListener('scroll', handleScroll);
 });
 

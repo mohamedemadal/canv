@@ -54,8 +54,9 @@
       <div>
         <Button style=" background-color: #AA1E22 !important;"  :label='$t("Quick_links")' class=" w-[170px] pb-2 lg:mb-0 bg focus:ring-0 text-[#AA1E22]"/>
         <div class="pt-4 px-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]">{{ $t("home") }}</a></div>
-        <div class="px-1 py-1"><a href="/about" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("about us") }}</a></div>
-        <div class="px-1 py-1"><a href="/auctions" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("auctions us") }}</a></div>
+        <div class="px-1 py-1"><a href="/auctions" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("auctions") }}</a></div>
+
+        <div class="px-1 py-1"><a href="/about" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("about_us") }}</a></div>
         <!-- <div class="px-1 py-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]"> الإيجارات</a></div>
         <div class="px-1 py-1"><a href="/" class="text-base py-2 pt-4 text-[#ffff]"> الأملاك</a></div> -->
         <div class="px-1 py-1"><a href="/contact-us" class="text-base py-2 pt-4 text-[#ffff]"> {{ $t("Contact_us") }} </a></div>
