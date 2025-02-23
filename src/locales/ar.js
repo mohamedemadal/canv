@@ -15,6 +15,7 @@ export default {
   upcoming_auctions: "المزادات القادمة",
   ended_auctions: "المزادات المنتهية",
   auction: "مزاد",
+  Residential_unit:"وحدة سكنية",
   ended: "منتهي",
   day: "يوم",
   hour: "ساعة",

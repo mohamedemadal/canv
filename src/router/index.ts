@@ -229,8 +229,8 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 function auth(to: any, from: any, next: any) {
-  if (localStorage.getItem('authenticated')) {
-    console.log("User not authenticated, redirecting to login");
+  if (!localStorage.getItem('authenticated')) {
+
     return next({ name: 'home' });
   }
   next();

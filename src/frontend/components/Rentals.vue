@@ -104,7 +104,7 @@
             </h4>
             <div class="">
               <p class="text-lg  font-medium text-[#303843] ">{{ rent?.residential_units_number }} </p>
-              <p class="text-lg  font-medium text-[#303843] "> وحده سكنيه</p>
+              <p class="text-lg  font-medium text-[#303843] ">{{ $t("Residential_unit") }}</p>
 
             </div>
           </div>

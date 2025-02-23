@@ -229,8 +229,10 @@ const showLogin =ref(false)
 onMounted(() => {
 
   if(localStorage.getItem('authenticated') == null ||localStorage.getItem('authenticated') == 'false' ){
+    localStorage.setItem('authenticated',false)
     showLogin.value =  false;
   }else{
+
     showLogin.value =  true ;
   }
   window.addEventListener('scroll', handleScroll);
