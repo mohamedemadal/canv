@@ -125,8 +125,15 @@ export default {
     },
   },
   mounted() {
-     this.parent.user_id=this.$route.params.user_id
-     this.parent.request_id=this.$route.params.request_id
+  this.parent.user_id = this.$route.params.user_id;
+  this.parent.request_id = this.$route.params.request_id;
+
+  // Focus on the first OTP input field
+  this.$nextTick(() => {
+    if (this.$refs.otpInputs && this.$refs.otpInputs[0]) {
+      this.$refs.otpInputs[0].focus();
     }
+  });
+}
 };
 </script>

@@ -38,11 +38,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../frontend/pages/index.vue'),
   },
   {
-    name: 'Property-units',
-    path: '/Property-units',
-    component: () => import('../frontend/pages/Property-units.vue')
-  },
-  {
     name: 'profile',
     path: '/profile',
     component: () => import('../frontend/pages/profile.vue'),

@@ -77,7 +77,21 @@
 
 
                   </div>
-                  <p class="text-[#046A72] text-base px-1"> {{ rent.area }} </p>
+                  <p class="text-[#65bdc4] text-base px-1"> {{ rent.area }} </p>
+                 </a>
+                 <a  target="_blank" class="flex bg-[#65bdc4] mx-2 py-1 px-1 rounded-md" style="border: 2px solid #65bdc4;">
+                  <div class="my-auto">
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.06815e-05 4.96201C3.06815e-05 3.1912 1.43555 1.75569 3.20635 1.75569H9.9565C11.7273 1.75569 13.1628 3.19121 13.1628 4.96201V12.0497C13.1628 13.8205 11.7273 15.256 9.9565 15.256H3.20635C1.43555 15.256 3.06815e-05 13.8205 3.06815e-05 12.0497V4.96201ZM3.20635 2.76821C1.99475 2.76821 1.01255 3.75041 1.01255 4.96201V12.0497C1.01255 13.2613 1.99475 14.2435 3.20635 14.2435H9.9565C11.1681 14.2435 12.1503 13.2613 12.1503 12.0497V4.96201C12.1503 3.75041 11.1681 2.76821 9.9565 2.76821H3.20635Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 6.48079C0 6.20119 0.226661 5.97453 0.506261 5.97453H12.6565C12.9361 5.97453 13.1628 6.20119 13.1628 6.48079C13.1628 6.76039 12.9361 6.98705 12.6565 6.98705H0.506261C0.226661 6.98705 0 6.76039 0 6.48079Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.88136 2.4307C4.16096 2.4307 4.38762 2.65736 4.38762 2.93696V14.4195C4.38762 14.6991 4.16096 14.9258 3.88136 14.9258C3.60176 14.9258 3.3751 14.6991 3.3751 14.4195V2.93696C3.3751 2.65736 3.60176 2.4307 3.88136 2.4307Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23146 2.42826C9.51106 2.42826 9.73772 2.65492 9.73772 2.93452V14.4171C9.73772 14.6967 9.51106 14.9233 9.23146 14.9233C8.95186 14.9233 8.7252 14.6967 8.7252 14.4171V2.93452C8.7252 2.65492 8.95186 2.42826 9.23146 2.42826Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.66309 9.91952C3.66309 9.63992 3.88975 9.41326 4.16935 9.41326H8.72519C9.0048 9.41326 9.23146 9.63992 9.23146 9.91952C9.23146 10.1991 9.0048 10.4258 8.72519 10.4258H4.16935C3.88975 10.4258 3.66309 10.1991 3.66309 9.91952Z" fill="white"/>
+                    </svg>
+
+                  </div>
+                  <p class="text-[#ffff] text-sm px-1"> مبني </p>
+                  <p class="text-[#ffff] text-sm px-1"> {{ rent?.building_number }} </p>
                  </a>
 
                 </div>
@@ -232,6 +246,7 @@ axios
              "name": event.name,
              "id": event.id,
              "image":event.images,
+             "building_number":event.building_number,
               "commercial_units_number":event.commercial_units_number,
               "description":event.description,
               "residential_units_number":event.residential_units_number,
@@ -261,6 +276,7 @@ axios
    allauctions.value = res.data.result.data.data.map(event => ({
              "name": event.name,
              "image":event.images,
+             "building_number":event.building_number,
               "commercial_units_number":event.commercial_units_number,
               "description":event.description,
               "residential_units_number":event.residential_units_number,
