@@ -63,7 +63,6 @@
            </div>
             <div class="flex justify-between p-2">
               <div>
-                <p class="text-lg font-bold text-right">{{ rent?.name }} </p>
                 <div class="flex py-1 ">
                   <a :href="rent?.location_url" target="_blank" class="flex bg-[#E6F4F6]  py-1 px-1 rounded-md" style="border: 2px solid #046A72;">
                   <div class="my-auto">
