@@ -7,7 +7,7 @@
     <img class="w-full absolute h-full" src="../images/breadcrumb.png">
 
     <div class="z-50 text-white w-full m-auto w-[80%] ">
-      <H1 class="font-bold text-5xl text-white z-50"> {{ $t("المجمعات") }}</H1>
+      <H1 class="font-bold text-5xl text-white z-50"> {{ $t("المباني") }}</H1>
      <div class="flex py-8 ">
       <p class="text-2xl font-semibold ">{{ $t("home") }}</p>
       <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,7 @@
       <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
 
-      <p class="text-2xl font-semibold ">{{ $t("المجمعات") }} </p>
+      <p class="text-2xl font-semibold ">{{ $t("المباني") }} </p>
      </div>
     </div>
    </div>
@@ -46,16 +46,11 @@
    <!-- auctions -->
   <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1290px]">
       <div class="flex justify-between">
-        <h2 class="text-4xl  font-bold">{{ $t("المجمعات") }}</h2>
+        <h2 class="text-4xl  font-bold">{{ $t("المباني") }}</h2>
 
       </div>
 
-      <div class=" grid lg:grid-cols-4 w-full lg:w-fit grid-cols-2 shadow-lg rounded-md bg-white px-2 pb-2 m-1 ">
-      <Button @click="getauction('all')"  :style=" active == 'all' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("كل المجمعات")' class="mt-3 bg-['#65BDC4']  my-auto "/>
-      <Button  @click="getauction('comming')"   :style=" active == 'comming' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"  :label='$t("المجمعات الحالية")' class="mt-3 bg-['#65BDC4']   "/>
-      <Button  @click="getauction('running')"   :style=" active == 'running' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("المجمعات القادمة")' class="mt-3 bg-['#65BDC4']   "/>
-      <Button  @click="getauction('finished')"   :style=" active == 'finished' ? { backgroundColor: '#65BDC4' ,color:'white' } : { backgroundColor: 'white' ,color:'black',border:'0'}"   :label='$t("المجمعات المنتهية")' class="mt-3 bg-['#65BDC4']   "/>
-     </div>
+
 
      <div class="grid  grid-cols-1 lg:grid-cols-3 gap-3 mt-3">
       <div v-for="rent in allauctions" style="transition: .7s;" class="text-center  text-4xl bg-white rounded-lg w-full shadow-lg hover:scale-[1.01]">
@@ -66,7 +61,7 @@
            </div>
             <div class="flex justify-between p-2">
               <div>
-                <p class="text-lg font-bold text-right">{{ rent?.name }} </p>
+
                 <div class="flex py-1 ">
                   <a :href="rent?.location_url" target="_blank" class="flex bg-[#E6F4F6]  py-1 px-1 rounded-md" style="border: 2px solid #046A72;">
                   <div class="my-auto">
@@ -75,12 +70,22 @@
                     <path d="M15.75 8.16667C15.75 11.8486 11.5312 16.5 9 16.5C6.46875 16.5 2.25 11.8486 2.25 8.16667C2.25 4.48477 5.27208 1.5 9 1.5C12.7279 1.5 15.75 4.48477 15.75 8.16667Z" stroke="#046A72" stroke-width="1.5"/>
                     </svg>
 
-
-
-
+                  </div>
+                  <p class="text-[#046A72] text-sm px-1"> {{ rent.area }} - {{ rent.city }}</p>
+                 </a>
+                 <a  target="_blank" class="flex bg-[#65bdc4] mx-2 py-1 px-1 rounded-md" style="border: 2px solid #65bdc4;">
+                  <div class="my-auto">
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.06815e-05 4.96201C3.06815e-05 3.1912 1.43555 1.75569 3.20635 1.75569H9.9565C11.7273 1.75569 13.1628 3.19121 13.1628 4.96201V12.0497C13.1628 13.8205 11.7273 15.256 9.9565 15.256H3.20635C1.43555 15.256 3.06815e-05 13.8205 3.06815e-05 12.0497V4.96201ZM3.20635 2.76821C1.99475 2.76821 1.01255 3.75041 1.01255 4.96201V12.0497C1.01255 13.2613 1.99475 14.2435 3.20635 14.2435H9.9565C11.1681 14.2435 12.1503 13.2613 12.1503 12.0497V4.96201C12.1503 3.75041 11.1681 2.76821 9.9565 2.76821H3.20635Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 6.48079C0 6.20119 0.226661 5.97453 0.506261 5.97453H12.6565C12.9361 5.97453 13.1628 6.20119 13.1628 6.48079C13.1628 6.76039 12.9361 6.98705 12.6565 6.98705H0.506261C0.226661 6.98705 0 6.76039 0 6.48079Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.88136 2.4307C4.16096 2.4307 4.38762 2.65736 4.38762 2.93696V14.4195C4.38762 14.6991 4.16096 14.9258 3.88136 14.9258C3.60176 14.9258 3.3751 14.6991 3.3751 14.4195V2.93696C3.3751 2.65736 3.60176 2.4307 3.88136 2.4307Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23146 2.42826C9.51106 2.42826 9.73772 2.65492 9.73772 2.93452V14.4171C9.73772 14.6967 9.51106 14.9233 9.23146 14.9233C8.95186 14.9233 8.7252 14.6967 8.7252 14.4171V2.93452C8.7252 2.65492 8.95186 2.42826 9.23146 2.42826Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.66309 9.91952C3.66309 9.63992 3.88975 9.41326 4.16935 9.41326H8.72519C9.0048 9.41326 9.23146 9.63992 9.23146 9.91952C9.23146 10.1991 9.0048 10.4258 8.72519 10.4258H4.16935C3.88975 10.4258 3.66309 10.1991 3.66309 9.91952Z" fill="white"/>
+                    </svg>
 
                   </div>
-                  <p class="text-[#046A72] text-base px-1"> {{ rent.area }} </p>
+                  <p class="text-[#ffff] text-sm px-1"> مبني </p>
+                  <p class="text-[#ffff] text-sm px-1"> {{ rent?.building_number }} </p>
                  </a>
 
                 </div>
@@ -281,11 +286,13 @@ watch(current_page, (newPage, oldPage) => {
       "name": event.name,
       "id": event.id,
       "image":event.images,
+      "building_number":event.building_number,
               "commercial_units_number":event.commercial_units_number,
               "description":event.description,
               "residential_units_number":event.residential_units_number,
               "units_number":event.units_number,
               "area":event.location_details.area.name,
+              "city":event.location_details.city.name,
               "location_url":event.location_details.location_url
           }));
 
@@ -313,11 +320,13 @@ axios
               "name": event.name ,
               "id": event.id,
               "image":event.images,
+              "building_number":event.building_number,
               "commercial_units_number":event.commercial_units_number,
               "description":event.description,
               "residential_units_number":event.residential_units_number,
               "units_number":event.units_number,
               "area":event.location_details.area.name,
+              "city":event.location_details.city.name,
               "location_url":event.location_details.location_url
           }));
           console.log( allauctions.value)

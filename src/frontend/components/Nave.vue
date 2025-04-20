@@ -75,10 +75,10 @@
         <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'auctions' }"  class="text-lg font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;"> {{ $t("auctions") }}</router-link>
         </li>
-        <!-- <li class="my-auto text-center py-1 lg:py-0">
-          <router-link :to="{ name: 'complexes' }"  class="text-lg font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;"> {{ $t("المجمعات") }}</router-link>
-        </li>
         <li class="my-auto text-center py-1 lg:py-0">
+          <router-link :to="{ name: 'complexes' }"  class="text-lg font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;"> {{ $t("المباني") }}</router-link>
+        </li>
+        <!-- <li class="my-auto text-center py-1 lg:py-0">
           <router-link :to="{ name: 'rents' }"  class="text-lg font-bold px-3 text-[#A5ABB4]" style="line-height: 20px;font-family: Tajawal;"> {{ $t("الايجارات") }}</router-link>
         </li> -->
 
@@ -121,10 +121,10 @@
         </li>
         <!-- <li class="my-auto text-center py-4 lg:py-0">
           <router-link :to="{ name: 'rents' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  {{ $t("الايجارات") }}</router-link>
-        </li>
-        <li class="my-auto text-center py-4 lg:py-0">
-          <router-link :to="{ name: 'complexes' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  {{ $t("المجمعات") }}</router-link>
         </li> -->
+        <li class="my-auto text-center py-4 lg:py-0">
+          <router-link :to="{ name: 'complexes' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">  {{ $t("المباني") }}</router-link>
+        </li>
         <li class="my-auto text-center py-4 lg:py-0 border-b-2">
           <router-link :to="{ name: 'contact-us' }"  class="text-lg font-extrabold px-3 text-[#A5ABB4]" style="line-height: 20px;">{{ $t("Contact_us") }}</router-link>
         </li>

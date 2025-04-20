@@ -5,7 +5,7 @@
 
 
       <div class="flex justify-between">
-        <h2 class="text-3xl lg:text-4xl  font-bold">المجمعات</h2>
+        <h2 class="text-3xl lg:text-4xl  font-bold">المباني</h2>
         <a href="/auctions" class="text-xl lg:text-2xl font-bold text-[#ef5258]">مشاهدة المزيد</a>
       </div>
 

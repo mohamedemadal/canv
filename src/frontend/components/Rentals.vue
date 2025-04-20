@@ -5,14 +5,14 @@
 
 
       <div class="flex justify-between py-1">
-        <h2 class="text-3xl lg:text-4xl  my-auto font-bold">{{ $t("المجمعات") }}</h2>
+        <h2 class="text-3xl lg:text-4xl  my-auto font-bold">{{ $t("المباني") }}</h2>
         <a href="/complexes" class="text-xl lg:text-2xl lg:px-10 font-bold text-[#32A7B0]">{{ $t("Watch_more") }} </a>
 
       </div>
 
       <div class="bg-slate-50 auctions hidden" v-if="allauctions.length<=0">
         <div class=  " px-[2%] py-[3%] m-auto  max-w-[1295px] h-[40vh] te  flex text-center items-center">
-          <h2 class="text-3xl text-[#BC1E1E] font-bold text-center m-auto">{{ $t(" نأسف لعدم وجود المجمعات  في الوقت الحالي") }}
+          <h2 class="text-3xl text-[#BC1E1E] font-bold text-center m-auto">{{ $t(" نأسف لعدم وجود المباني  في الوقت الحالي") }}
           </h2>
         </div>
       </div>
