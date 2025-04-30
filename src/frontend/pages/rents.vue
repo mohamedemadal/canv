@@ -7,7 +7,7 @@
     <img class="w-full absolute h-full" src="../images/breadcrumb.png">
 
     <div class="z-50 text-white w-full m-auto w-[80%] ">
-      <H1 class="font-bold text-5xl text-white z-50"> {{ $t("الإيجارات") }}</H1>
+      <H1 class="font-bold text-5xl text-white z-50"> {{ $t("الوحدات") }}</H1>
      <div class="flex py-8 ">
       <p class="text-2xl font-semibold ">{{ $t("home") }}</p>
       <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,38 +15,112 @@
       <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
 
-      <p class="text-2xl font-semibold ">{{ $t("الإيجارات") }} </p>
+      <p class="text-2xl font-semibold ">{{ $t("الوحدات") }} </p>
      </div>
     </div>
    </div>
 
 
 
-   <div class=  "filter px-[1%] py-[3%] m-auto  max-w-[1290px]">
-    <div class="grid lg:grid-cols-3 grid-cols-1 bg-white shadow-lg w-full gap-4 px-[3%] py-[2%]">
-      <div class=" py-2 relative sh">
-
-          <div class="relative ">
-            <InputText v-model="filter.name"  required class="bg-[#f7f5f5] w-full shadow"  :placeholder='$t("البحث عن شقة للإيجار")' />
-            <span class="pi pi-search absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
-          </div>
-     </div>
-     <div class=" py-1 relative my-auto ">
-      <div class="relative ">
-        <Dropdown  style="height: 100% !important;" filter v-model="filter.city_id_filter"  option-value="id" :options="cityes" optionLabel="name" :placeholder='$t("select_city")' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+   <div class="filter px-[1%] py-[3%] m-auto max-w-[1290px]">
+  <!-- Basic Search -->
+  <div class="grid lg:grid-cols-4 grid-cols-1 bg-white shadow-lg w-full gap-4 px-[3%] py-[2%] mb-4">
+    <div class="py-2 relative">
+      <div class="relative">
+        <InputText v-model="filter.building_name_like_filter" required class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("البحث عن شقة للإيجار")' />
+        <span class="pi pi-search absolute top-[50%] rtl:left-[5%] ltr:right-[5%] transform -translate-y-[50%] z-50"></span>
+      </div>
+    </div>
+    <div class="py-1 relative my-auto">
+      <div class="relative">
+        <Dropdown  @update:model-value="get_neighborhoods($event)"   style="height: 100% !important;" filter v-model="filter.city_id_filter" option-value="id" :options="cityes" optionLabel="name" :placeholder='$t("select_city")' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
+      </div>
+    </div>
+    <div class="py-1 relative my-auto">
+      <div class="relative">
+        <Dropdown style="height: 100% !important;" :loading="!filter.city_id_filter"  filter v-model="filter.neighborhood_id_filter" option-value="id" :options="neighborhoods" optionLabel="name" :placeholder='$t("اختر اسم الحي")' class="shadow w-full bg-[#f7f5f5] [&>div>div>span]:bg-black md:w-14rem my-[1%]" />
       </div>
     </div>
     <div class="flex items-center text-center">
-      <Button @click="fetchdata" style="background-color:#AA1E22 ;"   :label='$t("search")' class="mt-3 bg-[#AA1E22] w-[50%]  m-auto "/>
-
-    </div>
-
+      <Button @click="fetchdata" style="background-color:#AA1E22;" :label='$t("search")' class="mt-3 bg-[#AA1E22] w-[50%] m-auto"/>
     </div>
   </div>
+
+  <!-- Advanced Search (Collapsible) -->
+  <div class="bg-white shadow-lg w-full px-[3%] py-[2%]">
+    <button @click="toggleAdvancedSearch" class="flex justify-between items-center text-[#AA1E22] mb-4 ">
+      <span class="mx-2">البحث المتقدم</span>
+      <i :class="{'pi pi-chevron-down': !showAdvancedSearch, 'pi pi-chevron-up': showAdvancedSearch}"></i>
+    </button>
+
+    <div v-if="showAdvancedSearch" class="grid lg:grid-cols-4 grid-cols-1 gap-4">
+      <!-- Building Info -->
+      <div class="py-1">
+        <InputText v-model="filter.building_number" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("رقم المبني")' />
+      </div>
+
+
+      <!-- Room/Bath Count -->
+      <div class="py-1">
+        <InputNumber v-model="filter.rooms_number_equal" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("عدد الغرف")' />
+      </div>
+      <div class="py-1">
+        <InputNumber v-model="filter.bathrooms_number_equal" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("عدد الحمامات")' />
+      </div>
+
+      <!-- Features -->
+     <div class="grid grid-cols-2">
+      <div class="py-1 flex items-center">
+        <Checkbox v-model="filter.installed_conditioner" :binary="true" class="mx-2" />
+        <label>مكيف راكب</label>
+      </div>
+      <div class="py-1 flex items-center">
+        <Checkbox v-model="filter.installed_kitchen" :binary="true" class="mx-2" />
+        <label>مطبخ راكب</label>
+      </div>
+     </div>
+
+      <!-- Rental Type -->
+      <div class="py-1">
+        <Dropdown v-model="filter.rental_type"  option-value="code"  optionLabel="name" :options="[ { name: $t('عزاب'), code: 'singles' }, {  name: $t('عوائل'), code: 'families' }]" :placeholder='$t("نوع التأجير")' class="shadow w-full bg-[#f7f5f5] md:w-14rem" />
+      </div>
+
+      <!-- Entrance Type -->
+      <div class="py-1">
+        <Dropdown v-model="filter.entrance_type"  option-value="code"  optionLabel="name" :options="[ { name: $t('خاص'), code: 'separate' }, {  name: $t('مشترك'), code: 'shared' }]" :placeholder='$t("نوع المدخل")' class="shadow w-full bg-[#f7f5f5] md:w-14rem" />
+      </div>
+
+      <!-- Price Range -->
+      <div class="py-1">
+        <span class="p-float-label">
+          <InputNumber v-model="filter.rent_amount_lt_equal" class="bg-[#f7f5f5] w-full shadow" />
+          <label>السعر من</label>
+        </span>
+      </div>
+      <div class="py-1">
+        <span class="p-float-label">
+          <InputNumber v-model="filter.rent_amount_gt_equal" class="bg-[#f7f5f5] w-full shadow" />
+          <label>السعر إلى</label>
+        </span>
+      </div>
+
+      <!-- Activity -->
+      <div class="py-1">
+        <Dropdown v-model="filter.activity_type_id"  option-value="activity_id"  optionLabel="name" :options="activity" :placeholder='$t("النشاط")' class="shadow w-full bg-[#f7f5f5] md:w-14rem" />
+      </div>
+      <div class="py-1">
+        <InputText v-model="filter.activity" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("النشاط")' />
+      </div>
+      <div class="flex items-center text-center">
+      <Button @click="fetchdata" style="background-color:#AA1E22;" :label='$t("بحث متقدم")' class="mt-3 bg-[#AA1E22] w-[50%] m-auto"/>
+    </div>
+    </div>
+  </div>
+</div>
    <!-- auctions -->
-  <div class=  "  px-[1%] py-[3%] m-auto  max-w-[1290px]">
+  <div class=  "  px-[1%] py-[2%] m-auto  max-w-[1290px]">
       <div class="flex justify-between">
-        <h2 class="text-4xl  font-bold">{{ $t("الإيجارات") }}</h2>
+        <h2 class="text-4xl  font-bold">{{ $t("الوحدات") }}</h2>
 
       </div>
 
@@ -207,7 +281,18 @@ const current_page=ref(0)
 const active=ref('all')
 const swiperRef = ref(null);
 const cityes=ref('')
+const neighborhoods=ref([])
 const filter=ref({})
+const activity=ref([])
+const showAdvancedSearch = ref(true);
+
+
+    const toggleAdvancedSearch = () => {
+      showAdvancedSearch.value = !showAdvancedSearch.value;
+    };
+
+
+
 const state = reactive({
 currentSlide: 0,
 totalSlides: 0,
@@ -261,10 +346,12 @@ const getauction=(e)=>{
     console.log( e)
 
 axios
-  .post('api/get_buildings_units',{
+  .post('api/get_building_units_by_filters',{
     auctions_filter:e,
     page:"1",
     page_scope:"9",
+    rental_type:filter.value.rental_type,
+    entrance_type:filter.value.entrance_type,
     lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
@@ -285,11 +372,23 @@ watch(current_page, (newPage, oldPage) => {
 
   if (allauctions.value.length >= 9){
     axios
-  .post('api/get_buildings_units',{
+  .post('api/get_building_units_by_filters',{
     auctions_filter:active.value,
     city_id_filter:filter.value.city_id_filter,
     page:newPage+1,
     page_scope:"9",
+    rental_type:filter.value.rental_type,
+    building_name_like_filter:filter.value.building_name_like_filter,
+    entrance_type:filter.value.entrance_type,
+    building_number:filter.value.building_number,
+    rooms_number_equal:filter.value.rooms_number_equal,
+    installed_kitchen:filter.value.installed_kitchen,
+    installed_conditioner:filter.value.installed_conditioner,
+    bathrooms_number_equal:filter.value.bathrooms_number_equal,
+    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
+    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
+    activity_type_id:filter.value.activity_type_id,
+    neighborhood_id_filter:filter.value.neighborhood_id_filter,
     lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
@@ -319,12 +418,23 @@ watch(current_page, (newPage, oldPage) => {
     });
 const fetchdata=()=>{
 axios
-  .post('api/get_buildings_units',{
+  .post('api/get_building_units_by_filters',{
     auctions_filter:"all",
     city_id_filter:filter.value.city_id_filter,
-    name_like_filter:filter.value.name,
     page:1,
     page_scope:9,
+    rental_type:filter.value.rental_type,
+    building_name_like_filter:filter.value.building_name_like_filter,
+    entrance_type:filter.value.entrance_type,
+    building_number:filter.value.building_number,
+    building_number:filter.value.building_number,
+    activity_type_id:filter.value.activity_type_id,
+    installed_kitchen:filter.value.installed_kitchen,
+    installed_conditioner:filter.value.installed_conditioner,
+    bathrooms_number_equal:filter.value.bathrooms_number_equal,
+    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
+    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
+    neighborhood_id_filter:filter.value.neighborhood_id_filter,
     lang:localStorage.getItem('appLang'),
   })
   .then((res) => {
@@ -347,19 +457,39 @@ axios
 
 
   })
+
+}
+const get_ciies=()=>{
   axios.post('api/get_ksa_cities',{
     lang:localStorage.getItem('appLang'),
         })
         .then((res) => {
           cityes.value=res.data.result.data
         })
-}
+        axios.post('api/get_assets_activity_types',{
+        lang:localStorage.getItem('appLang'),
+        })
+        .then((res) => {
+          activity.value=res.data.result.data
+        })
 
+
+}
+const get_neighborhoods=(e)=>{
+        console.log(e)
+        axios.post('api/get_ksa_neighborhoods',{
+         lang:localStorage.getItem('appLang'),
+         city_id:e
+        })
+        .then((res) => {
+          neighborhoods.value=res.data.result.data
+        })
+}
 
 onMounted(() => {
   updateTime();
   fetchdata()
-
+  get_ciies()
   setInterval(() => {
       currentDate.value = new Date();
     }, 100);

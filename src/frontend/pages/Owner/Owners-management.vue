@@ -1,103 +1,137 @@
 <template>
-  <Nave></Nave>
+  <div class="p-6 bg-gray-100 min-h-screen">
+    <!-- Page Title -->
+    <h1 class="text-2xl font-bold text-right mb-6">لوحة إدارة الأملاك</h1>
 
-      <!-- banner -->
-      <div  class="banner flex items-center h-[35vh] lg:h-[55vh] relative ">
-    <div class="absolute bg-black opacity-40 w-full h-full z-50"></div>
-    <img class="w-full absolute h-full" src="../../images/breadcrumb.png">
-
-    <div class="z-50 text-white w-full m-auto w-[80%] ">
-      <H1 class="font-bold text-5xl text-white z-50">{{ $t("الصفحه الشخصيه") }}</H1>
-     <div class="flex py-8 ">
-      <p class="text-2xl font-semibold "> {{ $t("home") }}</p>
-      <svg class="my-auto mx-[1%] ltr:rotate-180" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0.999878 6.49976L16.9999 6.49976" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M5.99972 11.5C5.99972 11.5 0.999767 7.81756 0.999756 6.49996C0.999744 5.18237 5.99976 1.5 5.99976 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-
-      <p class="text-2xl font-semibold "> {{ $t("الصفحه الشخصيه") }}</p>
-     </div>
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <Chart type="doughnut" :data="chartInstallments" class="bg-white p-4 rounded-2xl shadow" />
+      <Chart type="doughnut" :data="chartClients" class="bg-white p-4 rounded-2xl shadow" />
+      <Chart type="doughnut" :data="chartProperties" class="bg-white p-4 rounded-2xl shadow" />
     </div>
-   </div>
 
-   <!-- branches -->
-   <div class="bg-white auctions px-[2%] py-[3%] pt-[5%] ">
-    <p class="text-3xl font-bold max-w-[1280px]  p-4  m-auto">المعلومات الشخصيه</p>
-    <div class="card flex justify-center">
-        <Chart type="doughnut" :data="chartData" :options="chartOptions" class="w-full md:w-[30rem]" />
+    <!-- Tabs and Search Header -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-4">
+      <h2 class="text-xl font-semibold text-right">الأقساط المتوقعه</h2>
+      <div class="flex items-center gap-2">
+        <Button label="بحث" class="bg-red-700 text-white rounded-xl px-6" />
+        <div class="flex bg-white rounded-xl overflow-hidden">
+          <button class="px-4 py-2 text-sm font-medium" :class="{'bg-red-700 text-white': selectedTab === 'expected'}" @click="selectedTab = 'expected'">متوقعه</button>
+          <button class="px-4 py-2 text-sm font-medium" :class="{'bg-red-700 text-white': selectedTab === 'paid'}" @click="selectedTab = 'paid'">مدفوعه</button>
+          <button class="px-4 py-2 text-sm font-medium" :class="{'bg-red-700 text-white': selectedTab === 'due'}" @click="selectedTab = 'due'">مستحقه</button>
+        </div>
+        <InputText v-model="search" placeholder="تاريخ القسط" class="rounded-xl text-right" />
+      </div>
     </div>
-   </div>
 
+    <!-- Activities Table -->
+    <DataTable :value="filteredActivities" class="bg-white rounded-2xl shadow" stripedRows>
+      <Column field="activity" header="الأقساط" />
+      <Column field="installment" header="تاريخ الإستحقاق" />
+      <Column field="amount" header="المبلغ" />
+      <Column field="status" header="الحالة">
+        <template #body="slotProps">
+          <span :class="getStatusClass(slotProps.data.status)">
+            {{ slotProps.data.status }}
+          </span>
+        </template>
+      </Column>
+    </DataTable>
 
-
-
-   <Toast/>
-
-  <Footer></Footer>
+    <!-- Pagination -->
+    <Paginator :rows="10" :totalRecords="activities.length" @page="onPageChange" class="mt-6" />
+  </div>
 </template>
+
 <script setup>
-  import Nave from '../../components/Nave.vue'
-  import Footer from '../../components/Footer.vue'
-  import { ref, onMounted } from 'vue';
-  import axios from "axios";
-  const profile=ref({
+import { ref, computed } from 'vue'
+import Chart from 'primevue/chart'
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
+import Paginator from 'primevue/paginator'
+import InputText from 'primevue/inputtext'
+import Button from 'primevue/button'
+
+const search = ref('')
+const selectedTab = ref('expected')
+const currentPage = ref(0)
+const rowsPerPage = 10
+
+const chartInstallments = {
+  labels: ['مدفوع', 'متأخر', 'مؤجل'],
+  datasets: [
+    {
+      data: [4000, 2000, 1000],
+      backgroundColor: ['#22c55e', '#f97316', '#ef4444'],
+    },
+  ],
+}
+
+const chartClients = {
+  labels: ['نشط', 'غير نشط'],
+  datasets: [
+    {
+      data: [120, 30],
+      backgroundColor: ['#3b82f6', '#9ca3af'],
+    },
+  ],
+}
+
+const chartProperties = {
+  labels: ['مؤجر', 'غير مؤجر'],
+  datasets: [
+    {
+      data: [85, 15],
+      backgroundColor: ['#10b981', '#f59e0b'],
+    },
+  ],
+}
+
+const activities = ref([
+  { activity: 'تحصيل القسط', installment: '2025-05-01', amount: '5000 L.E', status: 'مدفوع' },
+  { activity: 'تحصيل القسط', installment: '2025-05-02', amount: '5000 L.E', status: 'متأخر' },
+  { activity: 'تحصيل القسط', installment: '2025-05-03', amount: '5000 L.E', status: 'مؤجل' },
+  { activity: 'تحصيل القسط', installment: '2025-05-04', amount: '5000 L.E', status: 'مدفوع' },
+  { activity: 'تحصيل القسط', installment: '2025-05-05', amount: '5000 L.E', status: 'متأخر' },
+  { activity: 'تحصيل القسط', installment: '2025-05-06', amount: '5000 L.E', status: 'مدفوع' },
+  { activity: 'تحصيل القسط', installment: '2025-05-07', amount: '5000 L.E', status: 'مؤجل' },
+  { activity: 'تحصيل القسط', installment: '2025-05-08', amount: '5000 L.E', status: 'مدفوع' },
+  { activity: 'تحصيل القسط', installment: '2025-05-09', amount: '5000 L.E', status: 'مدفوع' },
+  { activity: 'تحصيل القسط', installment: '2025-05-10', amount: '5000 L.E', status: 'مدفوع' },
+  { activity: 'تحصيل القسط', installment: '2025-05-11', amount: '5000 L.E', status: 'مدفوع' },
+  { activity: 'تحصيل القسط', installment: '2025-05-12', amount: '5000 L.E', status: 'متأخر' },
+])
+
+const filteredActivities = computed(() => {
+  const filtered = activities.value.filter((item) => {
+    const matchesSearch = item.installment.includes(search.value)
+    const matchesTab =
+      (selectedTab.value === 'expected' && item.status === 'مؤجل') ||
+      (selectedTab.value === 'paid' && item.status === 'مدفوع') ||
+      (selectedTab.value === 'due' && item.status === 'متأخر')
+    return matchesSearch && matchesTab
   })
-  const chartData = ref();
-  const chartOptions = ref(null);
-  const departments=ref('')
-  const company_details=ref('')
-  const branches=ref('')
-  import {useToast} from 'primevue/usetoast'
-  const toast = useToast()
-  const update_profile=()=>{
-    profile.value.lang=localStorage.getItem('appLang')
-    profile.value.user_id=localStorage.getItem('user_id')
-    axios.post('api/get_user_profile',profile.value)
-        .then((res) => {
-          toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
-        })
+  const start = currentPage.value * rowsPerPage
+  return filtered.slice(start, start + rowsPerPage)
+})
+
+const onPageChange = (e) => {
+  currentPage.value = e.page
+}
+
+const getStatusClass = (status) => {
+  switch (status) {
+    case 'مدفوع':
+      return 'text-green-500 font-bold'
+    case 'متأخر':
+      return 'text-red-500 font-bold'
+    case 'مؤجل':
+      return 'text-orange-500 font-bold'
+    default:
+      return ''
   }
-  const fetchdata=()=>{
-       axios.post('api/get_user_profile',{
-        lang:localStorage.getItem('appLang'),
-        user_id:localStorage.getItem('user_id'),
-        })
-        .then((res) => {
-          profile.value=res.data.result.data
-        })
-
-        }
-        const uploadFile = (e) => {
-          const image = e.target.files[0];
-              const reader = new FileReader();
-              reader.readAsDataURL(image);
-              reader.onload = (e) => {
-                profile.value.profile = e.target.result;
-                profile.value.file = image;
-              };
-
-        };
-
-
-
-              const setChartData = () => {
-                  const documentStyle = getComputedStyle(document.body);
-
-                  return {
-                      labels: ['A', 'B', 'C'],
-                      datasets: [
-                          {
-                              data: [540, 325, 702],
-                              backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
-                              hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
-                          }
-                      ]
-              };
-          };
-        onMounted(() => {
-          chartData.value = setChartData();
-          chartOptions.value = setChartOptions();
-
-        });
+}
 </script>
 
+<style scoped>
+</style>

@@ -124,6 +124,7 @@ export const useAuthStore = defineStore('Auth', {
       this.authErrors = []
       this.msg = ''
       this.loading = false
+      window.location.reload();
     },
   },
 })
