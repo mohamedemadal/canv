@@ -141,7 +141,7 @@
 
           <Button
             v-if="activeTab < availableTabs.length"
-            @click="activeTab++"
+            @click="goToNextTab"
             label="التالي "
             style="background-color: #AA1E22 !important;"
             class="w-[20%] ml-auto bg-[#AA1E22] text-white"
@@ -169,7 +169,9 @@ import { ref, onMounted, computed } from 'vue';
 import axios from 'axios';
 import Nave from '../components/Nave.vue'
 import moment from 'moment';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const job_name = ref('')
 const maxDate = new Date()
 const fields = ref([]);
@@ -215,6 +217,30 @@ const fetchdata = () => {
     });
   });
 };
+// check if the field is required
+const goToNextTab = () => {
+  submitted.value = true;
+
+  const tabFields = fields.value.filter(
+    field => field.tab === activeTab.value && field.is_required_field
+  );
+
+  const hasMissingFields = tabFields.some(field => !job.value[field.name]);
+
+  if (hasMissingFields) {
+    toast.add({
+      severity: 'warn',
+      summary: 'Warn',
+      detail: t('please_fill_required_fields'),
+      life: 3000
+    });
+    return;
+  }
+
+  activeTab.value++;
+};
+
+
 
 // Get available tabs from fields data
 const availableTabs = computed(() => {

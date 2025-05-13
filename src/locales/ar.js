@@ -118,5 +118,6 @@ opportunity_analyst: "محلل فرص",
    Terms_and_Conditions:"الشروط و الأحكام",
    Propert_management:"إدارة الأملاك",
    tab_1:"المعلومات الشخصية",
-   tab_2:" بيانات اضافية"
+   tab_2:" بيانات اضافية",
+   please_fill_required_fields : "يرجى ملء الحقول المطلوبة",
 };
