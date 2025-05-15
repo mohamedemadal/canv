@@ -119,5 +119,6 @@ opportunity_analyst: "محلل فرص",
    Propert_management:"إدارة الأملاك",
    tab_1:"المعلومات الشخصية",
    tab_2:" بيانات اضافية",
+   tab_0:"  التقديم علي الزظيفة",
    please_fill_required_fields : "يرجى ملء الحقول المطلوبة",
 };
