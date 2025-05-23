@@ -47,75 +47,11 @@
   </div>
 
   <!-- Advanced Search (Collapsible) -->
-  <div class="bg-white shadow-lg w-full px-[3%] py-[2%]">
-    <button @click="toggleAdvancedSearch" class="flex justify-between items-center text-[#AA1E22] mb-4 ">
-      <span class="mx-2">البحث المتقدم</span>
-      <i :class="{'pi pi-chevron-down': !showAdvancedSearch, 'pi pi-chevron-up': showAdvancedSearch}"></i>
-    </button>
-
-    <div v-if="showAdvancedSearch" class="grid lg:grid-cols-4 grid-cols-1 gap-4">
-      <!-- Building Info -->
-      <div class="py-1">
-        <InputText v-model="filter.building_number" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("رقم المبني")' />
-      </div>
-
-
-      <!-- Room/Bath Count -->
-      <div class="py-1">
-        <InputNumber v-model="filter.rooms_number_equal" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("عدد الغرف")' />
-      </div>
-      <div class="py-1">
-        <InputNumber v-model="filter.bathrooms_number_equal" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("عدد الحمامات")' />
-      </div>
-
-      <!-- Features -->
-     <div class="grid grid-cols-2">
-      <div class="py-1 flex items-center">
-        <Checkbox v-model="filter.installed_conditioner" :binary="true" class="mx-2" />
-        <label>مكيف راكب</label>
-      </div>
-      <div class="py-1 flex items-center">
-        <Checkbox v-model="filter.installed_kitchen" :binary="true" class="mx-2" />
-        <label>مطبخ راكب</label>
-      </div>
-     </div>
-
-      <!-- Rental Type -->
-      <div class="py-1">
-        <Dropdown v-model="filter.rental_type"  option-value="code"  optionLabel="name" :options="[ { name: $t('عزاب'), code: 'singles' }, {  name: $t('عوائل'), code: 'families' }]" :placeholder='$t("نوع التأجير")' class="shadow w-full bg-[#f7f5f5] md:w-14rem" />
-      </div>
-
-      <!-- Entrance Type -->
-      <div class="py-1">
-        <Dropdown v-model="filter.entrance_type"  option-value="code"  optionLabel="name" :options="[ { name: $t('خاص'), code: 'separate' }, {  name: $t('مشترك'), code: 'shared' }]" :placeholder='$t("نوع المدخل")' class="shadow w-full bg-[#f7f5f5] md:w-14rem" />
-      </div>
-
-      <!-- Price Range -->
-      <div class="py-1">
-        <span class="p-float-label">
-          <InputNumber v-model="filter.rent_amount_lt_equal" class="bg-[#f7f5f5] w-full shadow" />
-          <label>السعر من</label>
-        </span>
-      </div>
-      <div class="py-1">
-        <span class="p-float-label">
-          <InputNumber v-model="filter.rent_amount_gt_equal" class="bg-[#f7f5f5] w-full shadow" />
-          <label>السعر إلى</label>
-        </span>
-      </div>
-
-      <!-- Activity -->
-      <div class="py-1">
-        <Dropdown v-model="filter.activity_type_id"  option-value="activity_id"  optionLabel="name" :options="activity" :placeholder='$t("النشاط")' class="shadow w-full bg-[#f7f5f5] md:w-14rem" />
-      </div>
-      <div class="py-1">
-        <InputText v-model="filter.activity" class="bg-[#f7f5f5] w-full shadow" :placeholder='$t("النشاط")' />
-      </div>
-      <div class="flex items-center text-center">
-      <Button @click="fetchdata" style="background-color:#AA1E22;" :label='$t("بحث متقدم")' class="mt-3 bg-[#AA1E22] w-[50%] m-auto"/>
-    </div>
-    </div>
-  </div>
+ <AdvancedSearch
+      :activityTypes="activity"
+      :initialFilters="filter"
+      @search="handleAdvancedSearch"
+    />
 </div>
    <!-- auctions -->
   <div class=  "  px-[1%] py-[2%] m-auto  max-w-[1290px]">
@@ -261,239 +197,163 @@
 <Footer></Footer>
 </template>
 <script setup>
-import Nave from '../components/Nave.vue';
-import Footer from '../components/Footer.vue'
-import {useRouter} from "vue-router";
-
-const router = useRouter()
-// import img1 from "../images/riyadh-saudi-arabia-gretopia_5 1.png";
-import { ref, reactive, onMounted,computed,watch} from 'vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { ref, reactive, onMounted, computed, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import axios from "axios";
+import Nave from '../components/Nave.vue';
+import Footer from '../components/Footer.vue';
+import AdvancedSearch from '@/components/AdvancedSearch.vue'; 
+
+const router = useRouter();
+
+// البيانات التفاعلية
 const currentDate = ref(new Date());
-const allauctions=ref({})
-const total_pages=ref(2)
-const current_page=ref(0)
-const active=ref('all')
-const swiperRef = ref(null);
-const cityes=ref('')
-const neighborhoods=ref([])
-const filter=ref({})
-const activity=ref([])
-const showAdvancedSearch = ref(true);
+const allauctions = ref([]);
+const total_pages = ref(2);
+const current_page = ref(0);
+const active = ref('all');
+const cityes = ref([]);
+const neighborhoods = ref([]);
+const activity = ref([]);
 
-
-    const toggleAdvancedSearch = () => {
-      showAdvancedSearch.value = !showAdvancedSearch.value;
-    };
-
-
-
-const state = reactive({
-currentSlide: 0,
-totalSlides: 0,
+// فلتر البحث (يُستخدم في البحث الأساسي والمتقدم)
+const filter = ref({
+  city_id_filter: null,
+  neighborhood_id_filter: null,
+  building_name_like_filter: '',
+  rental_type: null,
+  entrance_type: null,
+  building_number: null,
+  rooms_number_equal: null,
+  bathrooms_number_equal: null,
+  installed_kitchen: false,
+  installed_conditioner: false,
+  rent_amount_lt_equal: null,
+  rent_amount_gt_equal: null,
+  activity_type_id: null,
+  activity: '',
 });
 
-const pagination = {
-el: '.swiper-pagination',
-clickable: true,
-};
-
-const navigation = {
-nextEl: '.swiper-button-next',
-prevEl: '.swiper-button-prev',
-};
-
-
-const currentMinutes = computed(() => {
-  return currentDate.value.toLocaleTimeString([], { minute: '2-digit', hour12: false }).split(':')[0];
-});
-const currentHour = computed(() => {
-  // Create a new Date object based on currentDate
-  const date = new Date(currentDate.value);
-
-  // Add one hour to the current hour
-  date.setHours(date.getHours() + 1);
-
-  // Return the updated hour
-  return date.toLocaleTimeString([], { hour: '2-digit', hour12: false });
-});
-const currentSeconds = computed(() => {
-  return currentDate.value.toLocaleTimeString([], { second: '2-digit', hour12: false }).split(':')[0];
-});
-const formattedDate = computed(() => {
-  const year = currentDate.value.getFullYear();
-  const month = String(currentDate.value.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-  const day = String(currentDate.value.getDate()).padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
-});
-// Function to update the current date
+// تحديث الوقت كل ثانية
 const updateTime = () => {
   currentDate.value = new Date();
 };
-const details=(id)=>{
-  router.push({name:'auction-details',params:{'id':id} })
-}
-const getauction=(e)=>{
-  total_pages.value =2
-  current_page.value=0
-  active.value=String(e)
-    console.log( e)
 
-axios
-  .post('api/get_building_units_by_filters',{
-    auctions_filter:e,
-    page:"1",
-    page_scope:"9",
-    rental_type:filter.value.rental_type,
-    entrance_type:filter.value.entrance_type,
-    lang:localStorage.getItem('appLang'),
-  })
-  .then((res) => {
-    allauctions.value=ref({})
-    allauctions.value = res.data.result.data.data.map(event => ({
-                "name": event.name,
-                "status":event.status,
-                "total_area":event.total_area
-          }));
-          console.log( allauctions.value)
+// التنسيقات المحسوبة
+const currentMinutes = computed(() => {
+  return currentDate.value.toLocaleTimeString([], { minute: '2-digit', hour12: false }).split(':')[0];
+});
 
+const currentHour = computed(() => {
+  const date = new Date(currentDate.value);
+  date.setHours(date.getHours() + 1);
+  return date.toLocaleTimeString([], { hour: '2-digit', hour12: false });
+});
 
+const currentSeconds = computed(() => {
+  return currentDate.value.toLocaleTimeString([], { second: '2-digit', hour12: false }).split(':')[0];
+});
 
-  })
+const formattedDate = computed(() => {
+  const year = currentDate.value.getFullYear();
+  const month = String(currentDate.value.getMonth() + 1).padStart(2, '0');
+  const day = String(currentDate.value.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+});
 
-}
-watch(current_page, (newPage, oldPage) => {
+// التنقل لصفحة التفاصيل
+const details = (id) => {
+  router.push({ name: 'auction-details', params: { 'id': id } });
+};
 
-  if (allauctions.value.length >= 9){
-    axios
-  .post('api/get_building_units_by_filters',{
-    auctions_filter:active.value,
-    city_id_filter:filter.value.city_id_filter,
-    page:newPage+1,
-    page_scope:"9",
-    rental_type:filter.value.rental_type,
-    building_name_like_filter:filter.value.building_name_like_filter,
-    entrance_type:filter.value.entrance_type,
-    building_number:filter.value.building_number,
-    rooms_number_equal:filter.value.rooms_number_equal,
-    installed_kitchen:filter.value.installed_kitchen,
-    installed_conditioner:filter.value.installed_conditioner,
-    bathrooms_number_equal:filter.value.bathrooms_number_equal,
-    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
-    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
-    activity_type_id:filter.value.activity_type_id,
-    neighborhood_id_filter:filter.value.neighborhood_id_filter,
-    lang:localStorage.getItem('appLang'),
-  })
-  .then((res) => {
-    console.log(res.data.result.data)
-    if(res.data.result.data.length = 9 ){
-      total_pages.value ++
+// جلب البيانات مع الفلاتر
+const fetchdata = () => {
+  axios.post('api/get_building_units_by_filters', {
+    auctions_filter: active.value,
+    city_id_filter: filter.value.city_id_filter,
+    page: current_page.value + 1,
+    page_scope: 9,
+    rental_type: filter.value.rental_type,
+    building_name_like_filter: filter.value.building_name_like_filter,
+    entrance_type: filter.value.entrance_type,
+    building_number: filter.value.building_number,
+    rooms_number_equal: filter.value.rooms_number_equal,
+    installed_kitchen: filter.value.installed_kitchen,
+    installed_conditioner: filter.value.installed_conditioner,
+    bathrooms_number_equal: filter.value.bathrooms_number_equal,
+    rent_amount_gt_equal: filter.value.rent_amount_gt_equal,
+    rent_amount_lt_equal: filter.value.rent_amount_lt_equal,
+    activity_type_id: filter.value.activity_type_id,
+    neighborhood_id_filter: filter.value.neighborhood_id_filter,
+    lang: localStorage.getItem('appLang'),
+  }).then((res) => {
+    if (res.data.result.data.length === 9) {
+      total_pages.value++;
     }
-
-    allauctions.value=ref({})
     allauctions.value = res.data.result.data.data.map(event => ({
-      "name": event.name,
-                "status":event.status,
-                "total_area":event.total_area,
-                "bedrooms_number":event.bedrooms_number,
-                "bathrooms_number":event.bathrooms_number,
-                "livingrooms_number":event.livingrooms_number,
-                "description":event.description
-          }));
+      name: event.name,
+      status: event.status,
+      total_area: event.total_area,
+      bedrooms_number: event.bedrooms_number,
+      bathrooms_number: event.bathrooms_number,
+      livingrooms_number: event.livingrooms_number,
+      description: event.description,
+      deed_date: event.deed_date,
+      area: event.location_details?.area?.name || '',
+      location_url: event.location_details?.location_url || '',
+      profile_img_link: event.profile_img_link || '',
+    }));
+  });
+};
 
+// جلب المدن
+const get_cities = () => {
+  axios.post('api/get_ksa_cities', {
+    lang: localStorage.getItem('appLang'),
+  }).then((res) => {
+    cityes.value = res.data.result.data;
+  });
+};
 
+// جلب الأحياء بناءً على المدينة المحددة
+const get_neighborhoods = (cityId) => {
+  axios.post('api/get_ksa_neighborhoods', {
+    lang: localStorage.getItem('appLang'),
+    city_id: cityId,
+  }).then((res) => {
+    neighborhoods.value = res.data.result.data;
+  });
+};
 
+// جلب أنواع النشاطات
+const get_activities = () => {
+  axios.post('api/get_assets_activity_types', {
+    lang: localStorage.getItem('appLang'),
+  }).then((res) => {
+    activity.value = res.data.result.data;
+  });
+};
 
-  })
+// معالجة البحث المتقدم
+const handleAdvancedSearch = (advancedFilters) => {
+  filter.value = { ...filter.value, ...advancedFilters };
+  fetchdata();
+};
+
+// مراقبة تغيير الصفحة
+watch(current_page, (newPage) => {
+  if (allauctions.value.length >= 9) {
+    fetchdata();
   }
+});
 
-      // Add any additional logic you need here, like fetching new data
-    });
-const fetchdata=()=>{
-axios
-  .post('api/get_building_units_by_filters',{
-    auctions_filter:"all",
-    city_id_filter:filter.value.city_id_filter,
-    page:1,
-    page_scope:9,
-    rental_type:filter.value.rental_type,
-    building_name_like_filter:filter.value.building_name_like_filter,
-    entrance_type:filter.value.entrance_type,
-    building_number:filter.value.building_number,
-    building_number:filter.value.building_number,
-    activity_type_id:filter.value.activity_type_id,
-    installed_kitchen:filter.value.installed_kitchen,
-    installed_conditioner:filter.value.installed_conditioner,
-    bathrooms_number_equal:filter.value.bathrooms_number_equal,
-    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
-    rent_amount_gt_equal:filter.value.rent_amount_gt_equal,
-    neighborhood_id_filter:filter.value.neighborhood_id_filter,
-    lang:localStorage.getItem('appLang'),
-  })
-  .then((res) => {
-    console.log(res.data.result.data)
-
-    allauctions.value = res.data.result.data.data.map(event => ({
-                "name": event.name,
-                "status":event.status,
-                "total_area":event.total_area,
-                "bedrooms_number":event.bedrooms_number,
-                "bathrooms_number":event.bathrooms_number,
-                "livingrooms_number":event.livingrooms_number,
-                "description":event.description,
-                "deed_date":event.deed_date,
-                "area":event.location_details.area.name,
-                location_url:event.location_details.location_url
-          }));
-          console.log( allauctions.value)
-
-
-
-  })
-
-}
-const get_ciies=()=>{
-  axios.post('api/get_ksa_cities',{
-    lang:localStorage.getItem('appLang'),
-        })
-        .then((res) => {
-          cityes.value=res.data.result.data
-        })
-        axios.post('api/get_assets_activity_types',{
-        lang:localStorage.getItem('appLang'),
-        })
-        .then((res) => {
-          activity.value=res.data.result.data
-        })
-
-
-}
-const get_neighborhoods=(e)=>{
-        console.log(e)
-        axios.post('api/get_ksa_neighborhoods',{
-         lang:localStorage.getItem('appLang'),
-         city_id:e
-        })
-        .then((res) => {
-          neighborhoods.value=res.data.result.data
-        })
-}
-
+// التنفيذ عند التحميل
 onMounted(() => {
   updateTime();
-  fetchdata()
-  get_ciies()
-  setInterval(() => {
-      currentDate.value = new Date();
-    }, 100);
-
+  fetchdata();
+  get_cities();
+  get_activities();
+  setInterval(updateTime, 1000);
 });
 </script>
 <style>

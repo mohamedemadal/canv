@@ -190,8 +190,12 @@ or [Linkedin](https://www.linkedin.com/company/18509340)
 ### License
 
 [MIT](https://github.com/epicmaxco/vuestic-admin/blob/master/LICENSE) license.
-#   m u r s h e e d  
- #   m u r s h e e d  
- #   m u r s h e e d  
- #   m u r s h e e d  
+#   m u r s h e e d 
+ 
+ #   m u r s h e e d 
+ 
+ #   m u r s h e e d 
+ 
+ #   m u r s h e e d 
+ 
  
