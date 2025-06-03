@@ -431,8 +431,6 @@ const Advanced_Search = () => {
     .post('api/get_buildings', {
       city_id_filter: filter.value.city_id_filter,
       name_like_filter: filter.value.name,
-      page: 1,
-      page_scope: 9,
       lang: localStorage.getItem('appLang'),
     })
     .then((res) => {

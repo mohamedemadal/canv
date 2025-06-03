@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('Auth', {
       }
     },
     async handleLogin(data) {
-      this.resetAuthStore();
+    //   this.resetAuthStore();
     const code=(data.otp).join("")
 
       try {

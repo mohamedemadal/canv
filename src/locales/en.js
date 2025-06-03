@@ -141,6 +141,7 @@ export default {
   advanced_search: 'Advanced Search',
   city: 'City',
   clear_fillter: 'clear fillter',
+  done_add: "Registration was successful.",
   area: 'Area',
   owner_name: 'owner name',
   building_number: 'Building Number',

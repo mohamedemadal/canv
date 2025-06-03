@@ -123,6 +123,7 @@ export default {
   jobs: 'الوظائف',
   Northward: 'شمالا',
   Eastbound: 'شرقا',
+  done_add: "تم التسجيل بنجاح",
   Southbound: 'جنوبا',
   West: 'غربا',
   Length: 'بطول',
