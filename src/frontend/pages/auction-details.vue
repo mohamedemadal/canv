@@ -424,7 +424,7 @@
           <Button
             v-if="isRegistration"
             style="background-color: #aa1e22 !important"
-            label="تم التسجيل بالمزاد"
+            label="مسجّل بالمزاد ✅"
             class="mt-3 w-[90%] focus:ring-0 text-[#AA1E22]"
             disabled
           />
@@ -830,22 +830,27 @@
     phone: '',
     email: '',
   })
+  const getuserInfo = async () => {
+    // get user info
+    await axios
+      .post('api/get_user_profile', {
+        lang: localStorage.getItem('language'),
+        user_id: localStorage.getItem('user_id'),
+      })
+      .then((res) => {
+        console.log(res)
+        userinfo.value.name = res.data.result.data.name
+        userinfo.value.phone = res.data.result.data.phone
+        userinfo.value.email = res.data.result.data.email
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
   const registration = async () => {
     // check for login
     if (localStorage.getItem('authenticated') == 'true') {
       // login
-      // get user info
-      await axios
-        .post('api/get_user_profile', {
-          lang: localStorage.getItem('language'),
-          user_id: localStorage.getItem('user_id'),
-        })
-        .then((res) => {
-          console.log(res)
-          userinfo.value.name = res.data.result.data.name
-          userinfo.value.phone = res.data.result.data.phone
-          userinfo.value.email = res.data.result.data.email
-        })
       // send data to backend
       await axios
         .post('api/add_interested_in_auction', {
@@ -874,21 +879,24 @@
     await axios
       .post('api/get_user_auctions', {
         lang: localStorage.getItem('language'),
-        search_with: 'user_id',
-        user_id: 3,
+        search_with: "phone_number",
+        phone_number: userinfo.value.phone,
       })
       .then((res) => {
-        console.log(res.data)
+        for(let item of res.data.result.data.auctions) {
+          if(item.id == auction_details.value.auction_id) isRegistration.value = true
+        }
       })
       .catch((error) => {
         console.log(error)
       })
   }
 
-  onMounted(() => {
+  onMounted(async () => {
     updateTime()
     fetchdata()
-    checkRegistration()
+    await getuserInfo()
+    await checkRegistration()
 
     setInterval(() => {
       currentDate.value = new Date()
