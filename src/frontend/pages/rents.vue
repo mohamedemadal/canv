@@ -202,7 +202,7 @@ import { useRouter } from 'vue-router';
 import axios from "axios";
 import Nave from '../components/Nave.vue';
 import Footer from '../components/Footer.vue';
-import AdvancedSearch from '@/components/AdvancedSearch.vue'; 
+import AdvancedSearch from '@/components/AdvancedSearch.vue';
 
 const router = useRouter();
 
@@ -269,6 +269,7 @@ const details = (id) => {
 // جلب البيانات مع الفلاتر
 const fetchdata = () => {
   axios.post('api/get_building_units_by_filters', {
+    activity: filter.value.activity,
     auctions_filter: active.value,
     city_id_filter: filter.value.city_id_filter,
     page: current_page.value + 1,
@@ -337,6 +338,7 @@ const get_activities = () => {
 // معالجة البحث المتقدم
 const handleAdvancedSearch = (advancedFilters) => {
   filter.value = { ...filter.value, ...advancedFilters };
+  console.log('Merged Filters:', filter.value);
   fetchdata();
 };
 

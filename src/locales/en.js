@@ -139,6 +139,7 @@ export default {
   price_to: 'Price To',
   activity: 'Activity',
   advanced_search: 'Advanced Search',
+  Neighborhoodname: 'Neighborhood Name',
   city: 'City',
   clear_fillter: 'clear fillter',
   done_add: "Registration was successful.",

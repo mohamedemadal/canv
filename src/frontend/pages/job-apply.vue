@@ -59,6 +59,7 @@
                   :required="fill.is_required_field"
                   is="InputText"
                   class="bg-[#f7f5f5] w-full"
+                  :placeholder="'ادخل '+ fill.label_on_form"
                   v-model="job[fill.name]"
                   :class="{ 'p-invalid': submitted && !job[fill.name] && fill.is_required_field}"
                 />
@@ -74,6 +75,7 @@
                   is="Calendar"
                   class="bg-[#f7f5f5] w-full"
                   v-model="job[fill.name]"
+                  :placeholder="fill.label_on_form"
                   :maxDate="maxDate"
                   :class="{ 'p-invalid': submitted && !job[fill.name] && fill.is_required_field}"
                 />
@@ -89,6 +91,7 @@
                   is="InputNumber"
                   inputId="withoutgrouping" :useGrouping="false"
                   class="bg-[#f7f5f5] w-full"
+                  :placeholder="fill.label_on_form"
                   v-model="job[fill.name]"
                   :class="{ 'p-invalid': submitted && !job[fill.name] && fill.is_required_field}"
                 />
@@ -106,6 +109,7 @@
                   optionLabel="name"
                   class="bg-[#f7f5f5] w-full"
                   :options="selection[fill.name]"
+                  :placeholder="fill.label_on_form"
                   v-model="job[fill.name]"
                   :class="{ 'p-invalid': submitted && !job[fill.name] && fill.is_required_field}"
                 />

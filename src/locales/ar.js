@@ -12,6 +12,7 @@ export default {
   home: 'الرئيسية',
   enter_auction_name: 'أكتب اسم المزاد',
   select_city: 'اختر المدينة',
+  Neighborhoodname: 'اسم الحي',
   search: 'بحث',
   current_auctions: 'المزادات الحالية',
   upcoming_auctions: 'المزادات القادمة',
