@@ -7,7 +7,7 @@
         <p class="pb-1 w-full text-center text-[#AA1E22] font-bold" style="line-height:29px">{{ errore }}</p>
 
         <div class="py-2 relative">
-          <div class="flex justify-center my-4 gap-2 flex-wrap">
+          <div style="direction: ltr;" class="flex  justify-center my-4 gap-2 flex-wrap">
             <input
               v-for="(digit, index) in parent.otp"
               :key="index"
