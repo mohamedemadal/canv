@@ -197,7 +197,7 @@
   </div>
 </div>
 </div>
-  <Rentals></Rentals>
+  <!-- <Rentals></Rentals> -->
 <!-- how to confirme -->
  <div class="hidden">
   <div class="bg-slate-50 auctions ">
