@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-2 lg:p-8 animate__animated animate__backInRight animate__delay-.5s rounded-lg overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
       <div class="bg-white py-8 px-10 shadow-lg rounded-lg">
         <h2 class="font-bold text-3xl text-[#AA1E22] py-3">سجل حساب جديد</h2>
-        <p class="pb-1" style="line-height:29px">أهلا بك فى منصة إيوا للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p>
+        <!-- <p class="pb-1" style="line-height:29px">أهلا بك فى منصة كانف للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p> -->
         <p v-if="errore" class="pb-1 w-full text-center text-[#AA1E22] font-bold" style="line-height:29px">{{ errore }}</p>
 
         <div class="py-2 relative">

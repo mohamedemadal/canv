@@ -53,44 +53,6 @@
                   <InputText  type="email" required class="bg-[#303843] w-full " v-model="profile.email" :placeholder='$t("Your_email_address")'  />
                 </div>
               </div>
-              <div class=" py-1 relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username">  {{ $t("رقم الكارت") }}</p>
-                  <span v-if="!profile.card_number" class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-                  <InputText   required class="bg-[#303843] w-full " v-model="profile.card_number" :placeholder='$t("رقم الكارت")'  />
-                </div>
-              </div>
-              <div class="z-50  py-1 relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username">  {{ $t(" تاريخ الإنتهاء") }}</p>
-                  <span v-if="!profile.card_exp_date" class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-                  <Calendar    class="w-full " v-model="profile.card_exp_date"  showIcon     />
-
-                </div>
-              </div>
-              <div class=" py-1  relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username">  كلمة المرور</p>
-                  <span v-if="!profile.password" class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-                  <Password  v-model="profile.password" toggleMask   placeholder="  أكتب كلمة المرور "/>
-                </div>
-              </div>
-              <div class=" py-1  relative ">
-                  <div class="flex ">
-                  <p class="py-2 font-bold text-[#303843]" for="username">  الرمز السرى</p>
-                  <span v-if="!profile.card_code" class="my-auto text-[#AA1E22] px-1">*</span>
-                </div>
-                <div class="relative ">
-
-                  <InputText   required class="bg-[#303843] w-full " v-model="profile.card_code" :placeholder='$t("رقم الكارت")'  />
-                </div>
-              </div>
 
               <div class=" flex-column gap-2 py-1 hidden">
                   <label class="w-full " for="username">{{ $t('personal_image') }}</label>
@@ -153,7 +115,7 @@
   const update_profile=()=>{
     profile.value.lang=localStorage.getItem('appLang')
     profile.value.user_id=localStorage.getItem('user_id')
-    axios.post('api/get_user_profile',profile.value)
+    axios.post('api/update_user_profile',profile.value)
         .then((res) => {
           toast.add({severity: 'success', summary: 'شكرا', detail: ' لقد تلقينا رسالتك، شكرا لتواصلك معنا', life: 3000})
         })

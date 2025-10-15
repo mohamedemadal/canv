@@ -167,12 +167,12 @@
     <div>
         <img :src="profil" style="width: 100px; height: 100px;" class="rounded-full m-auto">
     </div>
-    <div class="w-[85%] mx-auto py-[5%]">
+    <div class="w-[85%]  mx-auto py-[5%]">
         <div class="flex justify-between pb-3" style="border-bottom: 1px solid #E0E0E0;">
             <a class="font-bold text-xl text-black"> {{ user_name }}</a>
             <i class="pi pi-chevron-left font-bold my-auto"></i>
         </div>
-        <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
+        <!-- <div class=" my-4 pb-2 " style="border-bottom: 1px solid #E0E0E0; ">
             <a class="font-bold text-lg text-[#2F3843]"> لوحه تحكم المالك</a>
         </div>
         <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
@@ -192,7 +192,7 @@
         </div>
         <div class=" my-4 pb-2" style="border-bottom: 1px solid #E0E0E0;">
             <a class="font-bold text-lg text-[#2F3843]"> تقديم كبائع</a>
-        </div>
+        </div> -->
 
         <!-- Logout Button -->
         <div class="mt-8">

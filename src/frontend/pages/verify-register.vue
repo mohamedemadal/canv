@@ -5,7 +5,7 @@
 
           <div class="bg-white py-6 px-10 shadow-lg rounded-lg">
             <h2 class="font-bold text-3xl text-[#AA1E22] py-3" > ادخل رمز ال OTP </h2>
-            <p class="pb-1" style="line-height:29px"> أهلا بك فى منصة إيوا للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p>
+            <!-- <p class="pb-1" style="line-height:29px"> أهلا بك فى منصة كانف للتوظيف قم بإنشاء حساب الآن و إبدأ فى تكوين فريقك !</p> -->
             <p class="pb-1 w-full text-center text-[#AA1E22] font-bold " style="line-height:29px">{{ errore }}</p>
 
 
