@@ -46,7 +46,7 @@
           <div v-if="!isEmailValid && profile.email" class="text-[#AA1E22] text-sm">{{ $t('الرجاء إدخال بريد إلكتروني صحيح') }}</div>
         </div>
         <div class="hidden">
-          <InputText ref="fileInput" @change="uploadFile" accept="image/*" id="file" type="file" aria-labelledby="file-label" />
+          <input ref="fileInput" @change="uploadFile" accept="image/*" id="file" type="file" aria-labelledby="file-label" />
         </div>
         <Button
           type="submit"
@@ -136,7 +136,7 @@ const profile = ref({
   user_id: localStorage.getItem('user_id'),
 });
 const originalProfile = ref({});
-const fileInput = ref(null);
+const fileInput = ref(null); // This ref now correctly targets the raw <input type="file"> element
 const showOtpModal = ref(false);
 const otp = ref(['', '', '', '', '', '']);
 const otpError = ref('');
@@ -207,6 +207,7 @@ const uploadFile = (e) => {
 };
 
 const triggerFileInput = () => {
+  // FIX: fileInput.value is now the raw HTML element, so .click() works
   if (fileInput.value) {
     fileInput.value.click();
   } else {
